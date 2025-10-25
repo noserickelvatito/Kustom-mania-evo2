@@ -14,6 +14,7 @@ export default async function Home() {
     hero_subtitle: "PASIÓN POR LAS DOS RUEDAS",
     hero_description: "Donde la personalidad se encuentra con el asfalto.",
     hero_button_text: "EXPLORAR LA COLECCIÓN",
+    hero_background_url: null,
     instagram_url: null,
     facebook_url: null,
     updated_at: "",
@@ -23,16 +24,26 @@ export default async function Home() {
     ? `https://wa.me/${siteConfig.whatsapp_number.replace(/\D/g, "")}`
     : "https://wa.me/"
 
+  const backgroundUrl =
+    siteConfig.hero_background_url || "https://kusyom-mania.s3.sa-east-1.amazonaws.com/Home+Banner+V3.mp4"
+  const isVideo = /\.(mp4|webm|ogg)$/i.test(backgroundUrl)
+
   return (
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
       <div className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-vMDdab5cQnzGAfa1QWJq1YqZtI3Yqo.png"
-            alt="Kustom Mania Hero Background"
-            className="w-full h-full object-cover"
-          />
+          {isVideo ? (
+            <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+              <source src={backgroundUrl} type="video/mp4" />
+            </video>
+          ) : (
+            <img
+              src={backgroundUrl || "/placeholder.svg"}
+              alt="Kustom Mania Hero Background"
+              className="w-full h-full object-cover"
+            />
+          )}
           <div className="absolute inset-0 bg-black/30" />
         </div>
 
@@ -124,17 +135,6 @@ export default async function Home() {
                 }}
               />
             </Link>
-          </div>
-
-          <div className="hidden md:block absolute right-0 bottom-0 w-1/2 h-2/3 opacity-40">
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-mzvr5fYISChftSbepyLKAinvCx0ZQf.png"
-              alt="Custom motorcycle silhouette"
-              className="w-full h-full object-contain object-right-bottom"
-              style={{
-                filter: "brightness(0.3) contrast(1.2)",
-              }}
-            />
           </div>
         </main>
       </div>

@@ -48,6 +48,7 @@ export interface SiteConfig {
   hero_subtitle: string
   hero_description: string
   hero_button_text: string
+  hero_background_url: string | null
   instagram_url: string | null
   facebook_url: string | null
   updated_at: string

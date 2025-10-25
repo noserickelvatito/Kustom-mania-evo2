@@ -27,6 +27,7 @@ export function ConfigForm({ config }: ConfigFormProps) {
     hero_subtitle: config?.hero_subtitle || "PASIÓN POR LAS DOS RUEDAS",
     hero_description: config?.hero_description || "Donde la personalidad se encuentra con el asfalto.",
     hero_button_text: config?.hero_button_text || "EXPLORAR LA COLECCIÓN",
+    hero_background_url: config?.hero_background_url || "",
     instagram_url: config?.instagram_url || "",
     facebook_url: config?.facebook_url || "",
   })
@@ -54,6 +55,7 @@ export function ConfigForm({ config }: ConfigFormProps) {
         hero_subtitle: formData.hero_subtitle,
         hero_description: formData.hero_description,
         hero_button_text: formData.hero_button_text,
+        hero_background_url: formData.hero_background_url || null,
         instagram_url: formData.instagram_url || null,
         facebook_url: formData.facebook_url || null,
         updated_at: new Date().toISOString(),
@@ -108,6 +110,22 @@ export function ConfigForm({ config }: ConfigFormProps) {
         <h3 className="text-lg font-semibold" style={{ color: "#b87333" }}>
           Sección Hero (Página Principal)
         </h3>
+
+        <div>
+          <Label htmlFor="hero_background_url" className="text-gray-300">
+            URL de Fondo Hero (AWS S3)
+          </Label>
+          <Input
+            id="hero_background_url"
+            name="hero_background_url"
+            type="url"
+            value={formData.hero_background_url}
+            onChange={handleChange}
+            className="bg-black/50 border-[#b87333] text-white mt-2"
+            placeholder="https://tu-bucket.s3.region.amazonaws.com/imagen.jpg"
+          />
+          <p className="text-xs text-gray-500 mt-1">Soporta imágenes (.jpg, .png, .webp) y videos (.mp4, .webm)</p>
+        </div>
 
         <div>
           <Label htmlFor="hero_title" className="text-gray-300">
