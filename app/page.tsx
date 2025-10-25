@@ -1,7 +1,6 @@
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 import type { SiteConfig } from "@/lib/types"
-import { MobileNav } from "@/components/mobile-nav"
 
 export default async function Home() {
   const supabase = await createClient()
@@ -135,8 +134,6 @@ export default async function Home() {
           </div>
         </main>
       </div>
-
-      <MobileNav whatsappNumber={siteConfig.whatsapp_number} />
     </div>
   )
 }

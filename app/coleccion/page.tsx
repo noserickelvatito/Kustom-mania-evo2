@@ -32,7 +32,7 @@ export default async function ColeccionPage() {
   )
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-black pb-24 md:pb-0">
       <Header currentPage="coleccion" whatsappNumber={config?.whatsapp_number} />
 
       <section

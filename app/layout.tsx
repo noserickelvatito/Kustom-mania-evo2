@@ -2,6 +2,8 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { MobileNav } from "@/components/mobile-nav"
+import { createClient } from "@/lib/supabase/server"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
@@ -16,19 +18,27 @@ export const metadata: Metadata = {
   colorScheme: "dark",
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const supabase = await createClient()
+  const { data: config } = await supabase.from("site_config").select("whatsapp_number").single()
+  const whatsappNumber = config?.whatsapp_number || ""
+
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <meta name="theme-color" content="#000000" />
         <meta name="color-scheme" content="dark" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
-      <body className={`font-sans antialiased ${_playfair.className}`}>
+      <body className={`font-sans antialiased bg-black ${_playfair.className}`}>
         {children}
+        <MobileNav whatsappNumber={whatsappNumber} />
         <Analytics />
       </body>
     </html>
