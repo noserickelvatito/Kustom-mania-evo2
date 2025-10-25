@@ -4,7 +4,6 @@ import type React from "react"
 
 import { useState, useEffect } from "react"
 import { createClient } from "@/lib/supabase/client"
-import { Header } from "@/components/header"
 
 export default function ContactoPage() {
   const [formData, setFormData] = useState({
@@ -97,9 +96,7 @@ export default function ContactoPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black pb-24 md:pb-0">
-      <Header currentPage="contacto" whatsappNumber={whatsappNumber} />
-
+    <div className="min-h-screen bg-black pb-24 md:pb-8 md:pt-24">
       <div
         className="relative min-h-[calc(100vh-80px)] flex items-center justify-center py-12 px-4 sm:px-6 md:px-8"
         style={{

@@ -20,10 +20,6 @@ export default async function Home() {
     updated_at: "",
   }
 
-  const whatsappUrl = siteConfig.whatsapp_number
-    ? `https://wa.me/${siteConfig.whatsapp_number.replace(/\D/g, "")}`
-    : "https://wa.me/"
-
   const backgroundUrl =
     siteConfig.hero_background_url || "https://kusyom-mania.s3.sa-east-1.amazonaws.com/Home+Banner+V3.mp4"
   const isVideo = /\.(mp4|webm|ogg)$/i.test(backgroundUrl)
@@ -54,35 +50,6 @@ export default async function Home() {
               "repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px)",
           }}
         />
-
-        <header className="hidden md:flex relative z-10 flex-row items-center justify-between px-4 sm:px-6 md:px-8 py-4 sm:py-6">
-          <nav className="flex items-center gap-6 md:gap-12">
-            <Link href="/" className="text-sm tracking-widest text-[#b87333] transition-colors uppercase font-medium">
-              INICIO
-            </Link>
-            <Link
-              href="/coleccion"
-              className="text-sm tracking-widest text-gray-300 hover:text-[#b87333] transition-colors uppercase font-medium"
-            >
-              COLECCIÓN
-            </Link>
-            <Link
-              href="/contacto"
-              className="text-sm tracking-widest text-gray-300 hover:text-[#b87333] transition-colors uppercase font-medium"
-            >
-              CONTACTO
-            </Link>
-          </nav>
-
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm tracking-widest text-gray-300 hover:text-[#b87333] transition-colors uppercase font-medium"
-          >
-            WHATSAPP
-          </a>
-        </header>
 
         {/* Hero Content */}
         <main className="relative z-10 flex flex-col items-center justify-center h-full px-4 sm:px-6 md:px-8 pb-32 md:pb-0">

@@ -1,6 +1,5 @@
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
-import { Header } from "@/components/header"
 import { PricingDisplay } from "@/components/pricing-display"
 import type { Motorcycle } from "@/lib/types"
 
@@ -11,8 +10,6 @@ export default async function ColeccionPage() {
     .from("motorcycles")
     .select("*")
     .order("display_order", { ascending: true })
-
-  const { data: config } = await supabase.from("site_config").select("whatsapp_number").single()
 
   // Get first image for each motorcycle
   const motorcyclesWithImages = await Promise.all(
@@ -32,9 +29,7 @@ export default async function ColeccionPage() {
   )
 
   return (
-    <div className="min-h-screen bg-black pb-24 md:pb-0">
-      <Header currentPage="coleccion" whatsappNumber={config?.whatsapp_number} />
-
+    <div className="min-h-screen bg-black pb-24 md:pb-8 md:pt-24">
       <section
         className="relative py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8"
         style={{
