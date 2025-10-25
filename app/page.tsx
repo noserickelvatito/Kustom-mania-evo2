@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 import type { SiteConfig } from "@/lib/types"
+import { MobileNav } from "@/components/mobile-nav"
 
 export default async function Home() {
   const supabase = await createClient()
@@ -31,8 +32,8 @@ export default async function Home() {
   return (
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
-      <div className="relative min-h-screen overflow-hidden">
-        <div className="absolute inset-0">
+      <div className="relative h-screen w-screen overflow-hidden">
+        <div className="absolute inset-0 w-full h-full">
           {isVideo ? (
             <video autoPlay loop muted playsInline className="w-full h-full object-cover">
               <source src={backgroundUrl} type="video/mp4" />
@@ -55,24 +56,20 @@ export default async function Home() {
           }}
         />
 
-        {/* Header */}
-        <header className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between px-4 sm:px-6 md:px-8 py-4 sm:py-6 gap-4 sm:gap-0">
-          <nav className="flex flex-wrap items-center gap-4 sm:gap-6 md:gap-12">
-            <Link
-              href="/"
-              className="text-xs sm:text-sm tracking-widest text-[#b87333] transition-colors uppercase font-medium"
-            >
+        <header className="hidden md:flex relative z-10 flex-row items-center justify-between px-4 sm:px-6 md:px-8 py-4 sm:py-6">
+          <nav className="flex items-center gap-6 md:gap-12">
+            <Link href="/" className="text-sm tracking-widest text-[#b87333] transition-colors uppercase font-medium">
               INICIO
             </Link>
             <Link
               href="/coleccion"
-              className="text-xs sm:text-sm tracking-widest text-gray-300 hover:text-[#b87333] transition-colors uppercase font-medium"
+              className="text-sm tracking-widest text-gray-300 hover:text-[#b87333] transition-colors uppercase font-medium"
             >
               COLECCIÓN
             </Link>
             <Link
               href="/contacto"
-              className="text-xs sm:text-sm tracking-widest text-gray-300 hover:text-[#b87333] transition-colors uppercase font-medium"
+              className="text-sm tracking-widest text-gray-300 hover:text-[#b87333] transition-colors uppercase font-medium"
             >
               CONTACTO
             </Link>
@@ -82,14 +79,14 @@ export default async function Home() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs sm:text-sm tracking-widest text-gray-300 hover:text-[#b87333] transition-colors uppercase font-medium"
+            className="text-sm tracking-widest text-gray-300 hover:text-[#b87333] transition-colors uppercase font-medium"
           >
             WHATSAPP
           </a>
         </header>
 
         {/* Hero Content */}
-        <main className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-120px)] sm:min-h-[calc(100vh-100px)] px-4 sm:px-6 md:px-8">
+        <main className="relative z-10 flex flex-col items-center justify-center h-full px-4 sm:px-6 md:px-8 pb-32 md:pb-0">
           <div className="text-center max-w-5xl w-full">
             <h1
               className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-wider mb-4 sm:mb-6"
@@ -138,6 +135,8 @@ export default async function Home() {
           </div>
         </main>
       </div>
+
+      <MobileNav whatsappNumber={siteConfig.whatsapp_number} />
     </div>
   )
 }
