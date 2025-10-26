@@ -9,10 +9,10 @@ export default async function Home() {
 
   const siteConfig: SiteConfig = config || {
     id: "",
-    whatsapp_number: "",
+    whatsapp_number: "+543517034847",
     hero_title: "KUSTOM MANIA",
     hero_subtitle: "PASIÓN POR LAS DOS RUEDAS",
-    hero_description: "Donde la personalidad se encuentra con el asfalto.",
+    hero_description: "",
     hero_button_text: "EXPLORAR LA COLECCIÓN",
     hero_background_url: null,
     instagram_url: null,
