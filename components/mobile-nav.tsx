@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, Grid3x3, MessageSquare, MessageCircle } from "lucide-react"
+import { Home, Grid3x3, MessageSquare, MessageCircle, Scale } from "lucide-react"
 
 interface MobileNavProps {
   whatsappNumber?: string
@@ -40,6 +40,16 @@ export function MobileNav({ whatsappNumber = "" }: MobileNavProps) {
             >
               <Grid3x3 className="w-6 h-6" strokeWidth={isActive("/coleccion") ? 2.5 : 2} />
               <span className="text-[10px] font-medium tracking-wider uppercase">Motos</span>
+            </Link>
+
+            <Link
+              href="/comparar"
+              className={`flex flex-col items-center gap-1 transition-all ${
+                isActive("/comparar") ? "text-[#b87333]" : "text-gray-400"
+              }`}
+            >
+              <Scale className="w-6 h-6" strokeWidth={isActive("/comparar") ? 2.5 : 2} />
+              <span className="text-[10px] font-medium tracking-wider uppercase">Comparar</span>
             </Link>
 
             <Link
@@ -91,6 +101,16 @@ export function MobileNav({ whatsappNumber = "" }: MobileNavProps) {
               >
                 <Grid3x3 className="w-5 h-5" strokeWidth={isActive("/coleccion") ? 2.5 : 2} />
                 <span className="text-sm font-medium tracking-wider uppercase">Colección</span>
+              </Link>
+
+              <Link
+                href="/comparar"
+                className={`flex items-center gap-2 transition-all ${
+                  isActive("/comparar") ? "text-[#b87333]" : "text-gray-300 hover:text-[#b87333]"
+                }`}
+              >
+                <Scale className="w-5 h-5" strokeWidth={isActive("/comparar") ? 2.5 : 2} />
+                <span className="text-sm font-medium tracking-wider uppercase">Comparar</span>
               </Link>
 
               <Link
