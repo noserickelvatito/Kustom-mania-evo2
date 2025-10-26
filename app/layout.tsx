@@ -13,7 +13,7 @@ const _playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", 
 export const metadata: Metadata = {
   title: "Kustom Mania",
   description: "Pasión por las dos ruedas",
-  generator: "v0.app",
+  generator: "Kustom Mania",
   themeColor: "#000000",
   colorScheme: "dark",
 }
