@@ -3,6 +3,8 @@ import { createClient } from "@/lib/supabase/server"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { MotorcycleForm } from "@/components/admin/motorcycle-form"
+import { MotorcycleImageManager } from "@/components/admin/motorcycle-image-manager"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default async function EditMotorcyclePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
@@ -16,7 +18,7 @@ export default async function EditMotorcyclePage({ params }: { params: Promise<{
 
   return (
     <div
-      className="min-h-screen"
+      className="min-h-screen pb-24 md:pb-8"
       style={{
         background: "linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%)",
       }}
@@ -61,7 +63,24 @@ export default async function EditMotorcyclePage({ params }: { params: Promise<{
           <p className="text-gray-400">Actualiza los datos de la motocicleta</p>
         </div>
 
-        <MotorcycleForm motorcycle={motorcycle} />
+        <div className="space-y-8">
+          <MotorcycleForm motorcycle={motorcycle} />
+
+          {/* Image Management Section */}
+          <Card
+            style={{
+              background: "linear-gradient(145deg, #2a2a2a, #1a1a1a)",
+              border: "2px solid #b87333",
+            }}
+          >
+            <CardHeader>
+              <CardTitle style={{ color: "#b87333" }}>Gestión de Imágenes</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <MotorcycleImageManager motorcycleId={motorcycle.id} />
+            </CardContent>
+          </Card>
+        </div>
       </main>
     </div>
   )

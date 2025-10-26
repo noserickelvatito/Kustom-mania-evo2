@@ -1,9 +1,9 @@
-import Link from "next/link"
 import { notFound } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import { ImageGallery } from "@/components/image-gallery"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { PricingDisplay } from "@/components/pricing-display"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 
 export default async function MotorcycleDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -26,13 +26,7 @@ export default async function MotorcycleDetailPage({ params }: { params: Promise
   return (
     <div className="min-h-screen bg-black pb-24 md:pb-8 md:pt-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8">
-        {/* Back Button */}
-        <Link
-          href="/coleccion"
-          className="inline-flex items-center gap-2 text-gray-400 hover:text-[#b87333] transition-colors mb-8 text-sm uppercase tracking-wider"
-        >
-          ← Volver a la colección
-        </Link>
+        <Breadcrumbs items={[{ label: "Colección", href: "/coleccion" }, { label: motorcycle.name }]} />
 
         <div
           className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8"
@@ -86,25 +80,25 @@ export default async function MotorcycleDetailPage({ params }: { params: Promise
                     ESPECIFICACIONES TÉCNICAS
                   </h2>
 
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     <div>
                       <span className="text-gray-400 text-sm uppercase tracking-wider">Motor:</span>
-                      <p className="text-white text-base mt-1">{motorcycle.engine}</p>
+                      <p className="text-white text-base mt-1 leading-relaxed">{motorcycle.engine}</p>
                     </div>
 
                     <div>
                       <span className="text-gray-400 text-sm uppercase tracking-wider">Escape:</span>
-                      <p className="text-white text-base mt-1">{motorcycle.exhaust}</p>
+                      <p className="text-white text-base mt-1 leading-relaxed">{motorcycle.exhaust}</p>
                     </div>
 
                     <div>
                       <span className="text-gray-400 text-sm uppercase tracking-wider">Pintura:</span>
-                      <p className="text-white text-base mt-1">{motorcycle.paint}</p>
+                      <p className="text-white text-base mt-1 leading-relaxed">{motorcycle.paint}</p>
                     </div>
 
                     <div>
                       <span className="text-gray-400 text-sm uppercase tracking-wider">Modificaciones:</span>
-                      <p className="text-white text-base mt-1">{motorcycle.modifications}</p>
+                      <p className="text-white text-base mt-1 leading-relaxed">{motorcycle.modifications}</p>
                     </div>
                   </div>
                 </div>

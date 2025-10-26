@@ -81,7 +81,7 @@ export default function ContactoPage() {
         preguntaEspecifica: "",
       })
     } catch (error) {
-      console.error("[v0] Error saving lead:", error)
+      console.error("Error saving lead:", error)
       alert("Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.")
     } finally {
       setIsLoading(false)
@@ -147,7 +147,7 @@ export default function ContactoPage() {
                 required
                 disabled={isLoading}
                 className="w-full px-4 py-3 bg-black/50 text-white text-base focus:outline-none transition-all duration-300 disabled:opacity-50"
-                style={{ border: "2px solid #b87333" }}
+                style={{ border: "2px solid #b87333", minHeight: "44px" }}
                 placeholder="Tu nombre completo"
               />
             </div>
@@ -166,7 +166,7 @@ export default function ContactoPage() {
                 required
                 disabled={isLoading}
                 className="w-full px-4 py-3 bg-black/50 text-white text-base focus:outline-none transition-all duration-300 disabled:opacity-50"
-                style={{ border: "2px solid #b87333" }}
+                style={{ border: "2px solid #b87333", minHeight: "44px" }}
                 placeholder="Tu localidad"
               />
             </div>
@@ -184,7 +184,7 @@ export default function ContactoPage() {
                 onChange={handleChange}
                 disabled={isLoading}
                 className="w-full px-4 py-3 bg-black/50 text-white text-base focus:outline-none transition-all duration-300 disabled:opacity-50"
-                style={{ border: "2px solid #b87333" }}
+                style={{ border: "2px solid #b87333", minHeight: "44px" }}
                 placeholder="Tu número de DNI"
               />
             </div>
@@ -202,7 +202,7 @@ export default function ContactoPage() {
                 onChange={handleChange}
                 disabled={isLoading}
                 className="w-full px-4 py-3 bg-black/50 text-white text-base focus:outline-none transition-all duration-300 disabled:opacity-50"
-                style={{ border: "2px solid #b87333" }}
+                style={{ border: "2px solid #b87333", minHeight: "44px" }}
                 placeholder="Ej: Iron Custom 350"
               />
             </div>
@@ -219,7 +219,7 @@ export default function ContactoPage() {
                 onChange={handleChange}
                 disabled={isLoading}
                 className="w-full px-4 py-3 bg-black/50 text-white text-base focus:outline-none transition-all duration-300 disabled:opacity-50"
-                style={{ border: "2px solid #b87333" }}
+                style={{ border: "2px solid #b87333", minHeight: "44px" }}
               >
                 <option value="">Selecciona una opción</option>
                 <option value="Compra">Compra de motocicleta</option>
@@ -243,7 +243,7 @@ export default function ContactoPage() {
                 onChange={handleChange}
                 disabled={isLoading}
                 className="w-full px-4 py-3 bg-black/50 text-white text-base focus:outline-none transition-all duration-300 disabled:opacity-50"
-                style={{ border: "2px solid #b87333" }}
+                style={{ border: "2px solid #b87333", minHeight: "44px" }}
                 placeholder="Ej: Café racer, bobber, custom..."
               />
             </div>
@@ -260,7 +260,7 @@ export default function ContactoPage() {
                 onChange={handleChange}
                 disabled={isLoading}
                 rows={4}
-                className="w-full px-4 py-3 bg-black/50 text-white text-base focus:outline-none transition-all duration-300 disabled:opacity-50 resize-none"
+                className="w-full px-4 py-3 bg-black/50 text-white text-base focus:outline-none transition-all duration-300 disabled:opacity-50 resize-none leading-relaxed"
                 style={{ border: "2px solid #b87333" }}
                 placeholder="Escribe tu pregunta aquí..."
               />
@@ -275,6 +275,7 @@ export default function ContactoPage() {
                 background: "#b87333",
                 color: "white",
                 boxShadow: "0 4px 20px rgba(184, 115, 51, 0.4)",
+                minHeight: "56px",
               }}
             >
               <span className="relative z-10">{isLoading ? "ENVIANDO..." : "ENVIAR POR WHATSAPP"}</span>

@@ -80,19 +80,24 @@ export function MotorcycleForm({ motorcycle }: MotorcycleFormProps) {
       }
 
       if (motorcycle) {
-        // Update existing motorcycle
         const { error } = await supabase.from("motorcycles").update(motorcycleData).eq("id", motorcycle.id)
 
         if (error) throw error
+
+        // Stay on edit page to allow image management
+        router.refresh()
       } else {
-        // Create new motorcycle
-        const { error } = await supabase.from("motorcycles").insert(motorcycleData)
+        const { data: newMotorcycle, error } = await supabase
+          .from("motorcycles")
+          .insert(motorcycleData)
+          .select()
+          .single()
 
         if (error) throw error
-      }
 
-      router.push("/km-secret-panel-2025/motorcycles")
-      router.refresh()
+        // Redirect to edit page so user can upload images
+        router.push(`/km-secret-panel-2025/motorcycles/${newMotorcycle.id}/edit`)
+      }
     } catch (err) {
       console.error("[v0] Error saving motorcycle:", err)
       setError(err instanceof Error ? err.message : "Error al guardar la motocicleta")
@@ -350,6 +355,12 @@ export function MotorcycleForm({ motorcycle }: MotorcycleFormProps) {
               Cancelar
             </Button>
           </div>
+
+          {!motorcycle && (
+            <p className="text-sm text-gray-400 text-center">
+              Después de crear la moto, podrás subir imágenes en la siguiente pantalla
+            </p>
+          )}
         </form>
       </CardContent>
     </Card>

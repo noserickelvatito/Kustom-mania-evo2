@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { createClient } from "@/lib/supabase/server"
 import { PricingDisplay } from "@/components/pricing-display"
 import type { Motorcycle } from "@/lib/types"
@@ -70,13 +71,15 @@ export default async function ColeccionPage() {
                   boxShadow: "inset 0 2px 10px rgba(0,0,0,0.5), 0 4px 20px rgba(184, 115, 51, 0.2)",
                 }}
               >
-                {/* Motorcycle Image */}
                 <div className="relative h-64 sm:h-72 overflow-hidden bg-black/50">
                   {moto.image ? (
-                    <img
+                    <Image
                       src={moto.image || "/placeholder.svg"}
                       alt={moto.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-gray-600">Sin imagen</div>
@@ -111,10 +114,11 @@ export default async function ColeccionPage() {
 
                   <Link
                     href={`/coleccion/${moto.slug}`}
-                    className="block w-full py-3 px-6 text-sm tracking-widest uppercase font-medium transition-all duration-300 relative overflow-hidden group/btn text-center"
+                    className="block w-full py-3 sm:py-4 px-6 text-sm tracking-widest uppercase font-medium transition-all duration-300 relative overflow-hidden group/btn text-center"
                     style={{
                       color: "#d4a574",
                       border: "1px solid #b87333",
+                      minHeight: "44px",
                     }}
                   >
                     <span className="relative z-10 group-hover/btn:text-black transition-colors duration-300">
