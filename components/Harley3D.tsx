@@ -33,7 +33,7 @@ export default function Harley3D() {
       // Loader Harley GLB
       const loader = new GLTFLoader();
       loader.load(
-        "/models/harley-davidson.glb", // Ajusta el path a /public/models
+        "/public/models/harley-davidson.glb", // Ajusta el path a /public/models
         (gltf) => {
           harleyModel = gltf.scene;
           harleyModel.scale.set(1.5, 1.5, 1.5);
