@@ -1,5 +1,5 @@
 'use client'
-import { useRef, useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Harley3D() {
   const containerRef = useRef(null);
@@ -33,11 +33,11 @@ export default function Harley3D() {
       // Loader Harley GLB
       const loader = new GLTFLoader();
       loader.load(
-        "/models/harley-davidson.glb", // Asegúrate de poner aquí el path correcto dentro de /public/models
+        "/models/harley-davidson.glb", // Ajusta el path a /public/models
         (gltf) => {
           harleyModel = gltf.scene;
           harleyModel.scale.set(1.5, 1.5, 1.5);
-          // Centrado
+          // Centrar el modelo
           const box = new THREE.Box3().setFromObject(harleyModel);
           const center = box.getCenter(new THREE.Vector3());
           harleyModel.position.sub(center);
