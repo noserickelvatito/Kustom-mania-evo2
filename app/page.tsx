@@ -101,9 +101,5 @@ export default async function Home() {
             </Link>
           </div>
         </main>
-      </div>
-      {/* Aquí debajo del hero, el efecto Harley 3D */}
-      <Harley3D />
-    </div>
   )
 }
