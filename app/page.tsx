@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 import type { SiteConfig } from "@/lib/types"
+import Harley3D from "@/components/Harley3D";
 
 export default async function Home() {
   const supabase = await createClient()
@@ -101,6 +102,8 @@ export default async function Home() {
           </div>
         </main>
       </div>
+      {/* Aquí debajo del hero, el efecto Harley 3D */}
+      <Harley3D />
     </div>
   )
 }
