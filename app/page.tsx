@@ -1,12 +1,11 @@
-import Link from "next/link"
-import { createClient } from "@/lib/supabase/server"
-import type { SiteConfig } from "@/lib/types"
-import Harley3D from "@/components/Harley3D";
+import Link from "next/link";
+import { createClient } from "@/lib/supabase/server";
+import type { SiteConfig } from "@/lib/types";
 
 export default async function Home() {
-  const supabase = await createClient()
+  const supabase = await createClient();
 
-  const { data: config } = await supabase.from("site_config").select("*").single()
+  const { data: config } = await supabase.from("site_config").select("*").single();
 
   const siteConfig: SiteConfig = config || {
     id: "",
@@ -19,11 +18,11 @@ export default async function Home() {
     instagram_url: null,
     facebook_url: null,
     updated_at: "",
-  }
+  };
 
   const backgroundUrl =
-    siteConfig.hero_background_url || "https://kusyom-mania.s3.sa-east-1.amazonaws.com/background.mp4"
-  const isVideo = /\.(mp4|webm|ogg)$/i.test(backgroundUrl)
+    siteConfig.hero_background_url || "https://kusyom-mania.s3.sa-east-1.amazonaws.com/background.mp4";
+  const isVideo = /\.(mp4|webm|ogg)$/i.test(backgroundUrl);
 
   return (
     <div className="min-h-screen bg-black">
@@ -101,5 +100,7 @@ export default async function Home() {
             </Link>
           </div>
         </main>
-  )
+      </div>
+    </div>
+  );
 }
