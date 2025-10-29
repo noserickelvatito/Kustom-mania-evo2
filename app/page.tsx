@@ -21,7 +21,7 @@ export default async function Home() {
   }
 
   const backgroundUrl =
-    siteConfig.hero_background_url || "https://kusyom-mania.s3.sa-east-1.amazonaws.com/Home+Banner+V3.mp4"
+    siteConfig.hero_background_url || "https://kusyom-mania.s3.sa-east-1.amazonaws.com/background.mp4"
   const isVideo = /\.(mp4|webm|ogg)$/i.test(backgroundUrl)
 
   return (
