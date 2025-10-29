@@ -1,28 +1,28 @@
-import Link from "next/link";
-import { createClient } from "@/lib/supabase/server";
-import type { SiteConfig } from "@/lib/types";
+import Link from "next/link"
+import { createClient } from "@/lib/supabase/server"
+import type { SiteConfig } from "@/lib/types"
 
 export default async function Home() {
-  const supabase = await createClient();
+  const supabase = await createClient()
 
-  const { data: config } = await supabase.from("site_config").select("*").single();
+  const { data: config } = await supabase.from("site_config").select("*").single()
 
   const siteConfig: SiteConfig = config || {
     id: "",
-    whatsapp_number: "+543517034847",
+    whatsapp_number: "",
     hero_title: "KUSTOM MANIA",
     hero_subtitle: "PASIÓN POR LAS DOS RUEDAS",
-    hero_description: "",
+    hero_description: "Donde la personalidad se encuentra con el asfalto.",
     hero_button_text: "EXPLORAR LA COLECCIÓN",
     hero_background_url: null,
     instagram_url: null,
     facebook_url: null,
     updated_at: "",
-  };
+  }
 
   const backgroundUrl =
-    siteConfig.hero_background_url || "https://kusyom-mania.s3.sa-east-1.amazonaws.com/background.mp4";
-  const isVideo = /\.(mp4|webm|ogg)$/i.test(backgroundUrl);
+    siteConfig.hero_background_url || "https://kusyom-mania.s3.sa-east-1.amazonaws.com/Home+Banner+V3.mp4"
+  const isVideo = /\.(mp4|webm|ogg)$/i.test(backgroundUrl)
 
   return (
     <div className="min-h-screen bg-black">
@@ -102,5 +102,5 @@ export default async function Home() {
         </main>
       </div>
     </div>
-  );
+  )
 }

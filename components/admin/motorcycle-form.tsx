@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import type { Motorcycle } from "@/lib/types"
 
 interface MotorcycleFormProps {
@@ -32,6 +33,13 @@ export function MotorcycleForm({ motorcycle }: MotorcycleFormProps) {
     price: motorcycle?.price?.toString() || "",
     price_usd: motorcycle?.price_usd?.toString() || "",
     offer_percentage: motorcycle?.offer_percentage?.toString() || "",
+    purchase_price: motorcycle?.purchase_price?.toString() || "",
+    sale_price: motorcycle?.sale_price?.toString() || "",
+    expenses: motorcycle?.expenses?.toString() || "",
+    purchase_date: motorcycle?.purchase_date || "",
+    sale_date: motorcycle?.sale_date || "",
+    status: motorcycle?.status || "stock",
+    notes: motorcycle?.notes || "",
     featured: motorcycle?.featured || false,
     display_order: motorcycle?.display_order?.toString() || "0",
   })
@@ -74,6 +82,13 @@ export function MotorcycleForm({ motorcycle }: MotorcycleFormProps) {
         price: Number.parseFloat(formData.price) || null,
         price_usd: Number.parseFloat(formData.price_usd) || null,
         offer_percentage: Number.parseFloat(formData.offer_percentage) || null,
+        purchase_price: Number.parseFloat(formData.purchase_price) || null,
+        sale_price: Number.parseFloat(formData.sale_price) || null,
+        expenses: Number.parseFloat(formData.expenses) || null,
+        purchase_date: formData.purchase_date || null,
+        sale_date: formData.sale_date || null,
+        status: formData.status,
+        notes: formData.notes || null,
         featured: formData.featured,
         display_order: Number.parseInt(formData.display_order) || 0,
         updated_at: new Date().toISOString(),
@@ -241,7 +256,7 @@ export function MotorcycleForm({ motorcycle }: MotorcycleFormProps) {
 
           {/* Pricing and Offers */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-[#b87333]">Precios y Ofertas</h3>
+            <h3 className="text-lg font-semibold text-[#b87333]">Precios Públicos</h3>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
@@ -292,6 +307,173 @@ export function MotorcycleForm({ motorcycle }: MotorcycleFormProps) {
                 <p className="text-xs text-gray-500 mt-1">Dejar vacío si no hay oferta</p>
               </div>
             </div>
+          </div>
+
+          <div className="space-y-4 border-t border-[#b87333]/30 pt-6">
+            <h3 className="text-lg font-semibold text-[#b87333]">Gestión Comercial</h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <Label htmlFor="purchase_price" className="text-gray-300">
+                  Precio de Compra (ARS)
+                </Label>
+                <Input
+                  id="purchase_price"
+                  name="purchase_price"
+                  type="number"
+                  value={formData.purchase_price}
+                  onChange={handleChange}
+                  className="bg-black/50 border-[#b87333] text-white mt-2"
+                  placeholder="3500000"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="sale_price" className="text-gray-300">
+                  Precio de Venta Real (ARS)
+                </Label>
+                <Input
+                  id="sale_price"
+                  name="sale_price"
+                  type="number"
+                  value={formData.sale_price}
+                  onChange={handleChange}
+                  className="bg-black/50 border-[#b87333] text-white mt-2"
+                  placeholder="4200000"
+                />
+                <p className="text-xs text-gray-500 mt-1">Precio al que se vendió realmente</p>
+              </div>
+
+              <div>
+                <Label htmlFor="expenses" className="text-gray-300">
+                  Gastos Asociados (ARS)
+                </Label>
+                <Input
+                  id="expenses"
+                  name="expenses"
+                  type="number"
+                  value={formData.expenses}
+                  onChange={handleChange}
+                  className="bg-black/50 border-[#b87333] text-white mt-2"
+                  placeholder="150000"
+                />
+                <p className="text-xs text-gray-500 mt-1">Reparaciones, mejoras, etc.</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <Label htmlFor="purchase_date" className="text-gray-300">
+                  Fecha de Compra
+                </Label>
+                <Input
+                  id="purchase_date"
+                  name="purchase_date"
+                  type="date"
+                  value={formData.purchase_date}
+                  onChange={handleChange}
+                  className="bg-black/50 border-[#b87333] text-white mt-2"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="sale_date" className="text-gray-300">
+                  Fecha de Venta
+                </Label>
+                <Input
+                  id="sale_date"
+                  name="sale_date"
+                  type="date"
+                  value={formData.sale_date}
+                  onChange={handleChange}
+                  className="bg-black/50 border-[#b87333] text-white mt-2"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="status" className="text-gray-300">
+                  Estado
+                </Label>
+                <Select
+                  value={formData.status}
+                  onValueChange={(value) => setFormData((prev) => ({ ...prev, status: value }))}
+                >
+                  <SelectTrigger className="bg-black/50 border-[#b87333] text-white mt-2">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="stock">En Stock</SelectItem>
+                    <SelectItem value="reserved">Reservada</SelectItem>
+                    <SelectItem value="sold">Vendida</SelectItem>
+                    <SelectItem value="delivered">Entregada</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            <div>
+              <Label htmlFor="notes" className="text-gray-300">
+                Notas Internas
+              </Label>
+              <Textarea
+                id="notes"
+                name="notes"
+                value={formData.notes}
+                onChange={handleChange}
+                rows={3}
+                className="bg-black/50 border-[#b87333] text-white mt-2"
+                placeholder="Notas sobre la compra, venta, cliente, etc..."
+              />
+            </div>
+
+            {formData.purchase_price && formData.sale_price && (
+              <div className="p-4 bg-[#b87333]/10 border border-[#b87333]/30 rounded">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                  <div>
+                    <p className="text-gray-400">Costo Total</p>
+                    <p className="text-white font-semibold">
+                      $
+                      {(
+                        Number.parseFloat(formData.purchase_price) + (Number.parseFloat(formData.expenses) || 0)
+                      ).toLocaleString()}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-gray-400">Ganancia Bruta</p>
+                    <p className="text-green-400 font-semibold">
+                      $
+                      {(
+                        Number.parseFloat(formData.sale_price) - Number.parseFloat(formData.purchase_price)
+                      ).toLocaleString()}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-gray-400">Ganancia Neta</p>
+                    <p className="text-green-400 font-semibold">
+                      $
+                      {(
+                        Number.parseFloat(formData.sale_price) -
+                        Number.parseFloat(formData.purchase_price) -
+                        (Number.parseFloat(formData.expenses) || 0)
+                      ).toLocaleString()}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-gray-400">Margen</p>
+                    <p className="text-[#b87333] font-semibold">
+                      {(
+                        ((Number.parseFloat(formData.sale_price) -
+                          Number.parseFloat(formData.purchase_price) -
+                          (Number.parseFloat(formData.expenses) || 0)) /
+                          Number.parseFloat(formData.sale_price)) *
+                        100
+                      ).toFixed(1)}
+                      %
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Display Order and Featured */}

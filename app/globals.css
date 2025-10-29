@@ -3,7 +3,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Added CSS variables for safe area insets for mobile notches */
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -76,12 +75,7 @@
 }
 
 @theme inline {
-  /* Adding elegant serif font for titles */
-  --font-sans: "Geist", "Geist Fallback";
-  --font-serif: "Playfair Display", "Georgia", serif;
-  --font-mono: "Geist Mono", "Geist Mono Fallback";
-
-  /* Colors */
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -127,11 +121,21 @@
   body {
     @apply bg-background text-foreground;
   }
-
-  /* Support for safe area insets on mobile devices with notches */
   @supports (padding: env(safe-area-inset-bottom)) {
     .pb-safe {
       padding-bottom: env(safe-area-inset-bottom);
     }
+  }
+}
+
+@keyframes caret-blink {
+  0%,
+  70%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  50% {
+    opacity: 0;
   }
 }

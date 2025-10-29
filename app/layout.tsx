@@ -2,9 +2,9 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
-import { MobileNav } from "@/components/mobile-nav"
 import { createClient } from "@/lib/supabase/server"
 import "./globals.css"
+import { ConditionalNav } from "@/components/conditional-nav"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -13,7 +13,7 @@ const _playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", 
 export const metadata: Metadata = {
   title: "Kustom Mania",
   description: "Pasión por las dos ruedas",
-  generator: "Kustom Mania",
+  generator: "v0.app",
   themeColor: "#000000",
   colorScheme: "dark",
 }
@@ -38,7 +38,7 @@ export default async function RootLayout({
       </head>
       <body className={`font-sans antialiased bg-black ${_playfair.className}`}>
         {children}
-        <MobileNav whatsappNumber={whatsappNumber} />
+        <ConditionalNav whatsappNumber={whatsappNumber} />
         <Analytics />
       </body>
     </html>

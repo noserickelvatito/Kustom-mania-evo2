@@ -1,182 +1,182 @@
 import { createClient } from "@/lib/supabase/server"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { DollarSign, TrendingUp, Package, AlertCircle, Clock } from "lucide-react"
+import { DashboardCharts } from "@/components/admin/dashboard-charts"
+import { RecentActivity } from "@/components/admin/recent-activity"
+import { TopMotorcycles } from "@/components/admin/top-motorcycles"
+import { DollarBlueWidget } from "@/components/admin/dollar-blue-widget"
 
 export default async function AdminDashboard() {
   const supabase = await createClient()
 
-  // Get statistics
-  const { count: motorcyclesCount } = await supabase.from("motorcycles").select("*", { count: "exact", head: true })
+  const { data: analytics } = await supabase.from("motorcycle_analytics").select("*")
 
-  const { count: leadsCount } = await supabase.from("leads").select("*", { count: "exact", head: true })
+  const { data: motorcycles } = await supabase.from("motorcycles").select("*").order("created_at", { ascending: false })
 
-  const { count: imagesCount } = await supabase.from("motorcycle_images").select("*", { count: "exact", head: true })
+  const { data: leads } = await supabase.from("leads").select("*").order("created_at", { ascending: false }).limit(10)
+
+  // Calculate key metrics
+  const totalMotorcycles = motorcycles?.length || 0
+  const inStock = motorcycles?.filter((m) => m.status === "stock" || m.status === "published").length || 0
+  const sold = motorcycles?.filter((m) => m.status === "sold" || m.status === "delivered").length || 0
+
+  // Calculate financial metrics
+  const totalRevenue =
+    analytics?.reduce((sum, m) => {
+      return sum + (m.sale_price || 0)
+    }, 0) || 0
+
+  const totalCosts =
+    analytics?.reduce((sum, m) => {
+      return sum + (m.purchase_price || 0) + (m.expenses || 0)
+    }, 0) || 0
+
+  const netProfit = totalRevenue - totalCosts
+  const grossProfit = analytics?.reduce((sum, m) => sum + (m.net_margin || 0), 0) || 0
+
+  // Calculate average margin
+  const soldMotorcycles = analytics?.filter((m) => m.sale_price && m.purchase_price) || []
+  const avgMargin =
+    soldMotorcycles.length > 0
+      ? soldMotorcycles.reduce((sum, m) => sum + (m.margin_percentage || 0), 0) / soldMotorcycles.length
+      : 0
+
+  // Calculate average days in stock
+  const avgDaysInStock =
+    soldMotorcycles.length > 0
+      ? soldMotorcycles.reduce((sum, m) => sum + (m.days_in_stock || 0), 0) / soldMotorcycles.length
+      : 0
+
+  // Find motorcycles with alerts (low margin or slow rotation)
+  const alerts =
+    analytics?.filter((m) => {
+      const lowMargin = m.margin_percentage !== null && m.margin_percentage < 15
+      const slowRotation = m.days_in_stock !== null && m.days_in_stock > 90 && m.status !== "sold"
+      return lowMargin || slowRotation
+    }) || []
 
   return (
-    <div
-      className="min-h-screen"
-      style={{
-        background: "linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%)",
-      }}
-    >
+    <div className="p-6 space-y-6">
       {/* Header */}
-      <header className="border-b border-[#b87333]/30 bg-black/50 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div>
-            <h1
-              className="text-2xl sm:text-3xl font-black tracking-wider"
-              style={{
-                fontFamily: 'Impact, "Arial Black", sans-serif',
-                color: "#b87333",
-                textShadow: "0 0 20px rgba(184, 115, 51, 0.5)",
-              }}
-            >
-              KUSTOM MANIA
-            </h1>
-            <p className="text-xs text-gray-400 uppercase tracking-wider">Panel de Administración</p>
-          </div>
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+        <p className="text-muted-foreground">Resumen de tu negocio y métricas clave</p>
+      </div>
 
-          <Link href="/" target="_blank">
-            <Button
-              variant="outline"
-              size="sm"
-              className="border-[#b87333] text-[#b87333] hover:bg-[#b87333] hover:text-white bg-transparent"
-            >
-              Ver Sitio
-            </Button>
-          </Link>
-        </div>
-      </header>
+      {/* Key Metrics */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+        <DollarBlueWidget />
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold mb-2" style={{ color: "#b87333" }}>
-            Panel de Control
-          </h2>
-          <p className="text-gray-400">Gestiona tu sitio web de motocicletas personalizadas</p>
-        </div>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Ganancia Neta</CardTitle>
+            <DollarSign className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-green-600">${netProfit.toLocaleString("es-AR")}</div>
+            <p className="text-xs text-muted-foreground">Ingresos - Costos totales</p>
+          </CardContent>
+        </Card>
 
-        {/* Statistics Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <Card
-            style={{
-              background: "linear-gradient(145deg, #2a2a2a, #1a1a1a)",
-              border: "2px solid #b87333",
-            }}
-          >
-            <CardHeader>
-              <CardTitle style={{ color: "#b87333" }}>Motocicletas</CardTitle>
-              <CardDescription className="text-gray-400">Total en catálogo</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-4xl font-bold text-white">{motorcyclesCount || 0}</p>
-            </CardContent>
-          </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Margen Promedio</CardTitle>
+            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-blue-600">{avgMargin.toFixed(1)}%</div>
+            <p className="text-xs text-muted-foreground">En motos vendidas</p>
+          </CardContent>
+        </Card>
 
-          <Card
-            style={{
-              background: "linear-gradient(145deg, #2a2a2a, #1a1a1a)",
-              border: "2px solid #b87333",
-            }}
-          >
-            <CardHeader>
-              <CardTitle style={{ color: "#b87333" }}>Consultas</CardTitle>
-              <CardDescription className="text-gray-400">Leads de WhatsApp</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-4xl font-bold text-white">{leadsCount || 0}</p>
-            </CardContent>
-          </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">En Stock</CardTitle>
+            <Package className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{inStock}</div>
+            <p className="text-xs text-muted-foreground">De {totalMotorcycles} motos totales</p>
+          </CardContent>
+        </Card>
 
-          <Card
-            style={{
-              background: "linear-gradient(145deg, #2a2a2a, #1a1a1a)",
-              border: "2px solid #b87333",
-            }}
-          >
-            <CardHeader>
-              <CardTitle style={{ color: "#b87333" }}>Imágenes</CardTitle>
-              <CardDescription className="text-gray-400">Total subidas</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-4xl font-bold text-white">{imagesCount || 0}</p>
-            </CardContent>
-          </Card>
-        </div>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Días Promedio</CardTitle>
+            <Clock className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{avgDaysInStock.toFixed(0)}</div>
+            <p className="text-xs text-muted-foreground">Tiempo hasta venta</p>
+          </CardContent>
+        </Card>
+      </div>
 
-        {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Link href="/km-secret-panel-2025/motorcycles">
-            <Card
-              className="hover:scale-105 transition-transform cursor-pointer"
-              style={{
-                background: "linear-gradient(145deg, #2a2a2a, #1a1a1a)",
-                border: "2px solid #b87333",
-              }}
-            >
-              <CardHeader>
-                <CardTitle className="text-lg" style={{ color: "#b87333" }}>
-                  Gestionar Motos
-                </CardTitle>
-                <CardDescription className="text-gray-400">Crear, editar y eliminar</CardDescription>
-              </CardHeader>
-            </Card>
-          </Link>
+      {/* Alerts */}
+      {alerts.length > 0 && (
+        <Card className="border-orange-500/50 bg-orange-500/5">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-orange-600">
+              <AlertCircle className="h-5 w-5" />
+              Alertas ({alerts.length})
+            </CardTitle>
+            <CardDescription>Motos que requieren atención</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-2">
+              {alerts.slice(0, 5).map((moto) => (
+                <div key={moto.id} className="flex items-center justify-between p-2 rounded-lg bg-background">
+                  <div>
+                    <p className="font-medium">{moto.name}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {moto.margin_percentage !== null && moto.margin_percentage < 15 && (
+                        <span className="text-orange-600">Margen bajo: {moto.margin_percentage.toFixed(1)}%</span>
+                      )}
+                      {moto.days_in_stock !== null && moto.days_in_stock > 90 && moto.status !== "sold" && (
+                        <span className="text-orange-600">Rotación lenta: {moto.days_in_stock} días</span>
+                      )}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
-          <Link href="/km-secret-panel-2025/leads">
-            <Card
-              className="hover:scale-105 transition-transform cursor-pointer"
-              style={{
-                background: "linear-gradient(145deg, #2a2a2a, #1a1a1a)",
-                border: "2px solid #b87333",
-              }}
-            >
-              <CardHeader>
-                <CardTitle className="text-lg" style={{ color: "#b87333" }}>
-                  Ver Consultas
-                </CardTitle>
-                <CardDescription className="text-gray-400">Leads y estadísticas</CardDescription>
-              </CardHeader>
-            </Card>
-          </Link>
+      {/* Charts and Analytics */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+        <Card className="col-span-4">
+          <CardHeader>
+            <CardTitle>Análisis de Ventas</CardTitle>
+            <CardDescription>Evolución de ventas y márgenes</CardDescription>
+          </CardHeader>
+          <CardContent className="pl-2">
+            <DashboardCharts analytics={analytics || []} />
+          </CardContent>
+        </Card>
 
-          <Link href="/km-secret-panel-2025/images">
-            <Card
-              className="hover:scale-105 transition-transform cursor-pointer"
-              style={{
-                background: "linear-gradient(145deg, #2a2a2a, #1a1a1a)",
-                border: "2px solid #b87333",
-              }}
-            >
-              <CardHeader>
-                <CardTitle className="text-lg" style={{ color: "#b87333" }}>
-                  Gestionar Imágenes
-                </CardTitle>
-                <CardDescription className="text-gray-400">Subir y organizar</CardDescription>
-              </CardHeader>
-            </Card>
-          </Link>
+        <Card className="col-span-3">
+          <CardHeader>
+            <CardTitle>Top Motos</CardTitle>
+            <CardDescription>Más rentables y con mejor rotación</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <TopMotorcycles analytics={analytics || []} />
+          </CardContent>
+        </Card>
+      </div>
 
-          <Link href="/km-secret-panel-2025/config">
-            <Card
-              className="hover:scale-105 transition-transform cursor-pointer"
-              style={{
-                background: "linear-gradient(145deg, #2a2a2a, #1a1a1a)",
-                border: "2px solid #b87333",
-              }}
-            >
-              <CardHeader>
-                <CardTitle className="text-lg" style={{ color: "#b87333" }}>
-                  Configuración
-                </CardTitle>
-                <CardDescription className="text-gray-400">Ajustes del sitio</CardDescription>
-              </CardHeader>
-            </Card>
-          </Link>
-        </div>
-      </main>
+      {/* Recent Activity */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Actividad Reciente</CardTitle>
+          <CardDescription>Últimas consultas y movimientos</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <RecentActivity leads={leads || []} />
+        </CardContent>
+      </Card>
     </div>
   )
 }

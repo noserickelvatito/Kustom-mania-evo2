@@ -9,6 +9,7 @@ export default function ContactoPage() {
   const [formData, setFormData] = useState({
     nombre: "",
     localidad: "",
+    dni: "",
     modelo: "",
     motivoConsulta: "",
     interes: "",
@@ -44,6 +45,7 @@ export default function ContactoPage() {
       await supabase.from("leads").insert({
         name: formData.nombre,
         location: formData.localidad,
+        dni: formData.dni || null,
         motorcycle_id: null,
         motorcycle_name: formData.modelo || null,
         consultation_reason: formData.motivoConsulta || null,
@@ -72,6 +74,7 @@ export default function ContactoPage() {
       setFormData({
         nombre: "",
         localidad: "",
+        dni: "",
         modelo: "",
         motivoConsulta: "",
         interes: "",
@@ -168,6 +171,23 @@ export default function ContactoPage() {
               />
             </div>
 
+            {/* DNI */}
+            <div>
+              <label htmlFor="dni" className="block text-gray-400 text-sm uppercase tracking-wider mb-3">
+                DNI
+              </label>
+              <input
+                type="text"
+                id="dni"
+                name="dni"
+                value={formData.dni}
+                onChange={handleChange}
+                disabled={isLoading}
+                className="w-full px-4 py-3 bg-black/50 text-white text-base focus:outline-none transition-all duration-300 disabled:opacity-50"
+                style={{ border: "2px solid #b87333", minHeight: "44px" }}
+                placeholder="Tu número de DNI"
+              />
+            </div>
 
             {/* Modelo */}
             <div>

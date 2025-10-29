@@ -12,6 +12,13 @@ export interface Motorcycle {
   offer_percentage: number | null
   featured: boolean
   display_order: number
+  purchase_price: number | null
+  sale_price: number | null
+  expenses: number | null
+  purchase_date: string | null
+  sale_date: string | null
+  status: "stock" | "reserved" | "sold" | "delivered" | null
+  notes: string | null
   created_at: string
   updated_at: string
 }
