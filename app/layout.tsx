@@ -2,7 +2,6 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
-import { createClient } from "@/lib/supabase/server"
 import "./globals.css"
 import { ConditionalNav } from "@/components/conditional-nav"
 
@@ -23,10 +22,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const supabase = await createClient()
-  const { data: config } = await supabase.from("site_config").select("whatsapp_number").single()
-  const whatsappNumber = config?.whatsapp_number || ""
-
   return (
     <html lang="en" className="dark">
       <head>
@@ -38,7 +33,7 @@ export default async function RootLayout({
       </head>
       <body className={`font-sans antialiased bg-black ${_playfair.className}`}>
         {children}
-        <ConditionalNav whatsappNumber={whatsappNumber} />
+        <ConditionalNav />
         <Analytics />
       </body>
     </html>
