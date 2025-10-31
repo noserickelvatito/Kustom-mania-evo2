@@ -22,6 +22,9 @@ export interface Motorcycle {
   sale_date: string | null
   status: "stock" | "reserved" | "sold" | "delivered" | null
   notes: string | null
+  trade_in_motorcycle_id: string | null
+  trade_in_value: number | null
+  cash_payment: number | null
   created_at: string
   updated_at: string
 }

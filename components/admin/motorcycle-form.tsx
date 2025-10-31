@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
 import { Button } from "@/components/ui/button"
@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { CurrencyDisplay } from "@/components/admin/currency-display"
 import type { Motorcycle } from "@/lib/types"
 
 interface MotorcycleFormProps {
@@ -21,6 +22,7 @@ export function MotorcycleForm({ motorcycle }: MotorcycleFormProps) {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [availableMotorcycles, setAvailableMotorcycles] = useState<Motorcycle[]>([])
 
   const [formData, setFormData] = useState({
     name: motorcycle?.name || "",
@@ -40,9 +42,29 @@ export function MotorcycleForm({ motorcycle }: MotorcycleFormProps) {
     sale_date: motorcycle?.sale_date || "",
     status: motorcycle?.status || "stock",
     notes: motorcycle?.notes || "",
+    trade_in_motorcycle_id: motorcycle?.trade_in_motorcycle_id || "",
+    trade_in_value: motorcycle?.trade_in_value?.toString() || "",
+    cash_payment: motorcycle?.cash_payment?.toString() || "",
     featured: motorcycle?.featured || false,
     display_order: motorcycle?.display_order?.toString() || "0",
   })
+
+  useEffect(() => {
+    const fetchMotorcycles = async () => {
+      const supabase = createClient()
+      const { data } = await supabase
+        .from("motorcycles")
+        .select("id, name, status")
+        .neq("id", motorcycle?.id || "")
+        .order("name")
+
+      if (data) {
+        setAvailableMotorcycles(data)
+      }
+    }
+
+    fetchMotorcycles()
+  }, [motorcycle?.id])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target
@@ -89,6 +111,9 @@ export function MotorcycleForm({ motorcycle }: MotorcycleFormProps) {
         sale_date: formData.sale_date || null,
         status: formData.status,
         notes: formData.notes || null,
+        trade_in_motorcycle_id: formData.trade_in_motorcycle_id || null,
+        trade_in_value: Number.parseFloat(formData.trade_in_value) || null,
+        cash_payment: Number.parseFloat(formData.cash_payment) || null,
         featured: formData.featured,
         display_order: Number.parseInt(formData.display_order) || 0,
         updated_at: new Date().toISOString(),
@@ -99,7 +124,6 @@ export function MotorcycleForm({ motorcycle }: MotorcycleFormProps) {
 
         if (error) throw error
 
-        // Stay on edit page to allow image management
         router.refresh()
       } else {
         const { data: newMotorcycle, error } = await supabase
@@ -110,7 +134,6 @@ export function MotorcycleForm({ motorcycle }: MotorcycleFormProps) {
 
         if (error) throw error
 
-        // Redirect to edit page so user can upload images
         router.push(`/km-secret-panel-2025/motorcycles/${newMotorcycle.id}/edit`)
       }
     } catch (err) {
@@ -426,6 +449,100 @@ export function MotorcycleForm({ motorcycle }: MotorcycleFormProps) {
               />
             </div>
 
+            {formData.status === "sold" || formData.status === "delivered" ? (
+              <div className="space-y-4 border-t border-[#b87333]/20 pt-4 mt-4">
+                <h4 className="text-md font-semibold text-[#b87333]/80">Permuta (Parte de Pago)</h4>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div>
+                    <Label htmlFor="trade_in_motorcycle_id" className="text-gray-300">
+                      Moto Recibida en Permuta
+                    </Label>
+                    <Select
+                      value={formData.trade_in_motorcycle_id || "none"}
+                      onValueChange={(value) =>
+                        setFormData((prev) => ({ ...prev, trade_in_motorcycle_id: value === "none" ? "" : value }))
+                      }
+                    >
+                      <SelectTrigger className="bg-black/50 border-[#b87333] text-white mt-2">
+                        <SelectValue placeholder="Sin permuta" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="none">Sin permuta</SelectItem>
+                        {availableMotorcycles.map((moto) => (
+                          <SelectItem key={moto.id} value={moto.id}>
+                            {moto.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <p className="text-xs text-gray-500 mt-1">Moto que tomaste como parte de pago</p>
+                  </div>
+
+                  <div>
+                    <Label htmlFor="trade_in_value" className="text-gray-300">
+                      Valor de la Permuta (ARS)
+                    </Label>
+                    <Input
+                      id="trade_in_value"
+                      name="trade_in_value"
+                      type="number"
+                      value={formData.trade_in_value}
+                      onChange={handleChange}
+                      className="bg-black/50 border-[#b87333] text-white mt-2"
+                      placeholder="1500000"
+                      disabled={!formData.trade_in_motorcycle_id}
+                    />
+                    <p className="text-xs text-gray-500 mt-1">Valor asignado a la moto recibida</p>
+                  </div>
+
+                  <div>
+                    <Label htmlFor="cash_payment" className="text-gray-300">
+                      Pago en Efectivo (ARS)
+                    </Label>
+                    <Input
+                      id="cash_payment"
+                      name="cash_payment"
+                      type="number"
+                      value={formData.cash_payment}
+                      onChange={handleChange}
+                      className="bg-black/50 border-[#b87333] text-white mt-2"
+                      placeholder="2700000"
+                    />
+                    <p className="text-xs text-gray-500 mt-1">Efectivo recibido (sin contar permuta)</p>
+                  </div>
+                </div>
+
+                {formData.trade_in_value && formData.cash_payment && (
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded">
+                    <div className="grid grid-cols-3 gap-4 text-sm">
+                      <div>
+                        <p className="text-gray-400">Valor Permuta</p>
+                        <p className="text-white font-semibold">
+                          ${Number.parseFloat(formData.trade_in_value).toLocaleString()}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-gray-400">Efectivo</p>
+                        <p className="text-white font-semibold">
+                          ${Number.parseFloat(formData.cash_payment).toLocaleString()}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-gray-400">Total Venta</p>
+                        <p className="text-green-400 font-semibold">
+                          $
+                          {(
+                            Number.parseFloat(formData.trade_in_value) + Number.parseFloat(formData.cash_payment)
+                          ).toLocaleString()}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : null}
+
             {formData.purchase_price && formData.sale_price && (
               <div className="p-4 bg-[#b87333]/10 border border-[#b87333]/30 rounded">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
@@ -437,6 +554,13 @@ export function MotorcycleForm({ motorcycle }: MotorcycleFormProps) {
                         Number.parseFloat(formData.purchase_price) + (Number.parseFloat(formData.expenses) || 0)
                       ).toLocaleString()}
                     </p>
+                    <CurrencyDisplay
+                      amountARS={
+                        Number.parseFloat(formData.purchase_price) + (Number.parseFloat(formData.expenses) || 0)
+                      }
+                      showBoth={false}
+                      size="sm"
+                    />
                   </div>
                   <div>
                     <p className="text-gray-400">Ganancia Bruta</p>
@@ -446,6 +570,11 @@ export function MotorcycleForm({ motorcycle }: MotorcycleFormProps) {
                         Number.parseFloat(formData.sale_price) - Number.parseFloat(formData.purchase_price)
                       ).toLocaleString()}
                     </p>
+                    <CurrencyDisplay
+                      amountARS={Number.parseFloat(formData.sale_price) - Number.parseFloat(formData.purchase_price)}
+                      showBoth={false}
+                      size="sm"
+                    />
                   </div>
                   <div>
                     <p className="text-gray-400">Ganancia Neta</p>
@@ -457,6 +586,15 @@ export function MotorcycleForm({ motorcycle }: MotorcycleFormProps) {
                         (Number.parseFloat(formData.expenses) || 0)
                       ).toLocaleString()}
                     </p>
+                    <CurrencyDisplay
+                      amountARS={
+                        Number.parseFloat(formData.sale_price) -
+                        Number.parseFloat(formData.purchase_price) -
+                        (Number.parseFloat(formData.expenses) || 0)
+                      }
+                      showBoth={false}
+                      size="sm"
+                    />
                   </div>
                   <div>
                     <p className="text-gray-400">Margen</p>
