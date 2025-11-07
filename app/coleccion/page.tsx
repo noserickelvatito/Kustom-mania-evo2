@@ -130,9 +130,15 @@ export default async function ColeccionPage() {
   }
 
   return (
-    <>
+    <div className="min-h-screen bg-black">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+
+      <h1 className="sr-only">
+        Catálogo Completo de Motos Custom en Venta | Harley Davidson, Choppers, Bobbers - Kustom Mania Córdoba,
+        Argentina
+      </h1>
+
       <CollectionClient motorcycles={motorcyclesWithImages} brands={brands} types={types} />
-    </>
+    </div>
   )
 }

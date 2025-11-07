@@ -6,27 +6,29 @@ import type { Metadata } from "next"
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: "Nosotros - Historia de Kustom Mania | 9+ Años en Motos Custom Argentina",
+  title: "Nosotros - Historia de Kustom Mania | 9+ Años en Motos Custom - Córdoba, Argentina",
   description:
-    "Conoce la historia de Kustom Mania. Más de 9 años liderando la compra venta de motos custom en Argentina. +130 motos vendidas. Showroom en Buenos Aires. Pasión, confianza y experiencia en cada transacción. Conoce nuestro equipo y valores.",
+    "Conoce la historia de Kustom Mania. Más de 9 años liderando la compra venta de motos custom en Argentina. +130 motos vendidas. Showroom en Córdoba. Envíos a todo el país. Pasión, confianza y experiencia en cada transacción.",
   keywords: [
     "Kustom Mania historia",
     "sobre Kustom Mania",
     "quienes somos Kustom Mania",
     "empresa motos custom Argentina",
-    "compraventa motos Buenos Aires",
-    "showroom motos custom",
+    "compraventa motos Córdoba",
+    "showroom motos Córdoba",
+    "motos custom Córdoba",
     "vendedor motos confiable",
     "experiencia motos custom",
     "dealer motos Argentina",
     "concesionaria motos custom",
     "equipo Kustom Mania",
     "valores empresa motos",
+    "envíos motos todo Argentina",
   ],
   openGraph: {
-    title: "Nosotros - Kustom Mania | 9+ Años de Pasión por las Motos Custom",
+    title: "Nosotros - Kustom Mania | 9+ Años de Pasión por las Motos Custom - Córdoba",
     description:
-      "Más de 9 años conectando personas con sus motos ideales. +130 motos vendidas. Conoce nuestra historia, valores y showroom en Buenos Aires.",
+      "Más de 9 años conectando personas con sus motos ideales. +130 motos vendidas. Conoce nuestra historia, valores y showroom en Córdoba. Envíos a todo Argentina.",
     url: "/nosotros",
     type: "website",
     images: [
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
         url: "/og-image-about.jpg",
         width: 1200,
         height: 630,
-        alt: "Showroom Kustom Mania - Buenos Aires",
+        alt: "Showroom Kustom Mania - Córdoba",
       },
     ],
   },
@@ -59,11 +61,15 @@ export default function NosotrosPage() {
       description:
         "Empresa líder en compra y venta de motocicletas custom en Argentina con más de 9 años de experiencia",
       foundingDate: "2015",
-      numberOfEmployees: {
-        "@type": "QuantitativeValue",
-        value: "5-10",
+      location: {
+        "@type": "Place",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Córdoba",
+          addressRegion: "Córdoba",
+          addressCountry: "AR",
+        },
       },
-      slogan: "Pasión por las dos ruedas. Donde la personalidad se encuentra con el asfalto.",
       knowsAbout: [
         "Motocicletas Custom",
         "Harley Davidson",
@@ -93,9 +99,12 @@ export default function NosotrosPage() {
           sizes="100vw"
         />
         <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 text-balance">Nuestra Historia</h1>
+          <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 text-balance">
+            Nuestra Historia - Kustom Mania Córdoba
+          </h1>
           <p className="text-xl md:text-2xl text-gray-300 leading-relaxed text-balance">
-            Pasión por las dos ruedas desde el primer día
+            Pasión por las dos ruedas desde el primer día. Más de 9 años liderando el mercado de motos custom en
+            Argentina desde Córdoba.
           </p>
         </div>
       </section>
@@ -103,24 +112,32 @@ export default function NosotrosPage() {
       {/* Story Section */}
       <section className="py-20 md:py-32 px-4">
         <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-8">
+            Quiénes Somos - Líderes en Compra Venta de Motos Custom
+          </h2>
           <div className="space-y-8 text-gray-300 leading-relaxed">
             <p className="text-xl md:text-2xl text-[#b87333] font-serif">
-              En Kustom Mania, vivimos y respiramos motocicletas.
+              En Kustom Mania, vivimos y respiramos motocicletas. Somos tu concesionaria de confianza en Córdoba.
             </p>
             <p className="text-lg md:text-xl">
-              Somos más que un negocio de compra-venta de motos. Somos una comunidad de entusiastas que entiende que
-              cada motocicleta tiene una historia, una personalidad, y un alma única. Nuestra misión es conectar a la
-              gente con la moto perfecta que refleje su estilo y pasión.
+              Desde Córdoba, Argentina, somos más que un negocio de compra-venta de motos. Somos una comunidad de
+              entusiastas que entiende que cada motocicleta tiene una historia, una personalidad, y un alma única.
+              Nuestra misión es conectar a la gente de todo el país con la moto perfecta que refleje su estilo y pasión.
+              Especializados en Harley Davidson, choppers custom, bobbers vintage y motos clásicas americanas.
             </p>
             <p className="text-lg md:text-xl">
-              Con años de experiencia en el mercado, hemos construido una reputación basada en la confianza, la
-              transparencia y el amor genuino por las dos ruedas. Cada moto que pasa por nuestras manos es
-              cuidadosamente seleccionada, inspeccionada y preparada para su próximo dueño.
+              Con más de 9 años de experiencia en el mercado argentino, hemos construido una reputación sólida basada en
+              la confianza, la transparencia y el amor genuino por las dos ruedas. Vendemos a todo Argentina con envíos
+              seguros, facilitando que tu moto ideal llegue sin importar donde te encuentres. Cada motocicleta que pasa
+              por nuestras manos es cuidadosamente seleccionada, inspeccionada mecánicamente y preparada para su próximo
+              dueño. Más de 130 motos vendidas nos respaldan.
             </p>
             <p className="text-lg md:text-xl">
-              No importa si buscas una custom clásica, una chopper imponente, o una cafe racer elegante. En Kustom Mania
-              encontrarás no solo una moto, sino una experiencia completa de compra respaldada por profesionales que
-              realmente entienden lo que significa ser parte de la cultura motera.
+              No importa si buscas una custom clásica Harley Davidson, una chopper imponente, una bobber minimalista o
+              una cafe racer elegante. En Kustom Mania encontrarás no solo una moto, sino una experiencia completa de
+              compra respaldada por profesionales que realmente entienden lo que significa ser parte de la cultura
+              motera argentina. Visitanos en nuestro showroom de Córdoba o consultanos por WhatsApp desde cualquier
+              provincia. Ofrecemos financiación, aceptamos permutas y garantizamos calidad en cada venta.
             </p>
           </div>
         </div>
@@ -129,7 +146,9 @@ export default function NosotrosPage() {
       {/* Values Section */}
       <section className="py-20 md:py-32 px-4 bg-zinc-950">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-center text-white mb-16">Nuestros Valores</h2>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-center text-white mb-16">
+            Nuestros Valores y Compromiso
+          </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center space-y-4">
               <div className="w-16 h-16 mx-auto rounded-full bg-[#b87333]/10 flex items-center justify-center">
@@ -187,14 +206,18 @@ export default function NosotrosPage() {
             />
           </div>
           <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white">Nuestra Misión</h2>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white">
+              Nuestra Misión en el Mercado Argentino
+            </h2>
             <p className="text-lg text-gray-300 leading-relaxed">
-              Facilitar el encuentro perfecto entre la gente y sus motos ideales, ofreciendo una experiencia de
-              compra-venta transparente, profesional y apasionada.
+              Desde nuestro showroom en Córdoba, facilitamos el encuentro perfecto entre la gente de todo Argentina y
+              sus motos ideales, ofreciendo una experiencia de compra-venta transparente, profesional y apasionada, con
+              envíos seguros a cualquier punto del país. Trabajamos con las mejores marcas y modelos custom del mercado.
             </p>
             <p className="text-lg text-gray-300 leading-relaxed">
-              Queremos ser el punto de referencia para todos los amantes de las motocicletas que buscan calidad,
-              variedad y un servicio excepcional.
+              Queremos ser el punto de referencia número uno para todos los amantes de las motocicletas en Argentina que
+              buscan calidad certificada, amplia variedad de stock y un servicio excepcional. Compramos motos usadas al
+              mejor precio y vendemos con garantía extendida.
             </p>
           </div>
         </div>

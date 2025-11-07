@@ -8,39 +8,47 @@ import type { Metadata } from "next"
 export const revalidate = 300
 
 export const metadata: Metadata = {
-  title: "Kustom Mania | Compra Venta Motos Custom Argentina | Harley Davidson Buenos Aires",
+  title: "Kustom Mania | Compra Venta Motos Custom Argentina | Córdoba - Envíos a Todo el País",
   description:
-    "Kustom Mania: Líderes en compra y venta de motos custom en Argentina. Harley Davidson, choppers, bobbers. +130 motos vendidas. Showroom en Buenos Aires. Mejor precio del mercado. Consultas por WhatsApp. Financiación y permutas disponibles.",
+    "Kustom Mania: Líderes en compra y venta de motos custom en Argentina. Harley Davidson, choppers, bobbers. +130 motos vendidas. Showroom en Córdoba. Envíos a todo el país. Mejor precio del mercado. Consultas por WhatsApp. Financiación y permutas disponibles.",
   keywords: [
     // Primary
     "kustom mania",
     "kustommania",
     "motos custom argentina",
+    // Córdoba-specific keywords
+    "motos Córdoba",
+    "motos custom Córdoba",
+    "comprar moto Córdoba",
+    "vender moto Córdoba",
     "comprar moto custom",
     "vender moto custom",
     "Harley Davidson Argentina",
-    "Harley Davidson Buenos Aires",
+    "Harley Davidson Córdoba",
     // Secondary
     "motos choppers",
     "motos bobbers",
     "motos vintage",
     "compra venta motos",
     "concesionaria motos custom",
-    "showroom motos Buenos Aires",
+    "showroom motos Córdoba",
+    "envíos a todo Argentina",
     "motos usadas custom",
     "motos segunda mano",
     // Long-tail
+    "donde comprar Harley Davidson Córdoba",
     "donde comprar Harley Davidson Argentina",
     "vender mi Harley Davidson",
     "mejor precio motos custom",
     "motos custom con garantía",
     "permuta motos custom",
     "financiación motos",
+    "envío motos interior Argentina",
   ],
   openGraph: {
-    title: "Kustom Mania | Motos Custom y Harley Davidson - Showroom Buenos Aires",
+    title: "Kustom Mania | Motos Custom y Harley Davidson - Córdoba, Argentina",
     description:
-      "Líderes en compra venta de motos custom. Harley Davidson, choppers y bobbers. +130 motos vendidas. Mejor precio garantizado. Consultas inmediatas por WhatsApp.",
+      "Líderes en compra venta de motos custom. Harley Davidson, choppers y bobbers. +130 motos vendidas. Showroom en Córdoba. Envíos a todo Argentina. Mejor precio garantizado. Consultas inmediatas por WhatsApp.",
     url: "/",
     type: "website",
     images: [
@@ -48,14 +56,15 @@ export const metadata: Metadata = {
         url: "/og-image-home.jpg",
         width: 1200,
         height: 630,
-        alt: "Kustom Mania Showroom - Motocicletas Custom y Harley Davidson en Buenos Aires",
+        alt: "Kustom Mania Showroom - Motocicletas Custom y Harley Davidson en Córdoba, Argentina",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kustom Mania | Motos Custom y Harley Davidson Argentina",
-    description: "Líderes en compra venta de motos custom. +130 motos vendidas. Showroom en Buenos Aires.",
+    title: "Kustom Mania | Motos Custom y Harley Davidson - Córdoba, Argentina",
+    description:
+      "Líderes en compra venta de motos custom. +130 motos vendidas. Showroom en Córdoba. Envíos a todo el país.",
     images: ["/og-image-home.jpg"],
   },
   alternates: {
@@ -135,8 +144,8 @@ export default async function Home() {
       )}
 
       <h1 className="sr-only">
-        Kustom Mania: Compra y Venta de Motos Custom, Harley Davidson, Choppers y Bobbers en Argentina - Showroom Buenos
-        Aires
+        Kustom Mania: Compra y Venta de Motos Custom, Harley Davidson, Choppers y Bobbers en Argentina - Showroom
+        Córdoba
       </h1>
 
       {/* Hero Section */}
@@ -200,7 +209,7 @@ export default async function Home() {
         {/* Hero Content */}
         <main className="relative z-10 flex flex-col items-center justify-center h-full px-4 sm:px-6 md:px-8 pb-32 md:pb-0">
           <div className="text-center max-w-5xl w-full">
-            <h1
+            <div
               className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-wider mb-4 sm:mb-6"
               style={{
                 fontFamily: 'Impact, "Arial Black", sans-serif',
@@ -210,7 +219,7 @@ export default async function Home() {
               }}
             >
               {siteConfig.hero_title}
-            </h1>
+            </div>
 
             <p
               className="text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.3em] mb-8 sm:mb-10 md:mb-12 font-light"
@@ -269,22 +278,23 @@ export default async function Home() {
 
       <section className="relative bg-zinc-950 py-20 md:py-32 border-t border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="sr-only">Estadísticas de Kustom Mania</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             <div className="text-center">
               <div className="text-4xl md:text-6xl font-bold text-[#b87333] mb-2">9+</div>
-              <div className="text-sm md:text-base text-gray-400 uppercase tracking-wider">Años de Experiencia</div>
+              <p className="text-sm md:text-base text-gray-400 uppercase tracking-wider">Años de Experiencia</p>
             </div>
             <div className="text-center">
               <div className="text-4xl md:text-6xl font-bold text-[#b87333] mb-2">130+</div>
-              <div className="text-sm md:text-base text-gray-400 uppercase tracking-wider">Motos Vendidas</div>
+              <p className="text-sm md:text-base text-gray-400 uppercase tracking-wider">Motos Vendidas</p>
             </div>
             <div className="text-center">
               <div className="text-4xl md:text-6xl font-bold text-[#b87333] mb-2">100%</div>
-              <div className="text-sm md:text-base text-gray-400 uppercase tracking-wider">Clientes Satisfechos</div>
+              <p className="text-sm md:text-base text-gray-400 uppercase tracking-wider">Clientes Satisfechos</p>
             </div>
             <div className="text-center">
               <div className="text-4xl md:text-6xl font-bold text-[#b87333] mb-2">20+</div>
-              <div className="text-sm md:text-base text-gray-400 uppercase tracking-wider">Motos en Stock</div>
+              <p className="text-sm md:text-base text-gray-400 uppercase tracking-wider">Motos en Stock</p>
             </div>
           </div>
         </div>
@@ -298,7 +308,9 @@ export default async function Home() {
                 Últimas <span className="text-[#b87333]">Incorporaciones</span>
               </h2>
               <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                Motos seleccionadas con pasión, cada una con su propia historia y personalidad
+                Motos seleccionadas con pasión, cada una con su propia historia y personalidad. Descubre nuestra
+                colección actualizada de motocicletas custom, choppers, bobbers y Harley Davidson en excelente estado.
+                Stock permanente en nuestro showroom de Córdoba con envíos a todo Argentina.
               </p>
             </div>
 
@@ -381,7 +393,9 @@ export default async function Home() {
               ¿Por Qué <span className="text-[#b87333]">Kustom Mania</span>?
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Tu mejor opción para comprar y vender motocicletas con confianza y transparencia
+              Tu mejor opción para comprar y vender motocicletas con confianza y transparencia. Somos líderes en
+              compra-venta de motos custom en Córdoba con más de 9 años de experiencia en el mercado argentino.
+              Ofrecemos las mejores marcas: Harley Davidson, choppers personalizadas, bobbers y motos clásicas vintage.
             </p>
           </div>
 
@@ -425,7 +439,10 @@ export default async function Home() {
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
               Cómo <span className="text-[#b87333]">Funciona</span>
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">Comprar o vender tu moto es fácil y seguro</p>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Comprar o vender tu moto es fácil y seguro con Kustom Mania. Proceso transparente garantizado desde
+              Córdoba para todo Argentina.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -470,6 +487,10 @@ export default async function Home() {
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
               Lo Que Dicen <span className="text-[#b87333]">Nuestros Clientes</span>
             </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Testimonios reales de clientes satisfechos en Córdoba y todo Argentina. Calificaciones 5 estrellas en
+              Google y redes sociales.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -510,7 +531,9 @@ export default async function Home() {
             ¿Buscas Tu Próxima <span className="text-[#b87333]">Moto</span>?
           </h2>
           <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
-            Explora nuestra colección o contáctanos si quieres vender tu moto. Estamos para ayudarte en cada paso.
+            Explora nuestra colección completa de motos custom, Harley Davidson, choppers y bobbers en venta. Si quieres
+            vender tu moto, te ofrecemos el mejor precio del mercado. Contáctanos desde Córdoba para todo Argentina.
+            Financiación disponible, permutas aceptadas, envíos seguros a todo el país. Showroom abierto para visitas.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

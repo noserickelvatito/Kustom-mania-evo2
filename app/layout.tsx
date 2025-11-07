@@ -4,6 +4,7 @@ import { Geist, Geist_Mono, Playfair_Display } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { ConditionalNav } from "@/components/conditional-nav"
+import { Footer } from "@/components/footer"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -12,11 +13,11 @@ const _playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://kustommania.com"),
   title: {
-    default: "Kustom Mania | Compra Venta Motos Custom Argentina | Harley Davidson Buenos Aires",
+    default: "Kustom Mania | Compra Venta Motos Custom Argentina | Córdoba - Envíos a Todo el País",
     template: "%s | Kustom Mania - Motos Custom Argentina",
   },
   description:
-    "Kustom Mania: Líderes en compra y venta de motos custom en Argentina. Harley Davidson, choppers, bobbers y motos clásicas. +130 motos vendidas. Showroom en Buenos Aires. Mejor precio garantizado. WhatsApp: consultas inmediatas.",
+    "Kustom Mania: Líderes en compra y venta de motos custom en Argentina. Harley Davidson, choppers, bobbers y motos clásicas. +130 motos vendidas. Showroom en Córdoba. Vendemos a todo el país. Mejor precio garantizado. WhatsApp: consultas inmediatas.",
   keywords: [
     // Primary keywords
     "kustom mania",
@@ -29,7 +30,6 @@ export const metadata: Metadata = {
 
     // Brand-specific
     "Harley Davidson Argentina",
-    "Harley Davidson Buenos Aires",
     "Harley Davidson usadas",
     "comprar Harley Davidson",
     "vender Harley Davidson",
@@ -43,11 +43,18 @@ export const metadata: Metadata = {
     "motocicletas custom",
     "custom bikes Argentina",
 
-    // Local keywords
-    "motos Buenos Aires",
-    "compra venta motos Buenos Aires",
-    "concesionaria motos custom",
-    "showroom motos",
+    // Location keywords
+    "motos Córdoba",
+    "compra venta motos Córdoba",
+    "motos custom Córdoba",
+    "Harley Davidson Córdoba",
+    "concesionaria motos Córdoba",
+    "showroom motos Córdoba",
+    "venta motos Córdoba capital",
+    "motos usadas Córdoba",
+    "envíos a todo Argentina",
+    "compra venta motos Argentina",
+    "dealer motos Argentina",
 
     // Transaction keywords
     "motos usadas",
@@ -58,6 +65,8 @@ export const metadata: Metadata = {
     "financiación motos",
 
     // Long-tail keywords
+    "envío motos interior",
+    "motos envío todo el país",
     "donde comprar moto custom Argentina",
     "mejor precio Harley Davidson",
     "vender mi moto rápido",
@@ -77,15 +86,15 @@ export const metadata: Metadata = {
     alternateLocale: ["es_ES", "es_MX"],
     url: "/",
     siteName: "Kustom Mania - Motos Custom Argentina",
-    title: "Kustom Mania | Compra Venta Motos Custom y Harley Davidson en Argentina",
+    title: "Kustom Mania | Compra Venta Motos Custom y Harley Davidson - Córdoba, Argentina",
     description:
-      "Tu lugar para comprar y vender motos custom. Harley Davidson, choppers y bobbers. +130 motos vendidas. Showroom en Buenos Aires. Mejor precio garantizado.",
+      "Tu lugar para comprar y vender motos custom. Harley Davidson, choppers y bobbers. +130 motos vendidas. Showroom en Córdoba. Envíos a todo el país. Mejor precio garantizado.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Kustom Mania - Showroom de Motocicletas Custom en Buenos Aires",
+        alt: "Kustom Mania - Showroom de Motocicletas Custom en Córdoba",
         type: "image/jpeg",
       },
       {
@@ -101,8 +110,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@kustommania",
     creator: "@kustommania",
-    title: "Kustom Mania | Motos Custom y Harley Davidson Argentina",
-    description: "Líderes en compra venta de motos custom. +130 motos vendidas. Showroom en Buenos Aires.",
+    title: "Kustom Mania | Motos Custom y Harley Davidson - Córdoba, Argentina",
+    description:
+      "Líderes en compra venta de motos custom. +130 motos vendidas. Showroom en Córdoba. Envíos a todo Argentina.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -133,7 +143,7 @@ export const metadata: Metadata = {
     userScalable: true,
   },
   alternates: {
-    canonical: "/",
+    canonical: process.env.NEXT_PUBLIC_SITE_URL || "https://kustommania.com",
     languages: {
       "es-AR": "/",
       es: "/",
@@ -192,14 +202,14 @@ export default async function RootLayout({
     address: {
       "@type": "PostalAddress",
       addressCountry: "AR",
-      addressRegion: "Buenos Aires",
-      addressLocality: "Buenos Aires",
-      streetAddress: "Dirección del Showroom",
+      addressRegion: "Córdoba",
+      addressLocality: "Córdoba",
+      streetAddress: "Showroom Kustom Mania",
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: "-34.6037",
-      longitude: "-58.3816",
+      latitude: "-31.4201",
+      longitude: "-64.1888",
     },
     areaServed: [
       {
@@ -208,7 +218,19 @@ export default async function RootLayout({
       },
       {
         "@type": "State",
+        name: "Córdoba",
+      },
+      {
+        "@type": "State",
         name: "Buenos Aires",
+      },
+      {
+        "@type": "State",
+        name: "Santa Fe",
+      },
+      {
+        "@type": "State",
+        name: "Mendoza",
       },
     ],
     aggregateRating: {
@@ -222,20 +244,6 @@ export default async function RootLayout({
       "https://www.instagram.com/kustomania_cba/",
       "https://www.facebook.com/kustommania",
       "https://wa.me/XXXXXXXXXXX",
-    ],
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "09:00",
-        closes: "18:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Saturday",
-        opens: "10:00",
-        closes: "14:00",
-      },
     ],
     potentialAction: {
       "@type": "TradeAction",
@@ -298,25 +306,24 @@ export default async function RootLayout({
       <head>
         <meta name="theme-color" content="#000000" />
         <meta name="color-scheme" content="dark light" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Kustom Mania" />
         <meta name="mobile-web-app-capable" content="yes" />
 
-        <meta name="geo.region" content="AR-B" />
-        <meta name="geo.placename" content="Buenos Aires" />
-        <meta name="geo.position" content="-34.6037;-58.3816" />
-        <meta name="ICBM" content="-34.6037, -58.3816" />
-        <meta name="language" content="Spanish" />
+        <meta name="geo.region" content="AR-X" />
+        <meta name="geo.placename" content="Córdoba" />
+        <meta name="geo.position" content="-31.4201;-64.1888" />
+        <meta name="ICBM" content="-31.4201, -64.1888" />
+        <meta name="language" content="es-AR" />
         <meta name="coverage" content="Worldwide" />
         <meta name="distribution" content="Global" />
         <meta name="rating" content="General" />
         <meta name="revisit-after" content="1 days" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" href="/logo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
         <link rel="apple-touch-icon" href="/apple-touch-icon-152x152.png" sizes="152x152" />
         <link rel="apple-touch-icon" href="/apple-touch-icon-120x120.png" sizes="120x120" />
@@ -333,6 +340,7 @@ export default async function RootLayout({
       <body className={`font-sans antialiased bg-black ${_playfair.className}`}>
         {children}
         <ConditionalNav />
+        <Footer />
         <Analytics />
       </body>
     </html>
