@@ -6,49 +6,31 @@ import type { Metadata } from "next"
 export const revalidate = 120
 
 export const metadata: Metadata = {
-  title: "Motos Custom en Venta | Harley Davidson, Choppers y Bobbers | Kustom Mania Argentina",
+  title: "Catálogo de Motos Custom en Venta | Kustom Mania",
   description:
-    "Catálogo completo de motos custom en Argentina. Harley Davidson, choppers, bobbers, cafe racer y motos clásicas. Stock actualizado, calidad garantizada, mejores precios del mercado. Showroom en Buenos Aires. Financiación y permutas disponibles.",
+    "Catálogo completo de motos custom en Argentina. Harley Davidson, choppers, bobbers, cafe racer y motos clásicas. Stock actualizado, calidad garantizada, mejores precios del mercado. Showroom en Córdoba. Financiación y permutas disponibles.",
   keywords: [
-    // Primary keywords
+    // Primary keywords - focus on catalog/collection
     "motos custom en venta",
-    "motos custom Argentina",
+    "catálogo motos custom",
     "comprar moto custom",
     "Harley Davidson en venta",
-    "Harley Davidson usadas",
-    "Harley Davidson Argentina",
-
     // Types
     "choppers en venta",
     "bobbers Argentina",
     "cafe racer venta",
     "motos clásicas Argentina",
-    "motos vintage",
-    "custom bikes",
-
     // Transactional
-    "catálogo motos custom",
     "stock motos custom",
-    "motos segunda mano",
     "motos usadas custom",
     "precio motos custom",
     "financiación motos",
-    "permuta motos",
-
     // Local
-    "motos Buenos Aires",
-    "Harley Davidson Buenos Aires",
+    "motos Córdoba",
     "showroom motos",
-    "concesionaria motos custom",
-
-    // Brand specific
-    "Indian Motorcycle Argentina",
-    "Triumph Argentina",
-    "motos americanas",
-    "motos custom importadas",
   ],
   openGraph: {
-    title: "Catálogo Completo de Motos Custom | Kustom Mania Argentina",
+    title: "Catálogo de Motos Custom | Kustom Mania",
     description:
       "Descubre nuestra colección de +20 motos custom en stock. Harley Davidson, choppers, bobbers. Calidad garantizada y mejores precios.",
     url: "/coleccion",
@@ -58,7 +40,7 @@ export const metadata: Metadata = {
         url: "/og-image-collection.jpg",
         width: 1200,
         height: 630,
-        alt: "Colección de motocicletas custom Kustom Mania - Showroom Buenos Aires",
+        alt: "Colección de motocicletas custom Kustom Mania - Showroom Córdoba",
       },
     ],
   },
@@ -134,8 +116,7 @@ export default async function ColeccionPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
 
       <h1 className="sr-only">
-        Catálogo Completo de Motos Custom en Venta | Harley Davidson, Choppers, Bobbers - Kustom Mania Córdoba,
-        Argentina
+        Catálogo Completo de Motos Custom en Venta - Harley Davidson, Choppers, Bobbers en Córdoba Argentina
       </h1>
 
       <CollectionClient motorcycles={motorcyclesWithImages} brands={brands} types={types} />

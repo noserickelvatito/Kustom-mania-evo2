@@ -6,29 +6,26 @@ import type { Metadata } from "next"
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: "Nosotros - Historia de Kustom Mania | 9+ Años en Motos Custom - Córdoba, Argentina",
+  title: "Nosotros - 9+ Años de Experiencia | Kustom Mania Córdoba",
   description:
     "Conoce la historia de Kustom Mania. Más de 9 años liderando la compra venta de motos custom en Argentina. +130 motos vendidas. Showroom en Córdoba. Envíos a todo el país. Pasión, confianza y experiencia en cada transacción.",
   keywords: [
-    "Kustom Mania historia",
     "sobre Kustom Mania",
     "quienes somos Kustom Mania",
-    "empresa motos custom Argentina",
-    "compraventa motos Córdoba",
-    "showroom motos Córdoba",
-    "motos custom Córdoba",
-    "vendedor motos confiable",
+    "historia Kustom Mania",
+    "empresa motos Córdoba",
     "experiencia motos custom",
+    "concesionaria motos Córdoba",
+    "showroom Córdoba",
+    "vendedor motos confiable",
     "dealer motos Argentina",
-    "concesionaria motos custom",
     "equipo Kustom Mania",
-    "valores empresa motos",
-    "envíos motos todo Argentina",
+    "valores empresa",
   ],
   openGraph: {
-    title: "Nosotros - Kustom Mania | 9+ Años de Pasión por las Motos Custom - Córdoba",
+    title: "Nosotros - 9+ Años de Pasión | Kustom Mania Córdoba",
     description:
-      "Más de 9 años conectando personas con sus motos ideales. +130 motos vendidas. Conoce nuestra historia, valores y showroom en Córdoba. Envíos a todo Argentina.",
+      "Más de 9 años conectando personas con sus motos ideales. +130 motos vendidas. Conoce nuestra historia, valores y showroom en Córdoba.",
     url: "/nosotros",
     type: "website",
     images: [
@@ -138,6 +135,21 @@ export default function NosotrosPage() {
               compra respaldada por profesionales que realmente entienden lo que significa ser parte de la cultura
               motera argentina. Visitanos en nuestro showroom de Córdoba o consultanos por WhatsApp desde cualquier
               provincia. Ofrecemos financiación, aceptamos permutas y garantizamos calidad en cada venta.
+            </p>
+            <p className="text-lg md:text-xl">
+              Nuestro equipo está formado por apasionados del motociclismo con décadas de experiencia combinada en
+              mecánica, compra-venta y asesoramiento. Entendemos las particularidades del mercado argentino de motos
+              custom: valuaciones realistas, verificación de documentación, estado real de los vehículos y tendencias de
+              precios. Este conocimiento profundo nos permite ofrecer el mejor servicio tanto si buscas comprar tu
+              próxima moto como si deseas vender la que ya tienes al mejor precio del mercado.
+            </p>
+            <p className="text-lg md:text-xl">
+              En Kustom Mania creemos que comprar una moto debe ser una experiencia emocionante y sin complicaciones.
+              Por eso facilitamos todo el proceso: desde la primera consulta por WhatsApp hasta la entrega final con
+              toda la documentación en regla. Ofrecemos garantía extendida en nuestras unidades, opciones de
+              financiación flexibles con las mejores tasas del mercado, y la posibilidad de tomar tu moto usada como
+              parte de pago. Tu satisfacción es nuestra prioridad absoluta, reflejada en las excelentes reseñas de
+              nuestros clientes en Google y redes sociales.
             </p>
           </div>
         </div>

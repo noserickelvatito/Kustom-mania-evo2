@@ -8,42 +8,28 @@ import type { Metadata } from "next"
 export const revalidate = 300
 
 export const metadata: Metadata = {
-  title: "Kustom Mania | Compra Venta Motos Custom Argentina | Córdoba - Envíos a Todo el País",
+  title: "Kustom Mania | Motos Custom Córdoba - Envíos a todo Argentina",
   description:
     "Kustom Mania: Líderes en compra y venta de motos custom en Argentina. Harley Davidson, choppers, bobbers. +130 motos vendidas. Showroom en Córdoba. Envíos a todo el país. Mejor precio del mercado. Consultas por WhatsApp. Financiación y permutas disponibles.",
   keywords: [
-    // Primary
+    // Primary - focus on homepage as brand hub
     "kustom mania",
     "kustommania",
-    "motos custom argentina",
+    "compra venta motos argentina",
     // Córdoba-specific keywords
     "motos Córdoba",
-    "motos custom Córdoba",
     "comprar moto Córdoba",
     "vender moto Córdoba",
-    "comprar moto custom",
-    "vender moto custom",
-    "Harley Davidson Argentina",
-    "Harley Davidson Córdoba",
-    // Secondary
-    "motos choppers",
-    "motos bobbers",
-    "motos vintage",
-    "compra venta motos",
-    "concesionaria motos custom",
     "showroom motos Córdoba",
+    // Secondary
+    "motos custom argentina",
+    "Harley Davidson Argentina",
+    "concesionaria motos custom",
     "envíos a todo Argentina",
-    "motos usadas custom",
-    "motos segunda mano",
     // Long-tail
-    "donde comprar Harley Davidson Córdoba",
-    "donde comprar Harley Davidson Argentina",
-    "vender mi Harley Davidson",
     "mejor precio motos custom",
-    "motos custom con garantía",
     "permuta motos custom",
     "financiación motos",
-    "envío motos interior Argentina",
   ],
   openGraph: {
     title: "Kustom Mania | Motos Custom y Harley Davidson - Córdoba, Argentina",
