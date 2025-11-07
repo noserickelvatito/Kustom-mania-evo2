@@ -2,7 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { createClient } from "@/lib/supabase/server"
 import type { SiteConfig, Motorcycle } from "@/lib/types"
-import { ArrowRight, Wrench, Sparkles, CheckCircle2, Star } from "lucide-react"
+import { ArrowRight, Wrench, Sparkles, CheckCircle2 } from "lucide-react"
 import type { Metadata } from "next"
 
 export const revalidate = 300
@@ -362,7 +362,7 @@ export default async function Home() {
                   alt="WhatsApp"
                   width={24}
                   height={24}
-                  className="w-6 h-6"
+                  className="w-6 h-6 md:w-9 md:h-9 group-hover:scale-110 transition-transform"
                   loading="lazy"
                 />
                 Consultar Disponibilidad
@@ -461,50 +461,6 @@ export default async function Home() {
                 {index < 3 && (
                   <div className="hidden md:block absolute top-12 left-full w-full h-0.5 bg-gradient-to-r from-[#b87333] to-transparent" />
                 )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="relative bg-zinc-950 py-20 md:py-32 border-y border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              Lo Que Dicen <span className="text-[#b87333]">Nuestros Clientes</span>
-            </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Testimonios reales de clientes satisfechos en Córdoba y todo Argentina. Calificaciones 5 estrellas en
-              Google y redes sociales.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Carlos Rodríguez",
-                text: "Compré mi primera moto custom con ellos. Excelente atención, transparencia total y la moto en perfecto estado.",
-                rating: 5,
-              },
-              {
-                name: "María González",
-                text: "Vendí mi moto en menos de una semana. Precio justo y todo el proceso fue súper rápido y profesional.",
-                rating: 5,
-              },
-              {
-                name: "Juan Pérez",
-                text: "La mejor experiencia comprando una moto. Me asesoraron en todo y la documentación impecable.",
-                rating: 5,
-              },
-            ].map((testimonial, index) => (
-              <div key={index} className="p-8 bg-black/50 rounded-lg border border-zinc-800">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-[#b87333] text-[#b87333]" />
-                  ))}
-                </div>
-                <p className="text-gray-300 mb-6 italic">"{testimonial.text}"</p>
-                <p className="text-white font-semibold">{testimonial.name}</p>
               </div>
             ))}
           </div>
