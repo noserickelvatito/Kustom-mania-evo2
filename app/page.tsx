@@ -8,7 +8,7 @@ import type { Metadata } from "next"
 export const revalidate = 300
 
 export const metadata: Metadata = {
-  title: "Inicio - Compra y Venta de Motocicletas Custom | Kustom Mania",
+  title: "Inicioasd - Compra y Venta de Motocicletas Custom | Kustom Mania",
   description:
     "Kustom Mania - Tu mejor opción para comprar y vender motos custom en Argentina. Harley Davidson, choppers y motos clásicas con calidad garantizada, precios justos y amplia variedad en stock.",
   keywords: [
