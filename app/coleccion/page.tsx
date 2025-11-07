@@ -6,31 +6,67 @@ import type { Metadata } from "next"
 export const revalidate = 120
 
 export const metadata: Metadata = {
-  title: "Colección de Motos Custom | Harley Davidson y Choppers en Venta",
+  title: "Motos Custom en Venta | Harley Davidson, Choppers y Bobbers | Kustom Mania Argentina",
   description:
-    "Explora nuestra colección de motocicletas custom, Harley Davidson, choppers y motos clásicas. Todas inspeccionadas y garantizadas. Precios competitivos y amplia variedad en stock.",
+    "Catálogo completo de motos custom en Argentina. Harley Davidson, choppers, bobbers, cafe racer y motos clásicas. Stock actualizado, calidad garantizada, mejores precios del mercado. Showroom en Buenos Aires. Financiación y permutas disponibles.",
   keywords: [
+    // Primary keywords
     "motos custom en venta",
+    "motos custom Argentina",
+    "comprar moto custom",
+    "Harley Davidson en venta",
     "Harley Davidson usadas",
-    "choppers Argentina",
-    "motos clásicas venta",
+    "Harley Davidson Argentina",
+
+    // Types
+    "choppers en venta",
+    "bobbers Argentina",
+    "cafe racer venta",
+    "motos clásicas Argentina",
+    "motos vintage",
+    "custom bikes",
+
+    // Transactional
     "catálogo motos custom",
+    "stock motos custom",
     "motos segunda mano",
-    "comprar Harley Davidson",
+    "motos usadas custom",
+    "precio motos custom",
+    "financiación motos",
+    "permuta motos",
+
+    // Local
+    "motos Buenos Aires",
+    "Harley Davidson Buenos Aires",
+    "showroom motos",
+    "concesionaria motos custom",
+
+    // Brand specific
+    "Indian Motorcycle Argentina",
+    "Triumph Argentina",
+    "motos americanas",
+    "motos custom importadas",
   ],
   openGraph: {
-    title: "Colección de Motos Custom | Kustom Mania",
+    title: "Catálogo Completo de Motos Custom | Kustom Mania Argentina",
     description:
-      "Descubre nuestra selección de motocicletas custom con calidad garantizada. Harley Davidson, choppers y más.",
+      "Descubre nuestra colección de +20 motos custom en stock. Harley Davidson, choppers, bobbers. Calidad garantizada y mejores precios.",
     url: "/coleccion",
+    type: "website",
     images: [
       {
         url: "/og-image-collection.jpg",
         width: 1200,
         height: 630,
-        alt: "Colección de motos custom Kustom Mania",
+        alt: "Colección de motocicletas custom Kustom Mania - Showroom Buenos Aires",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Catálogo Motos Custom | Kustom Mania",
+    description: "Harley Davidson, choppers y bobbers en stock. Calidad garantizada.",
+    images: ["/og-image-collection.jpg"],
   },
   alternates: {
     canonical: "/coleccion",
@@ -62,5 +98,41 @@ export default async function ColeccionPage() {
   const brands = Array.from(new Set(motorcycles?.map((m) => m.brand).filter(Boolean))) as string[]
   const types = Array.from(new Set(motorcycles?.map((m) => m.motorcycle_type).filter(Boolean))) as string[]
 
-  return <CollectionClient motorcycles={motorcyclesWithImages} brands={brands} types={types} />
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Motocicletas Custom en Venta",
+    description: "Colección completa de motos custom disponibles en Kustom Mania",
+    numberOfItems: motorcycles?.length || 0,
+    itemListElement: motorcycles?.slice(0, 10).map((moto, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Product",
+        "@id": `${process.env.NEXT_PUBLIC_SITE_URL}/coleccion/${moto.slug}`,
+        name: moto.name,
+        description: moto.description,
+        image: moto.images?.[0]?.image_url,
+        brand: {
+          "@type": "Brand",
+          name: moto.brand || "Custom",
+        },
+        offers: {
+          "@type": "Offer",
+          url: `${process.env.NEXT_PUBLIC_SITE_URL}/coleccion/${moto.slug}`,
+          priceCurrency: "ARS",
+          price: moto.price,
+          availability: moto.status === "stock" ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+          itemCondition: "https://schema.org/UsedCondition",
+        },
+      },
+    })),
+  }
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      <CollectionClient motorcycles={motorcyclesWithImages} brands={brands} types={types} />
+    </>
+  )
 }

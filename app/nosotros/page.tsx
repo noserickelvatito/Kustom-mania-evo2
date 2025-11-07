@@ -3,32 +3,46 @@ import Link from "next/link"
 import { Award, Heart, Shield, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
 
-export const revalidate = 3600 // 1 hour
+export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: "Nosotros - Historia y Valores | Kustom Mania",
+  title: "Nosotros - Historia de Kustom Mania | 9+ Años en Motos Custom Argentina",
   description:
-    "Conoce la historia de Kustom Mania. Más de 9 años de experiencia en compra y venta de motocicletas custom. Pasión, confianza y calidad en cada transacción.",
+    "Conoce la historia de Kustom Mania. Más de 9 años liderando la compra venta de motos custom en Argentina. +130 motos vendidas. Showroom en Buenos Aires. Pasión, confianza y experiencia en cada transacción. Conoce nuestro equipo y valores.",
   keywords: [
     "Kustom Mania historia",
-    "empresa motos custom",
-    "compraventa motos Argentina",
+    "sobre Kustom Mania",
+    "quienes somos Kustom Mania",
+    "empresa motos custom Argentina",
+    "compraventa motos Buenos Aires",
     "showroom motos custom",
     "vendedor motos confiable",
+    "experiencia motos custom",
+    "dealer motos Argentina",
+    "concesionaria motos custom",
+    "equipo Kustom Mania",
+    "valores empresa motos",
   ],
   openGraph: {
-    title: "Nosotros - Kustom Mania",
+    title: "Nosotros - Kustom Mania | 9+ Años de Pasión por las Motos Custom",
     description:
-      "Más de 9 años conectando personas con sus motos ideales. Conoce nuestra historia, valores y showroom.",
+      "Más de 9 años conectando personas con sus motos ideales. +130 motos vendidas. Conoce nuestra historia, valores y showroom en Buenos Aires.",
     url: "/nosotros",
+    type: "website",
     images: [
       {
         url: "/og-image-about.jpg",
         width: 1200,
         height: 630,
-        alt: "Showroom Kustom Mania",
+        alt: "Showroom Kustom Mania - Buenos Aires",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nosotros - Kustom Mania",
+    description: "9+ años de experiencia en motos custom. Conoce nuestra historia.",
+    images: ["/og-image-about.jpg"],
   },
   alternates: {
     canonical: "/nosotros",
@@ -36,8 +50,36 @@ export const metadata: Metadata = {
 }
 
 export default function NosotrosPage() {
+  const aboutPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    mainEntity: {
+      "@type": "Organization",
+      name: "Kustom Mania",
+      description:
+        "Empresa líder en compra y venta de motocicletas custom en Argentina con más de 9 años de experiencia",
+      foundingDate: "2015",
+      numberOfEmployees: {
+        "@type": "QuantitativeValue",
+        value: "5-10",
+      },
+      slogan: "Pasión por las dos ruedas. Donde la personalidad se encuentra con el asfalto.",
+      knowsAbout: [
+        "Motocicletas Custom",
+        "Harley Davidson",
+        "Choppers",
+        "Bobbers",
+        "Compra venta motos",
+        "Café Racer",
+        "Motos Clásicas",
+      ],
+    },
+  }
+
   return (
     <main className="min-h-screen bg-black">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }} />
+
       {/* Hero Section */}
       <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black z-10" />

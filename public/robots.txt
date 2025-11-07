@@ -1,0 +1,27 @@
+# Kustom Mania - Robots.txt
+# https://www.kustommania.com/robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /km-secret-panel-2025/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Google bots
+User-agent: Googlebot
+Allow: /
+Disallow: /km-secret-panel-2025/
+Disallow: /api/
+
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /km-secret-panel-2025/
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://www.kustommania.com/sitemap.xml

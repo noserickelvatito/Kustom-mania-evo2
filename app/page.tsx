@@ -8,32 +8,55 @@ import type { Metadata } from "next"
 export const revalidate = 300
 
 export const metadata: Metadata = {
-  title: "Inicioasd - Compra y Venta de Motocicletas Custom | Kustom Mania",
+  title: "Kustom Mania | Compra Venta Motos Custom Argentina | Harley Davidson Buenos Aires",
   description:
-    "Kustom Mania - Tu mejor opción para comprar y vender motos custom en Argentina. Harley Davidson, choppers y motos clásicas con calidad garantizada, precios justos y amplia variedad en stock.",
+    "Kustom Mania: Líderes en compra y venta de motos custom en Argentina. Harley Davidson, choppers, bobbers. +130 motos vendidas. Showroom en Buenos Aires. Mejor precio del mercado. Consultas por WhatsApp. Financiación y permutas disponibles.",
   keywords: [
+    // Primary
+    "kustom mania",
+    "kustommania",
+    "motos custom argentina",
     "comprar moto custom",
-    "vender moto Argentina",
+    "vender moto custom",
+    "Harley Davidson Argentina",
     "Harley Davidson Buenos Aires",
-    "motos choppers venta",
-    "motos custom segunda mano",
-    "compraventa motos",
-    "motos clásicas Argentina",
-    "custom bikes",
+    // Secondary
+    "motos choppers",
+    "motos bobbers",
+    "motos vintage",
+    "compra venta motos",
+    "concesionaria motos custom",
+    "showroom motos Buenos Aires",
+    "motos usadas custom",
+    "motos segunda mano",
+    // Long-tail
+    "donde comprar Harley Davidson Argentina",
+    "vender mi Harley Davidson",
+    "mejor precio motos custom",
+    "motos custom con garantía",
+    "permuta motos custom",
+    "financiación motos",
   ],
   openGraph: {
-    title: "Kustom Mania - Compra y Venta de Motocicletas Custom",
+    title: "Kustom Mania | Motos Custom y Harley Davidson - Showroom Buenos Aires",
     description:
-      "Pasión por las dos ruedas. Amplia variedad de motos custom, Harley Davidson y choppers. Más de 130 motos vendidas con garantía de calidad.",
+      "Líderes en compra venta de motos custom. Harley Davidson, choppers y bobbers. +130 motos vendidas. Mejor precio garantizado. Consultas inmediatas por WhatsApp.",
     url: "/",
+    type: "website",
     images: [
       {
         url: "/og-image-home.jpg",
         width: 1200,
         height: 630,
-        alt: "Kustom Mania - Showroom de motocicletas custom",
+        alt: "Kustom Mania Showroom - Motocicletas Custom y Harley Davidson en Buenos Aires",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kustom Mania | Motos Custom y Harley Davidson Argentina",
+    description: "Líderes en compra venta de motos custom. +130 motos vendidas. Showroom en Buenos Aires.",
+    images: ["/og-image-home.jpg"],
   },
   alternates: {
     canonical: "/",
@@ -82,8 +105,40 @@ export default async function Home() {
     ? `https://wa.me/${siteConfig.whatsapp_number.replace(/\D/g, "")}`
     : "https://wa.me/"
 
+  const productsSchema = motorcycles?.map((moto: Motorcycle) => ({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: moto.name,
+    description: moto.description,
+    image: moto.images?.[0]?.image_url,
+    brand: {
+      "@type": "Brand",
+      name: moto.brand || "Custom",
+    },
+    offers: {
+      "@type": "Offer",
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/coleccion/${moto.slug}`,
+      priceCurrency: "ARS",
+      price: moto.price,
+      availability: "https://schema.org/InStock",
+      seller: {
+        "@type": "Organization",
+        name: "Kustom Mania",
+      },
+    },
+  }))
+
   return (
     <div className="min-h-screen bg-black">
+      {productsSchema && productsSchema.length > 0 && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productsSchema) }} />
+      )}
+
+      <h1 className="sr-only">
+        Kustom Mania: Compra y Venta de Motos Custom, Harley Davidson, Choppers y Bobbers en Argentina - Showroom Buenos
+        Aires
+      </h1>
+
       {/* Hero Section */}
       <div className="relative h-screen w-screen overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
