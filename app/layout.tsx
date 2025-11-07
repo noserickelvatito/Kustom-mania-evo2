@@ -11,7 +11,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 const _playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://kustommania.com"),
+  metadataBase: new URL("https://www.kustom-mania.com.ar"),
   title: {
     default: "Kustom Mania | Compra Venta Motos Custom Argentina | Córdoba - Envíos a Todo el País",
     template: "%s | Kustom Mania - Motos Custom Argentina",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     "vender mi moto rápido",
     "motos custom con garantía",
   ],
-  authors: [{ name: "Kustom Mania", url: "https://kustommania.com" }],
+  authors: [{ name: "Kustom Mania", url: "https://www.kustom-mania.com.ar" }],
   creator: "Kustom Mania",
   publisher: "Kustom Mania",
   formatDetection: {
@@ -143,7 +143,7 @@ export const metadata: Metadata = {
     userScalable: true,
   },
   alternates: {
-    canonical: process.env.NEXT_PUBLIC_SITE_URL || "https://kustommania.com",
+    canonical: "https://www.kustom-mania.com.ar",
     languages: {
       "es-AR": "/",
       es: "/",
@@ -169,7 +169,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://kustommania.com"
+  const baseUrl = "https://www.kustom-mania.com.ar"
 
   const organizationSchema = {
     "@context": "https://schema.org",

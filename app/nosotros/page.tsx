@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     images: ["/og-image-about.jpg"],
   },
   alternates: {
-    canonical: "/nosotros",
+    canonical: "https://www.kustom-mania.com.ar/nosotros",
   },
 }
 

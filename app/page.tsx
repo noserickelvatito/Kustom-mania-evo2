@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     images: ["/og-image-home.jpg"],
   },
   alternates: {
-    canonical: "/",
+    canonical: "https://www.kustom-mania.com.ar/",
   },
 }
 
@@ -547,7 +547,7 @@ export default async function Home() {
                 alt="WhatsApp"
                 width={24}
                 height={24}
-                className="w-6 h-6"
+                className="w-6 h-6 md:w-9 md:h-9"
                 loading="lazy"
               />
               Contactar por WhatsApp
