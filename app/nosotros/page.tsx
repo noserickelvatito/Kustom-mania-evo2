@@ -1,6 +1,39 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Award, Heart, Shield, TrendingUp } from "lucide-react"
+import type { Metadata } from "next"
+
+export const revalidate = 3600 // 1 hour
+
+export const metadata: Metadata = {
+  title: "Nosotros - Historia y Valores | Kustom Mania",
+  description:
+    "Conoce la historia de Kustom Mania. Más de 9 años de experiencia en compra y venta de motocicletas custom. Pasión, confianza y calidad en cada transacción.",
+  keywords: [
+    "Kustom Mania historia",
+    "empresa motos custom",
+    "compraventa motos Argentina",
+    "showroom motos custom",
+    "vendedor motos confiable",
+  ],
+  openGraph: {
+    title: "Nosotros - Kustom Mania",
+    description:
+      "Más de 9 años conectando personas con sus motos ideales. Conoce nuestra historia, valores y showroom.",
+    url: "/nosotros",
+    images: [
+      {
+        url: "/og-image-about.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Showroom Kustom Mania",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "/nosotros",
+  },
+}
 
 export default function NosotrosPage() {
   return (
@@ -14,6 +47,8 @@ export default function NosotrosPage() {
           fill
           className="object-cover"
           priority
+          quality={90}
+          sizes="100vw"
         />
         <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 text-balance">Nuestra Historia</h1>
@@ -104,12 +139,15 @@ export default function NosotrosPage() {
               alt="Kustom Mania Collection"
               fill
               className="object-cover"
+              loading="lazy"
+              quality={85}
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
           <div className="space-y-6">
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-white">Nuestra Misión</h2>
             <p className="text-lg text-gray-300 leading-relaxed">
-              Facilitar el encuentro perfecto entre la  gente y sus motos ideales, ofreciendo una experiencia de
+              Facilitar el encuentro perfecto entre la gente y sus motos ideales, ofreciendo una experiencia de
               compra-venta transparente, profesional y apasionada.
             </p>
             <p className="text-lg text-gray-300 leading-relaxed">
@@ -130,13 +168,15 @@ export default function NosotrosPage() {
 
           {/* Bento Grid Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {/* Large featured image - Owner with bike */}
             <div className="md:col-span-2 lg:row-span-2 relative h-[400px] md:h-[600px] rounded-2xl overflow-hidden group">
               <Image
                 src="/images/design-mode/6b254223-c588-4975-9460.jpg"
                 alt="Kustom Mania - Nuestro equipo y showroom"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                quality={85}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 66vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 text-white">
@@ -144,35 +184,41 @@ export default function NosotrosPage() {
               </div>
             </div>
 
-            {/* Harley Davidson detail */}
             <div className="relative h-[300px] md:h-[290px] rounded-2xl overflow-hidden group">
               <Image
                 src="/images/design-mode/c8842b32-d0e3-4fdb-b89b.jpg"
                 alt="Harley Davidson en showroom"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                quality={80}
+                sizes="(max-width: 768px) 100vw, 33vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             </div>
 
-            {/* Showroom atmosphere */}
             <div className="relative h-[300px] md:h-[290px] rounded-2xl overflow-hidden group">
               <Image
                 src="/images/design-mode/0819fcbb-d6c3-4d9b-a374.jpg"
                 alt="Ambiente vintage del showroom"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                quality={80}
+                sizes="(max-width: 768px) 100vw, 33vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             </div>
 
-            {/* Multiple bikes showcase */}
             <div className="md:col-span-2 relative h-[300px] md:h-[290px] rounded-2xl overflow-hidden group">
               <Image
                 src="/images/design-mode/2c658c15-fe25-4ae2-91cc.jpg"
                 alt="Variedad de motocicletas en stock"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                quality={80}
+                sizes="(max-width: 768px) 100vw, 66vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 text-white">
@@ -211,6 +257,7 @@ export default function NosotrosPage() {
                 width={24}
                 height={24}
                 className="w-6 h-6"
+                loading="lazy"
               />
               Contactar
             </a>

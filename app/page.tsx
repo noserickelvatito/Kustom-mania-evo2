@@ -3,23 +3,60 @@ import Image from "next/image"
 import { createClient } from "@/lib/supabase/server"
 import type { SiteConfig, Motorcycle } from "@/lib/types"
 import { ArrowRight, Wrench, Sparkles, CheckCircle2, Star } from "lucide-react"
+import type { Metadata } from "next"
+
+export const revalidate = 300
+
+export const metadata: Metadata = {
+  title: "Inicio - Compra y Venta de Motocicletas Custom | Kustom Mania",
+  description:
+    "Kustom Mania - Tu mejor opción para comprar y vender motos custom en Argentina. Harley Davidson, choppers y motos clásicas con calidad garantizada, precios justos y amplia variedad en stock.",
+  keywords: [
+    "comprar moto custom",
+    "vender moto Argentina",
+    "Harley Davidson Buenos Aires",
+    "motos choppers venta",
+    "motos custom segunda mano",
+    "compraventa motos",
+    "motos clásicas Argentina",
+    "custom bikes",
+  ],
+  openGraph: {
+    title: "Kustom Mania - Compra y Venta de Motocicletas Custom",
+    description:
+      "Pasión por las dos ruedas. Amplia variedad de motos custom, Harley Davidson y choppers. Más de 130 motos vendidas con garantía de calidad.",
+    url: "/",
+    images: [
+      {
+        url: "/og-image-home.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Kustom Mania - Showroom de motocicletas custom",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "/",
+  },
+}
 
 export default async function Home() {
   const supabase = await createClient()
 
-  const { data: config } = await supabase.from("site_config").select("*").single()
+  const [configResult, motorcyclesResult] = await Promise.all([
+    supabase.from("site_config").select("*").single(),
+    supabase
+      .from("motorcycles")
+      .select(`
+        *,
+        images:motorcycle_images!inner(image_url, display_order, is_primary)
+      `)
+      .eq("status", "stock")
+      .order("created_at", { ascending: false })
+      .limit(3),
+  ])
 
-  const { data: motorcycles } = await supabase
-    .from("motorcycles")
-    .select(`
-      *,
-      images:motorcycle_images(image_url, display_order, is_primary)
-    `)
-    .eq("status", "stock")
-    .order("created_at", { ascending: false })
-    .limit(3)
-
-  const siteConfig: SiteConfig = config || {
+  const siteConfig: SiteConfig = configResult.data || {
     id: "",
     whatsapp_number: "",
     hero_title: "KUSTOM MANIA",
@@ -31,6 +68,8 @@ export default async function Home() {
     facebook_url: null,
     updated_at: "",
   }
+
+  const motorcycles = motorcyclesResult.data
 
   const backgroundUrl =
     siteConfig.hero_background_url || "https://kusyom-mania.s3.sa-east-1.amazonaws.com/background.mp4"
@@ -49,26 +88,46 @@ export default async function Home() {
       <div className="relative h-screen w-screen overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           {isVideo ? (
-            <video autoPlay loop muted playsInline className="hidden md:block w-full h-full object-cover">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              className="hidden md:block w-full h-full object-cover"
+            >
               <source src={backgroundUrl} type="video/mp4" />
             </video>
           ) : (
-            <img
+            <Image
               src={backgroundUrl || "/placeholder.svg"}
               alt="Kustom Mania Hero Background"
-              className="hidden md:block w-full h-full object-cover"
+              fill
+              className="hidden md:block object-cover"
+              priority
+              quality={90}
             />
           )}
 
           {isMobileVideo ? (
-            <video autoPlay loop muted playsInline className="block md:hidden w-full h-full object-cover">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              className="block md:hidden w-full h-full object-cover"
+            >
               <source src={mobileBackgroundUrl} type="video/mp4" />
             </video>
           ) : (
-            <img
+            <Image
               src={mobileBackgroundUrl || backgroundUrl || "/placeholder.svg"}
               alt="Kustom Mania Hero Background Mobile"
-              className="block md:hidden w-full h-full object-cover"
+              fill
+              className="block md:hidden object-cover"
+              priority
+              quality={90}
             />
           )}
 
@@ -144,6 +203,7 @@ export default async function Home() {
                   width={24}
                   height={24}
                   className="w-5 h-5 sm:w-6 sm:h-6"
+                  priority
                 />
                 Consultar por WhatsApp
               </a>
@@ -202,7 +262,10 @@ export default async function Home() {
                           src={primaryImage.image_url || "/placeholder.svg"}
                           alt={moto.name}
                           fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          loading="lazy"
+                          quality={85}
                         />
                       ) : (
                         <div className="w-full h-full bg-zinc-800 flex items-center justify-center">
@@ -247,6 +310,7 @@ export default async function Home() {
                   width={24}
                   height={24}
                   className="w-6 h-6"
+                  loading="lazy"
                 />
                 Consultar Disponibilidad
               </a>
@@ -406,6 +470,7 @@ export default async function Home() {
                 width={24}
                 height={24}
                 className="w-6 h-6"
+                loading="lazy"
               />
               Contactar por WhatsApp
             </a>
@@ -433,6 +498,7 @@ export default async function Home() {
           width={32}
           height={32}
           className="w-8 h-8 md:w-9 md:h-9 group-hover:scale-110 transition-transform"
+          loading="lazy"
         />
         <span className="absolute -top-12 right-0 bg-black/90 text-white text-sm px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
           ¡Chateá con nosotros!
