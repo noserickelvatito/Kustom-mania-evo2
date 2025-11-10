@@ -22,6 +22,7 @@ export function CollectionClient({ motorcycles, brands, types }: CollectionClien
   const [selectedBrand, setSelectedBrand] = useState<string>("all")
   const [selectedType, setSelectedType] = useState<string>("all")
   const [selectedStatus, setSelectedStatus] = useState<string>("all")
+  const [priceRange, setPriceRange] = useState<string>("all")
   const [sortBy, setSortBy] = useState<string>("display_order")
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
   const [showFilters, setShowFilters] = useState(false)
@@ -51,7 +52,27 @@ export function CollectionClient({ motorcycles, brands, types }: CollectionClien
         (selectedStatus === "available" && (!moto.status || moto.status === "stock")) ||
         moto.status === selectedStatus
 
-      return matchesSearch && matchesBrand && matchesType && matchesStatus
+      // Price range filter
+      let matchesPriceRange = true
+      if (priceRange !== "all") {
+        const price = moto.price
+        switch (priceRange) {
+          case "0-5000000":
+            matchesPriceRange = price < 5000000
+            break
+          case "5000000-10000000":
+            matchesPriceRange = price >= 5000000 && price < 10000000
+            break
+          case "10000000-15000000":
+            matchesPriceRange = price >= 10000000 && price < 15000000
+            break
+          case "15000000+":
+            matchesPriceRange = price >= 15000000
+            break
+        }
+      }
+
+      return matchesSearch && matchesBrand && matchesType && matchesStatus && matchesPriceRange
     })
 
     // Sort
@@ -80,10 +101,11 @@ export function CollectionClient({ motorcycles, brands, types }: CollectionClien
     setSelectedBrand("all")
     setSelectedType("all")
     setSelectedStatus("all")
+    setPriceRange("all")
     setSortBy("display_order")
   }
 
-  const hasActiveFilters = searchQuery || selectedBrand !== "all" || selectedType !== "all" || selectedStatus !== "all"
+  const hasActiveFilters = searchQuery || selectedBrand !== "all" || selectedType !== "all" || selectedStatus !== "all" || priceRange !== "all"
 
   const getStatusBadge = (status: string | null) => {
     if (!status || status === "stock") {
@@ -122,14 +144,14 @@ export function CollectionClient({ motorcycles, brands, types }: CollectionClien
           {/* Search and Filters */}
           <div className="mb-8 space-y-4">
             {/* Search Bar */}
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+            <div className="relative group">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 group-focus-within:text-[#b87333] transition-colors" />
               <Input
                 type="text"
                 placeholder="Buscar por nombre, marca, motor, modificaciones..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-12 pr-4 py-6 bg-zinc-900 border-zinc-800 text-white placeholder:text-gray-500 focus:border-[#b87333] focus:ring-[#b87333]"
+                className="pl-12 pr-4 py-6 bg-zinc-900 border-zinc-800 text-white placeholder:text-gray-500 focus:border-[#b87333] focus:ring-[#b87333] rounded-xl transition-all hover:border-[#b87333]/50"
               />
             </div>
 
@@ -139,15 +161,15 @@ export function CollectionClient({ motorcycles, brands, types }: CollectionClien
                 variant="outline"
                 size="sm"
                 onClick={() => setShowFilters(!showFilters)}
-                className="bg-zinc-900 border-zinc-800 text-white hover:bg-zinc-800"
+                className={`bg-zinc-900 border-zinc-800 text-white hover:bg-zinc-800 hover:border-[#b87333] transition-all rounded-lg ${showFilters ? "border-[#b87333] bg-[#b87333]/10" : ""}`}
               >
                 <SlidersHorizontal className="h-4 w-4 mr-2" />
-                Filtros
+                Filtros {showFilters && "▲"}
               </Button>
 
               {/* Quick Filters */}
               <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className="w-[180px] bg-zinc-900 border-zinc-800 text-white">
+                <SelectTrigger className="w-[180px] bg-zinc-900 border-zinc-800 text-white hover:border-[#b87333] transition-colors rounded-lg">
                   <SelectValue placeholder="Ordenar por" />
                 </SelectTrigger>
                 <SelectContent>
@@ -166,10 +188,10 @@ export function CollectionClient({ motorcycles, brands, types }: CollectionClien
                   variant="outline"
                   size="icon"
                   onClick={() => setViewMode("grid")}
-                  className={`${
+                  className={`rounded-lg transition-all ${
                     viewMode === "grid"
-                      ? "bg-[#b87333] border-[#b87333] text-white"
-                      : "bg-zinc-900 border-zinc-800 text-white hover:bg-zinc-800"
+                      ? "bg-[#b87333] border-[#b87333] text-white hover:bg-[#d4a574]"
+                      : "bg-zinc-900 border-zinc-800 text-white hover:bg-zinc-800 hover:border-[#b87333]"
                   }`}
                 >
                   <Grid3x3 className="h-4 w-4" />
@@ -178,10 +200,10 @@ export function CollectionClient({ motorcycles, brands, types }: CollectionClien
                   variant="outline"
                   size="icon"
                   onClick={() => setViewMode("list")}
-                  className={`${
+                  className={`rounded-lg transition-all ${
                     viewMode === "list"
-                      ? "bg-[#b87333] border-[#b87333] text-white"
-                      : "bg-zinc-900 border-zinc-800 text-white hover:bg-zinc-800"
+                      ? "bg-[#b87333] border-[#b87333] text-white hover:bg-[#d4a574]"
+                      : "bg-zinc-900 border-zinc-800 text-white hover:bg-zinc-800 hover:border-[#b87333]"
                   }`}
                 >
                   <List className="h-4 w-4" />
@@ -191,11 +213,11 @@ export function CollectionClient({ motorcycles, brands, types }: CollectionClien
 
             {/* Expanded Filters */}
             {showFilters && (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-zinc-900 rounded-lg border border-zinc-800">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-6 glass-effect rounded-xl border border-zinc-800 animate-fade-in">
                 <div>
-                  <label className="text-sm text-gray-400 mb-2 block">Marca</label>
+                  <label className="text-sm text-gray-400 mb-2 block font-medium">Marca</label>
                   <Select value={selectedBrand} onValueChange={setSelectedBrand}>
-                    <SelectTrigger className="bg-black border-zinc-800 text-white">
+                    <SelectTrigger className="bg-black border-zinc-800 text-white hover:border-[#b87333] transition-colors">
                       <SelectValue placeholder="Todas las marcas" />
                     </SelectTrigger>
                     <SelectContent>
@@ -210,9 +232,9 @@ export function CollectionClient({ motorcycles, brands, types }: CollectionClien
                 </div>
 
                 <div>
-                  <label className="text-sm text-gray-400 mb-2 block">Tipo</label>
+                  <label className="text-sm text-gray-400 mb-2 block font-medium">Tipo</label>
                   <Select value={selectedType} onValueChange={setSelectedType}>
-                    <SelectTrigger className="bg-black border-zinc-800 text-white">
+                    <SelectTrigger className="bg-black border-zinc-800 text-white hover:border-[#b87333] transition-colors">
                       <SelectValue placeholder="Todos los tipos" />
                     </SelectTrigger>
                     <SelectContent>
@@ -227,9 +249,25 @@ export function CollectionClient({ motorcycles, brands, types }: CollectionClien
                 </div>
 
                 <div>
-                  <label className="text-sm text-gray-400 mb-2 block">Disponibilidad</label>
+                  <label className="text-sm text-gray-400 mb-2 block font-medium">Rango de Precio</label>
+                  <Select value={priceRange} onValueChange={setPriceRange}>
+                    <SelectTrigger className="bg-black border-zinc-800 text-white hover:border-[#b87333] transition-colors">
+                      <SelectValue placeholder="Todos los precios" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">Todos los precios</SelectItem>
+                      <SelectItem value="0-5000000">Hasta $5.000.000</SelectItem>
+                      <SelectItem value="5000000-10000000">$5M - $10M</SelectItem>
+                      <SelectItem value="10000000-15000000">$10M - $15M</SelectItem>
+                      <SelectItem value="15000000+">Más de $15M</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <label className="text-sm text-gray-400 mb-2 block font-medium">Disponibilidad</label>
                   <Select value={selectedStatus} onValueChange={setSelectedStatus}>
-                    <SelectTrigger className="bg-black border-zinc-800 text-white">
+                    <SelectTrigger className="bg-black border-zinc-800 text-white hover:border-[#b87333] transition-colors">
                       <SelectValue placeholder="Todas" />
                     </SelectTrigger>
                     <SelectContent>
@@ -271,11 +309,17 @@ export function CollectionClient({ motorcycles, brands, types }: CollectionClien
                     <X className="h-3 w-3 ml-1 cursor-pointer" onClick={() => setSelectedStatus("all")} />
                   </Badge>
                 )}
+                {priceRange !== "all" && (
+                  <Badge variant="secondary" className="bg-zinc-800 text-white">
+                    Precio: {priceRange === "0-5000000" ? "Hasta $5M" : priceRange === "5000000-10000000" ? "$5M-$10M" : priceRange === "10000000-15000000" ? "$10M-$15M" : "Más de $15M"}
+                    <X className="h-3 w-3 ml-1 cursor-pointer" onClick={() => setPriceRange("all")} />
+                  </Badge>
+                )}
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={clearFilters}
-                  className="text-[#b87333] hover:text-[#d4a574]"
+                  className="text-[#b87333] hover:text-[#d4a574] hover:bg-[#b87333]/10 transition-all"
                 >
                   Limpiar filtros
                 </Button>
@@ -293,7 +337,7 @@ export function CollectionClient({ motorcycles, brands, types }: CollectionClien
               {filteredMotorcycles.map((moto) => (
                 <div
                   key={moto.id}
-                  className={`group relative overflow-hidden transition-all duration-300 hover:scale-[1.02] bg-gradient-to-br from-zinc-900 to-zinc-950 border-2 border-[#b87333]/30 rounded-lg shadow-xl hover:shadow-2xl hover:shadow-[#b87333]/20 ${
+                  className={`group relative overflow-hidden transition-all duration-300 hover-lift bg-gradient-to-br from-zinc-900 to-zinc-950 border-2 border-[#b87333]/30 hover:border-[#b87333] rounded-xl shadow-xl hover:shadow-2xl hover:shadow-[#b87333]/30 animate-fade-in ${
                     viewMode === "list" ? "flex flex-row" : ""
                   }`}
                 >
@@ -307,16 +351,19 @@ export function CollectionClient({ motorcycles, brands, types }: CollectionClien
                         sizes={
                           viewMode === "list" ? "320px" : "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         }
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
                         loading="lazy"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-gray-600">Sin imagen</div>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent group-hover:from-black/70 transition-all duration-300" />
 
                     {/* Status Badge */}
                     <div className="absolute top-3 right-3">{getStatusBadge(moto.status)}</div>
+                    
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-[#b87333]/0 group-hover:bg-[#b87333]/10 transition-all duration-300" />
                   </div>
 
                   {/* Content */}
@@ -362,13 +409,16 @@ export function CollectionClient({ motorcycles, brands, types }: CollectionClien
 
                     <Link
                       href={`/coleccion/${moto.slug}`}
-                      className="block w-full py-3 px-6 text-sm tracking-widest uppercase font-medium transition-all duration-300 relative overflow-hidden group/btn text-center border border-[#b87333] text-[#d4a574] hover:text-black"
+                      className="block w-full py-3 px-6 text-sm tracking-widest uppercase font-medium transition-all duration-300 relative overflow-hidden group/btn text-center border-2 border-[#b87333] text-[#d4a574] hover:text-black rounded-lg hover:scale-105"
                       style={{ minHeight: "44px" }}
                     >
-                      <span className="relative z-10 group-hover/btn:text-black transition-colors duration-300">
+                      <span className="relative z-10 group-hover/btn:text-black transition-colors duration-300 flex items-center justify-center gap-2">
                         VER DETALLES
+                        <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
                       </span>
-                      <div className="absolute inset-0 bg-[#b87333] transform scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-300 origin-left" />
+                      <div className="absolute inset-0 bg-[#b87333] transform scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-300 origin-left shadow-lg shadow-[#b87333]/50" />
                     </Link>
                   </div>
                 </div>
