@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Award, Heart, Shield, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
+import { ScrollToTop } from "@/components/scroll-to-top"
 
 export const revalidate = 3600
 
@@ -161,42 +162,42 @@ export default function NosotrosPage() {
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-center text-white mb-16">
             Nuestros Valores y Compromiso
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 mx-auto rounded-full bg-[#b87333]/10 flex items-center justify-center">
-                <Heart className="w-8 h-8 text-[#b87333]" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <div className="text-center space-y-4 p-6 rounded-xl bg-black/30 border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift group">
+              <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-[#b87333]/20 to-[#b87333]/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <Heart className="w-10 h-10 text-[#b87333]" />
               </div>
-              <h3 className="text-xl font-bold text-white">Pasión</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#b87333] transition-colors">Pasión</h3>
               <p className="text-gray-400 leading-relaxed">
                 Amamos lo que hacemos y se nota en cada detalle de nuestro servicio
               </p>
             </div>
 
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 mx-auto rounded-full bg-[#b87333]/10 flex items-center justify-center">
-                <Shield className="w-8 h-8 text-[#b87333]" />
+            <div className="text-center space-y-4 p-6 rounded-xl bg-black/30 border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift group">
+              <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-[#b87333]/20 to-[#b87333]/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <Shield className="w-10 h-10 text-[#b87333]" />
               </div>
-              <h3 className="text-xl font-bold text-white">Confianza</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#b87333] transition-colors">Confianza</h3>
               <p className="text-gray-400 leading-relaxed">
                 Transparencia total en cada transacción y garantía de calidad
               </p>
             </div>
 
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 mx-auto rounded-full bg-[#b87333]/10 flex items-center justify-center">
-                <Award className="w-8 h-8 text-[#b87333]" />
+            <div className="text-center space-y-4 p-6 rounded-xl bg-black/30 border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift group">
+              <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-[#b87333]/20 to-[#b87333]/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <Award className="w-10 h-10 text-[#b87333]" />
               </div>
-              <h3 className="text-xl font-bold text-white">Calidad</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#b87333] transition-colors">Calidad</h3>
               <p className="text-gray-400 leading-relaxed">
                 Solo trabajamos con motos que cumplen nuestros estándares más altos
               </p>
             </div>
 
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 mx-auto rounded-full bg-[#b87333]/10 flex items-center justify-center">
-                <TrendingUp className="w-8 h-8 text-[#b87333]" />
+            <div className="text-center space-y-4 p-6 rounded-xl bg-black/30 border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift group">
+              <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-[#b87333]/20 to-[#b87333]/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <TrendingUp className="w-10 h-10 text-[#b87333]" />
               </div>
-              <h3 className="text-xl font-bold text-white">Experiencia</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#b87333] transition-colors">Experiencia</h3>
               <p className="text-gray-400 leading-relaxed">Años de conocimiento del mercado para asesorarte mejor</p>
             </div>
           </div>
@@ -318,7 +319,7 @@ export default function NosotrosPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
             <Link
               href="/coleccion"
-              className="px-8 py-4 bg-[#b87333] text-white font-semibold rounded-full hover:bg-[#a66329] transition-all text-lg min-w-[200px]"
+              className="px-8 py-4 bg-[#b87333] text-white font-semibold rounded-full hover:bg-[#a66329] transition-all duration-300 text-lg min-w-[200px] hover:scale-105 shadow-lg hover:shadow-[#b87333]/50"
             >
               Ver Colección
             </Link>
@@ -326,14 +327,14 @@ export default function NosotrosPage() {
               href="https://wa.me/5491234567890"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full hover:bg-white/20 transition-all border border-white/20 text-lg min-w-[200px] flex items-center justify-center gap-2"
+              className="px-8 py-4 glass-effect text-white font-semibold rounded-full hover:bg-white/20 transition-all duration-300 border border-white/20 text-lg min-w-[200px] flex items-center justify-center gap-2 hover:scale-105 shadow-lg"
             >
               <Image
                 src="/images/design-mode/f02e4899-1184-46a0-b3e6-60ad81b82123.png"
                 alt="WhatsApp"
                 width={24}
                 height={24}
-                className="w-6 h-6"
+                className="w-6 h-6 group-hover:rotate-12 transition-transform"
                 loading="lazy"
               />
               Contactar
@@ -341,6 +342,7 @@ export default function NosotrosPage() {
           </div>
         </div>
       </section>
+      <ScrollToTop />
     </main>
   )
 }
