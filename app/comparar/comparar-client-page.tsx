@@ -7,7 +7,6 @@ import { createClient } from "@/lib/supabase/client"
 import { PricingDisplay } from "@/components/pricing-display"
 import { X, Plus } from "lucide-react"
 import type { Motorcycle } from "@/lib/types"
-import { ScrollToTop } from "@/components/scroll-to-top"
 
 interface MotorcycleWithImage extends Motorcycle {
   image: string | null
@@ -278,7 +277,6 @@ export default function CompararClientPage() {
           )}
         </div>
       </section>
-      <ScrollToTop />
     </div>
   )
 }

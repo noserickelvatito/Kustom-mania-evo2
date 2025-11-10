@@ -4,7 +4,6 @@ import { createClient } from "@/lib/supabase/server"
 import type { SiteConfig, Motorcycle } from "@/lib/types"
 import { ArrowRight, Wrench, Sparkles, CheckCircle2 } from "lucide-react"
 import type { Metadata } from "next"
-import { ScrollToTop } from "@/components/scroll-to-top"
 import { FAQSection } from "@/components/faq-section"
 
 export const revalidate = 300
@@ -296,9 +295,7 @@ export default async function Home() {
                 Últimas <span className="text-[#b87333]">Incorporaciones</span>
               </h2>
               <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                Motos seleccionadas con pasión, cada una con su propia historia y personalidad. Descubre nuestra
-                colección actualizada de motocicletas custom, choppers, bobbers y Harley Davidson en excelente estado.
-                Stock permanente en nuestro showroom de Córdoba con envíos a todo Argentina.
+                Motos custom, choppers y Harley Davidson en excelente estado. Stock permanente en Córdoba con envíos a todo Argentina.
               </p>
             </div>
 
@@ -386,9 +383,7 @@ export default async function Home() {
               ¿Por Qué <span className="text-[#b87333]">Kustom Mania</span>?
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Tu mejor opción para comprar y vender motocicletas con confianza y transparencia. Somos líderes en
-              compra-venta de motos custom en Córdoba con más de 9 años de experiencia en el mercado argentino.
-              Ofrecemos las mejores marcas: Harley Davidson, choppers personalizadas, bobbers y motos clásicas vintage.
+              Líderes en compra-venta de motos custom en Córdoba con más de 9 años de experiencia. Harley Davidson, choppers, bobbers y motos clásicas.
             </p>
           </div>
 
@@ -399,7 +394,7 @@ export default async function Home() {
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#b87333] transition-colors">Calidad Garantizada</h3>
               <p className="text-gray-400 leading-relaxed">
-                Cada moto es inspeccionada y verificada. Solo ofrecemos motocicletas en excelente estado
+                Motocicletas inspeccionadas y verificadas en excelente estado
               </p>
             </div>
 
@@ -409,7 +404,7 @@ export default async function Home() {
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#b87333] transition-colors">Amplia Variedad</h3>
               <p className="text-gray-400 leading-relaxed">
-                Desde motos custom hasta deportivas y clásicas. Encuentra la moto perfecta para tu estilo
+                Custom, deportivas y clásicas. La moto perfecta para tu estilo
               </p>
             </div>
 
@@ -419,7 +414,7 @@ export default async function Home() {
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#b87333] transition-colors">Precios Justos</h3>
               <p className="text-gray-400 leading-relaxed">
-                Compramos y vendemos al mejor precio del mercado. Transparencia total en cada transacción
+                Mejor precio del mercado con transparencia total
               </p>
             </div>
           </div>
@@ -433,8 +428,7 @@ export default async function Home() {
               Cómo <span className="text-[#b87333]">Funciona</span>
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Comprar o vender tu moto es fácil y seguro con Kustom Mania. Proceso transparente garantizado desde
-              Córdoba para todo Argentina.
+              Proceso simple y transparente desde Córdoba para todo Argentina.
             </p>
           </div>
 
@@ -443,22 +437,22 @@ export default async function Home() {
               {
                 number: "01",
                 title: "Explorar",
-                description: "Navega nuestra colección actualizada de motos disponibles en stock",
+                description: "Navega nuestra colección de motos en stock",
               },
               {
                 number: "02",
                 title: "Contactar",
-                description: "Comunícate con nosotros por WhatsApp para consultas o agendar una visita",
+                description: "Comunícate por WhatsApp para consultas",
               },
               {
                 number: "03",
                 title: "Inspeccionar",
-                description: "Ven a ver la moto en persona, pruébala y verifica su estado",
+                description: "Ven a ver la moto en nuestro showroom",
               },
               {
                 number: "04",
                 title: "Adquirir",
-                description: "Completa la compra con toda la documentación en regla y garantía",
+                description: "Completa la compra con documentación en regla",
               },
             ].map((step, index) => (
               <div key={index} className="relative p-6 rounded-xl bg-black/30 border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift group">
@@ -474,72 +468,6 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="relative bg-zinc-950 py-20 md:py-32 border-y border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              Lo Que Dicen <span className="text-[#b87333]">Nuestros Clientes</span>
-            </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              La satisfacción de nuestros clientes es nuestra mejor carta de presentación
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {[
-              {
-                name: "Carlos M.",
-                location: "Buenos Aires",
-                text: "Excelente atención y asesoramiento. Compré mi Harley Davidson con total confianza. El envío a Buenos Aires fue perfecto.",
-                rating: 5,
-              },
-              {
-                name: "Laura G.",
-                location: "Córdoba",
-                text: "Profesionales en todo sentido. La moto llegó en perfectas condiciones y con toda la documentación al día. Muy recomendable.",
-                rating: 5,
-              },
-              {
-                name: "Miguel R.",
-                location: "Rosario",
-                text: "Mejor precio del mercado. Vendí mi moto vieja y compré una custom espectacular. Todo el proceso fue transparente y rápido.",
-                rating: 5,
-              },
-            ].map((testimonial, index) => (
-              <div
-                key={index}
-                className="p-6 md:p-8 rounded-xl bg-gradient-to-b from-black/50 to-black/30 border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift"
-              >
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <svg
-                      key={i}
-                      className="w-5 h-5 text-[#b87333]"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-gray-300 leading-relaxed mb-6 italic">"{testimonial.text}"</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-[#b87333]/10 flex items-center justify-center">
-                    <span className="text-[#b87333] font-bold text-lg">
-                      {testimonial.name.charAt(0)}
-                    </span>
-                  </div>
-                  <div>
-                    <p className="text-white font-semibold">{testimonial.name}</p>
-                    <p className="text-gray-500 text-sm">{testimonial.location}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <FAQSection />
 
       <section className="relative bg-zinc-950 py-20 md:py-32 border-y border-zinc-800">
@@ -548,9 +476,7 @@ export default async function Home() {
             ¿Buscas Tu Próxima <span className="text-[#b87333]">Moto</span>?
           </h2>
           <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
-            Explora nuestra colección completa de motos custom, Harley Davidson, choppers y bobbers en venta. Si quieres
-            vender tu moto, te ofrecemos el mejor precio del mercado. Contáctanos desde Córdoba para todo Argentina.
-            Financiación disponible, permutas aceptadas, envíos seguros a todo el país. Showroom abierto para visitas.
+            Explora nuestra colección completa. Financiación, permutas y envíos a todo el país. Showroom en Córdoba.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -603,7 +529,6 @@ export default async function Home() {
         </span>
         <span className="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full animate-bounce"></span>
       </a>
-      <ScrollToTop />
     </div>
   )
 }

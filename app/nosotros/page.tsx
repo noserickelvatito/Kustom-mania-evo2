@@ -2,7 +2,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { Award, Heart, Shield, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
-import { ScrollToTop } from "@/components/scroll-to-top"
 
 export const revalidate = 3600
 
@@ -342,7 +341,6 @@ export default function NosotrosPage() {
           </div>
         </div>
       </section>
-      <ScrollToTop />
     </main>
   )
 }
