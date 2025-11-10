@@ -5,6 +5,7 @@ import type { SiteConfig, Motorcycle } from "@/lib/types"
 import { ArrowRight, Wrench, Sparkles, CheckCircle2 } from "lucide-react"
 import type { Metadata } from "next"
 import { FAQSection } from "@/components/faq-section"
+import { DEFAULT_WHATSAPP_NUMBER } from "@/lib/constants"
 
 export const revalidate = 300
 
@@ -97,9 +98,7 @@ export default async function Home() {
   const mobileBackgroundUrl = "https://kusyom-mania.s3.sa-east-1.amazonaws.com/background-mobile.mp4"
   const isMobileVideo = /\.(mp4|webm|ogg)$/i.test(mobileBackgroundUrl)
 
-  const whatsappUrl = siteConfig.whatsapp_number
-    ? `https://wa.me/${siteConfig.whatsapp_number.replace(/\D/g, "")}`
-    : "https://wa.me/"
+  const whatsappUrl = `https://wa.me/${(siteConfig.whatsapp_number || DEFAULT_WHATSAPP_NUMBER).replace(/\D/g, "")}`
 
   const productsSchema = motorcycles?.map((moto: Motorcycle) => ({
     "@context": "https://schema.org",

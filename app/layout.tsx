@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { ConditionalNav } from "@/components/conditional-nav"
 import { Footer } from "@/components/footer"
+import { DEFAULT_WHATSAPP_NUMBER } from "@/lib/constants"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -243,7 +244,7 @@ export default async function RootLayout({
     sameAs: [
       "https://www.instagram.com/kustomania_cba/",
       "https://www.facebook.com/kustommania",
-      "https://wa.me/XXXXXXXXXXX",
+      `https://wa.me/${DEFAULT_WHATSAPP_NUMBER}`,
     ],
     potentialAction: {
       "@type": "TradeAction",

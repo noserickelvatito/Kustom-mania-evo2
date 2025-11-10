@@ -4,6 +4,7 @@ import { ImageGallery } from "@/components/image-gallery"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { PricingDisplay } from "@/components/pricing-display"
 import { Breadcrumbs } from "@/components/breadcrumbs"
+import { DEFAULT_WHATSAPP_NUMBER } from "@/lib/constants"
 
 export default async function MotorcycleDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -116,7 +117,7 @@ export default async function MotorcycleDetailPage({ params }: { params: Promise
                 {/* WhatsApp Button */}
                 <WhatsAppButton
                   motorcycleName={motorcycle.name}
-                  whatsappNumber={config?.whatsapp_number || ""}
+                  whatsappNumber={config?.whatsapp_number || DEFAULT_WHATSAPP_NUMBER}
                   motorcycleId={motorcycle.id}
                 />
               </div>
