@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { createClient } from "@/lib/supabase/client"
+import { DEFAULT_WHATSAPP_NUMBER } from "@/lib/constants"
 
 interface WhatsAppButtonProps {
   motorcycleName: string
@@ -45,7 +46,7 @@ export function WhatsAppButton({ motorcycleName, whatsappNumber, motorcycleId }:
       // Generate WhatsApp message
       const message = `Hola Kustom Mania, estoy interesado en la moto ${motorcycleName} desde ${location}. ¿Podrían darme más información?`
 
-      const formattedNumber = whatsappNumber.replace(/\D/g, "")
+      const formattedNumber = (whatsappNumber || DEFAULT_WHATSAPP_NUMBER).replace(/\D/g, "")
       const whatsappUrl = `https://wa.me/${formattedNumber}?text=${encodeURIComponent(message)}`
 
       // Open WhatsApp

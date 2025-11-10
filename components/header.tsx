@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { DEFAULT_WHATSAPP_NUMBER } from "@/lib/constants"
 
 interface HeaderProps {
   currentPage?: "inicio" | "coleccion" | "contacto"
@@ -6,7 +7,7 @@ interface HeaderProps {
 }
 
 export function Header({ currentPage = "inicio", whatsappNumber = "" }: HeaderProps) {
-  const whatsappUrl = whatsappNumber ? `https://wa.me/${whatsappNumber.replace(/\D/g, "")}` : "https://wa.me/"
+  const whatsappUrl = `https://wa.me/${(whatsappNumber || DEFAULT_WHATSAPP_NUMBER).replace(/\D/g, "")}`
 
   return (
     <header className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between px-4 sm:px-6 md:px-8 py-4 sm:py-6 gap-4 sm:gap-0 bg-black/80 backdrop-blur-sm">

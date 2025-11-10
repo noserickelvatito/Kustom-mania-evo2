@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Award, Heart, Shield, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
+import { DEFAULT_WHATSAPP_NUMBER } from "@/lib/constants"
 
 export const revalidate = 3600
 
@@ -323,7 +324,7 @@ export default function NosotrosPage() {
               Ver Colección
             </Link>
             <a
-              href="https://wa.me/5491234567890"
+              href={`https://wa.me/${DEFAULT_WHATSAPP_NUMBER}`}
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 glass-effect text-white font-semibold rounded-full hover:bg-white/20 transition-all duration-300 border border-white/20 text-lg min-w-[200px] flex items-center justify-center gap-2 hover:scale-105 shadow-lg"
