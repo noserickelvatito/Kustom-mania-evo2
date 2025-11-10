@@ -510,7 +510,7 @@ export default async function Home() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-24 md:bottom-8 right-6 z-40 w-14 h-14 md:w-16 md:h-16 bg-[#25D366] hover:bg-[#20BA5A] rounded-full shadow-2xl hover:shadow-[#25D366]/50 flex items-center justify-center transition-all duration-300 hover:scale-110 group animate-pulse-slow"
+        className="fixed bottom-28 md:bottom-8 right-6 z-[60] w-14 h-14 md:w-16 md:h-16 bg-[#25D366] hover:bg-[#20BA5A] rounded-full shadow-2xl hover:shadow-[#25D366]/50 flex items-center justify-center transition-all duration-300 hover:scale-110 group animate-pulse-slow"
         aria-label="Contactar por WhatsApp"
         style={{
           animation: "pulse-glow 2s infinite"
