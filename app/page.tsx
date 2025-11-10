@@ -4,6 +4,8 @@ import { createClient } from "@/lib/supabase/server"
 import type { SiteConfig, Motorcycle } from "@/lib/types"
 import { ArrowRight, Wrench, Sparkles, CheckCircle2 } from "lucide-react"
 import type { Metadata } from "next"
+import { ScrollToTop } from "@/components/scroll-to-top"
+import { FAQSection } from "@/components/faq-section"
 
 export const revalidate = 300
 
@@ -224,7 +226,7 @@ export default async function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href="/coleccion"
-                className="group relative inline-block w-full sm:w-auto px-8 sm:px-10 md:px-12 py-3 sm:py-4 text-xs sm:text-sm tracking-widest uppercase font-medium transition-all duration-300"
+                className="group relative inline-block w-full sm:w-auto px-8 sm:px-10 md:px-12 py-3 sm:py-4 text-xs sm:text-sm tracking-widest uppercase font-medium transition-all duration-300 hover:scale-105 rounded-lg overflow-hidden"
                 style={{
                   color: "#d4a574",
                   border: "2px solid #b87333",
@@ -245,14 +247,14 @@ export default async function Home() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 w-full sm:w-auto px-8 sm:px-10 md:px-12 py-3 sm:py-4 bg-[#25D366] hover:bg-[#20BA5A] text-white text-xs sm:text-sm tracking-widest uppercase font-medium transition-all duration-300 rounded-lg shadow-lg hover:shadow-[#25D366]/50"
+                className="inline-flex items-center gap-3 w-full sm:w-auto px-8 sm:px-10 md:px-12 py-3 sm:py-4 bg-[#25D366] hover:bg-[#20BA5A] text-white text-xs sm:text-sm tracking-widest uppercase font-medium transition-all duration-300 rounded-lg shadow-lg hover:shadow-[#25D366]/50 hover:scale-105"
               >
                 <Image
                   src="/images/design-mode/f02e4899-1184-46a0-b3e6-60ad81b82123.png"
                   alt="WhatsApp"
                   width={24}
                   height={24}
-                  className="w-5 h-5 sm:w-6 sm:h-6"
+                  className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-12 transition-transform"
                   priority
                 />
                 Consultar por WhatsApp
@@ -265,22 +267,22 @@ export default async function Home() {
       <section className="relative bg-zinc-950 py-20 md:py-32 border-t border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="sr-only">Estadísticas de Kustom Mania</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            <div className="text-center">
-              <div className="text-4xl md:text-6xl font-bold text-[#b87333] mb-2">9+</div>
-              <p className="text-sm md:text-base text-gray-400 uppercase tracking-wider">Años de Experiencia</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            <div className="text-center p-6 rounded-xl bg-black/30 border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift">
+              <div className="text-4xl md:text-6xl font-bold text-[#b87333] mb-3 animate-fade-in-up">9+</div>
+              <p className="text-xs md:text-sm text-gray-400 uppercase tracking-wider font-medium">Años de Experiencia</p>
             </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-6xl font-bold text-[#b87333] mb-2">130+</div>
-              <p className="text-sm md:text-base text-gray-400 uppercase tracking-wider">Motos Vendidas</p>
+            <div className="text-center p-6 rounded-xl bg-black/30 border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift" style={{ animationDelay: "0.1s" }}>
+              <div className="text-4xl md:text-6xl font-bold text-[#b87333] mb-3 animate-fade-in-up">130+</div>
+              <p className="text-xs md:text-sm text-gray-400 uppercase tracking-wider font-medium">Motos Vendidas</p>
             </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-6xl font-bold text-[#b87333] mb-2">100%</div>
-              <p className="text-sm md:text-base text-gray-400 uppercase tracking-wider">Clientes Satisfechos</p>
+            <div className="text-center p-6 rounded-xl bg-black/30 border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift" style={{ animationDelay: "0.2s" }}>
+              <div className="text-4xl md:text-6xl font-bold text-[#b87333] mb-3 animate-fade-in-up">100%</div>
+              <p className="text-xs md:text-sm text-gray-400 uppercase tracking-wider font-medium">Clientes Satisfechos</p>
             </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-6xl font-bold text-[#b87333] mb-2">20+</div>
-              <p className="text-sm md:text-base text-gray-400 uppercase tracking-wider">Motos en Stock</p>
+            <div className="text-center p-6 rounded-xl bg-black/30 border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift" style={{ animationDelay: "0.3s" }}>
+              <div className="text-4xl md:text-6xl font-bold text-[#b87333] mb-3 animate-fade-in-up">20+</div>
+              <p className="text-xs md:text-sm text-gray-400 uppercase tracking-wider font-medium">Motos en Stock</p>
             </div>
           </div>
         </div>
@@ -300,14 +302,14 @@ export default async function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {motorcycles.map((moto: Motorcycle) => {
                 const primaryImage = moto.images?.find((img: any) => img.is_primary) || moto.images?.[0]
                 return (
                   <Link
                     key={moto.id}
                     href={`/coleccion/${moto.slug}`}
-                    className="group relative overflow-hidden bg-zinc-900 rounded-lg border border-zinc-800 hover:border-[#b87333] transition-all duration-300"
+                    className="group relative overflow-hidden bg-zinc-900 rounded-xl border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift"
                   >
                     <div className="aspect-[4/3] relative overflow-hidden">
                       {primaryImage ? (
@@ -316,7 +318,7 @@ export default async function Home() {
                           alt={moto.name}
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                           loading="lazy"
                           quality={85}
                         />
@@ -325,16 +327,21 @@ export default async function Home() {
                           <span className="text-zinc-600">Sin imagen</span>
                         </div>
                       )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent group-hover:from-black/70 transition-all duration-300" />
+                      <div className="absolute top-4 right-4 bg-[#b87333] text-black px-3 py-1 rounded-full text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        Ver más
+                      </div>
                     </div>
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#b87333] transition-colors">
+                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#b87333] transition-colors duration-300">
                         {moto.name}
                       </h3>
                       <p className="text-gray-400 text-sm mb-4 line-clamp-2">{moto.description}</p>
                       <div className="flex items-center justify-between">
-                        <span className="text-[#b87333] font-bold text-lg">${moto.price?.toLocaleString()}</span>
-                        <ArrowRight className="w-5 h-5 text-[#b87333] group-hover:translate-x-1 transition-transform" />
+                        <span className="text-[#b87333] font-bold text-xl">${moto.price?.toLocaleString()}</span>
+                        <div className="w-10 h-10 rounded-full bg-[#b87333]/10 flex items-center justify-center group-hover:bg-[#b87333] transition-colors duration-300">
+                          <ArrowRight className="w-5 h-5 text-[#b87333] group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />
+                        </div>
                       </div>
                     </div>
                   </Link>
@@ -385,33 +392,33 @@ export default async function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-8 bg-black/50 rounded-lg border border-zinc-800 hover:border-[#b87333] transition-colors">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[#b87333]/10 flex items-center justify-center">
-                <CheckCircle2 className="w-8 h-8 text-[#b87333]" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <div className="text-center p-8 bg-gradient-to-b from-black/50 to-black/30 rounded-xl border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift group">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#b87333]/20 to-[#b87333]/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <CheckCircle2 className="w-10 h-10 text-[#b87333]" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Calidad Garantizada</h3>
-              <p className="text-gray-400">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#b87333] transition-colors">Calidad Garantizada</h3>
+              <p className="text-gray-400 leading-relaxed">
                 Cada moto es inspeccionada y verificada. Solo ofrecemos motocicletas en excelente estado
               </p>
             </div>
 
-            <div className="text-center p-8 bg-black/50 rounded-lg border border-zinc-800 hover:border-[#b87333] transition-colors">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[#b87333]/10 flex items-center justify-center">
-                <Sparkles className="w-8 h-8 text-[#b87333]" />
+            <div className="text-center p-8 bg-gradient-to-b from-black/50 to-black/30 rounded-xl border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift group">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#b87333]/20 to-[#b87333]/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <Sparkles className="w-10 h-10 text-[#b87333]" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Amplia Variedad</h3>
-              <p className="text-gray-400">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#b87333] transition-colors">Amplia Variedad</h3>
+              <p className="text-gray-400 leading-relaxed">
                 Desde motos custom hasta deportivas y clásicas. Encuentra la moto perfecta para tu estilo
               </p>
             </div>
 
-            <div className="text-center p-8 bg-black/50 rounded-lg border border-zinc-800 hover:border-[#b87333] transition-colors">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[#b87333]/10 flex items-center justify-center">
-                <Wrench className="w-8 h-8 text-[#b87333]" />
+            <div className="text-center p-8 bg-gradient-to-b from-black/50 to-black/30 rounded-xl border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift group">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#b87333]/20 to-[#b87333]/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <Wrench className="w-10 h-10 text-[#b87333]" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Precios Justos</h3>
-              <p className="text-gray-400">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#b87333] transition-colors">Precios Justos</h3>
+              <p className="text-gray-400 leading-relaxed">
                 Compramos y vendemos al mejor precio del mercado. Transparencia total en cada transacción
               </p>
             </div>
@@ -431,7 +438,7 @@ export default async function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {[
               {
                 number: "01",
@@ -454,12 +461,12 @@ export default async function Home() {
                 description: "Completa la compra con toda la documentación en regla y garantía",
               },
             ].map((step, index) => (
-              <div key={index} className="relative">
-                <div className="text-6xl md:text-8xl font-bold text-[#b87333]/10 mb-4">{step.number}</div>
-                <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
-                <p className="text-gray-400">{step.description}</p>
+              <div key={index} className="relative p-6 rounded-xl bg-black/30 border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift group">
+                <div className="text-6xl md:text-7xl font-bold text-[#b87333]/20 group-hover:text-[#b87333]/30 transition-colors mb-4">{step.number}</div>
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-[#b87333] transition-colors">{step.title}</h3>
+                <p className="text-gray-400 leading-relaxed text-sm md:text-base">{step.description}</p>
                 {index < 3 && (
-                  <div className="hidden md:block absolute top-12 left-full w-full h-0.5 bg-gradient-to-r from-[#b87333] to-transparent" />
+                  <div className="hidden lg:block absolute top-1/2 left-full w-full h-px bg-gradient-to-r from-[#b87333]/50 to-transparent" />
                 )}
               </div>
             ))}
@@ -467,7 +474,75 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="relative bg-black py-20 md:py-32">
+      <section className="relative bg-zinc-950 py-20 md:py-32 border-y border-zinc-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              Lo Que Dicen <span className="text-[#b87333]">Nuestros Clientes</span>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              La satisfacción de nuestros clientes es nuestra mejor carta de presentación
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {[
+              {
+                name: "Carlos M.",
+                location: "Buenos Aires",
+                text: "Excelente atención y asesoramiento. Compré mi Harley Davidson con total confianza. El envío a Buenos Aires fue perfecto.",
+                rating: 5,
+              },
+              {
+                name: "Laura G.",
+                location: "Córdoba",
+                text: "Profesionales en todo sentido. La moto llegó en perfectas condiciones y con toda la documentación al día. Muy recomendable.",
+                rating: 5,
+              },
+              {
+                name: "Miguel R.",
+                location: "Rosario",
+                text: "Mejor precio del mercado. Vendí mi moto vieja y compré una custom espectacular. Todo el proceso fue transparente y rápido.",
+                rating: 5,
+              },
+            ].map((testimonial, index) => (
+              <div
+                key={index}
+                className="p-6 md:p-8 rounded-xl bg-gradient-to-b from-black/50 to-black/30 border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift"
+              >
+                <div className="flex gap-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <svg
+                      key={i}
+                      className="w-5 h-5 text-[#b87333]"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-300 leading-relaxed mb-6 italic">"{testimonial.text}"</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-[#b87333]/10 flex items-center justify-center">
+                    <span className="text-[#b87333] font-bold text-lg">
+                      {testimonial.name.charAt(0)}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="text-white font-semibold">{testimonial.name}</p>
+                    <p className="text-gray-500 text-sm">{testimonial.location}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <FAQSection />
+
+      <section className="relative bg-zinc-950 py-20 md:py-32 border-y border-zinc-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
             ¿Buscas Tu Próxima <span className="text-[#b87333]">Moto</span>?
@@ -509,21 +584,26 @@ export default async function Home() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-24 md:bottom-8 right-6 z-40 w-14 h-14 md:w-16 md:h-16 bg-[#25D366] hover:bg-[#20BA5A] rounded-full shadow-2xl hover:shadow-[#25D366]/50 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+        className="fixed bottom-24 md:bottom-8 right-6 z-40 w-14 h-14 md:w-16 md:h-16 bg-[#25D366] hover:bg-[#20BA5A] rounded-full shadow-2xl hover:shadow-[#25D366]/50 flex items-center justify-center transition-all duration-300 hover:scale-110 group animate-pulse-slow"
         aria-label="Contactar por WhatsApp"
+        style={{
+          animation: "pulse-glow 2s infinite"
+        }}
       >
         <Image
           src="/images/design-mode/f02e4899-1184-46a0-b3e6-60ad81b82123.png"
           alt="WhatsApp"
           width={32}
           height={32}
-          className="w-8 h-8 md:w-9 md:h-9 group-hover:scale-110 transition-transform"
+          className="w-8 h-8 md:w-9 md:h-9 group-hover:rotate-12 transition-transform"
           loading="lazy"
         />
-        <span className="absolute -top-12 right-0 bg-black/90 text-white text-sm px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+        <span className="absolute -top-14 right-0 bg-black/90 text-white text-xs md:text-sm px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap shadow-xl border border-[#25D366]/30">
           ¡Chateá con nosotros!
         </span>
+        <span className="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full animate-bounce"></span>
       </a>
+      <ScrollToTop />
     </div>
   )
 }
