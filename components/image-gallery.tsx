@@ -1,16 +1,36 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import type { MotorcycleImage } from "@/lib/types"
+import { trackViewItemList } from "@/lib/analytics"
 
 interface ImageGalleryProps {
   images: MotorcycleImage[]
   motorcycleName: string
+  motorcycleId: string
+  brand?: string | null
+  type?: string | null
 }
 
-export function ImageGallery({ images, motorcycleName }: ImageGalleryProps) {
+export function ImageGallery({ images, motorcycleName, motorcycleId, brand, type }: ImageGalleryProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const trackedRef = useRef(false)
+
+  // Track view_item_list when the gallery is viewed
+  useEffect(() => {
+    if (images.length > 1 && !trackedRef.current) {
+      trackedRef.current = true
+      trackViewItemList("Image Gallery", [
+        {
+          product_id: motorcycleId,
+          product_name: motorcycleName,
+          marca: brand,
+          tipo_de_moto: type,
+        },
+      ])
+    }
+  }, [images.length, motorcycleId, motorcycleName, brand, type])
 
   if (!images || images.length === 0) {
     return (
