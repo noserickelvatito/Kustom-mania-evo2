@@ -3,20 +3,44 @@
 import { useState } from "react"
 import { createClient } from "@/lib/supabase/client"
 import { DEFAULT_WHATSAPP_NUMBER } from "@/lib/constants"
+import { trackGenerateLead } from "@/lib/analytics"
 
 interface WhatsAppButtonProps {
   motorcycleName: string
   whatsappNumber: string
   motorcycleId: string
+  motorcycleBrand?: string | null
+  motorcycleType?: string | null
+  motorcyclePrice?: number
 }
 
-export function WhatsAppButton({ motorcycleName, whatsappNumber, motorcycleId }: WhatsAppButtonProps) {
+export function WhatsAppButton({
+  motorcycleName,
+  whatsappNumber,
+  motorcycleId,
+  motorcycleBrand,
+  motorcycleType,
+  motorcyclePrice,
+}: WhatsAppButtonProps) {
   const [isLoading, setIsLoading] = useState(false)
 
   const handleWhatsAppClick = async () => {
     setIsLoading(true)
 
     try {
+      // Track generate_lead event in GA4
+      trackGenerateLead(
+        {
+          product_id: motorcycleId,
+          product_name: motorcycleName,
+          marca: motorcycleBrand,
+          tipo_de_moto: motorcycleType,
+          price: motorcyclePrice,
+          currency: "ARS",
+        },
+        "whatsapp"
+      )
+
       // Get user location (optional)
       let location = "ubicación no especificada"
       if (navigator.geolocation) {

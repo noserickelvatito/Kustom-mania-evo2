@@ -305,6 +305,19 @@ export default async function RootLayout({
   return (
     <html lang="es-AR">
       <head>
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FY3VWE3KYB"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-FY3VWE3KYB');
+            `,
+          }}
+        />
+
         <meta name="theme-color" content="#000000" />
         <meta name="color-scheme" content="dark light" />
         <meta name="apple-mobile-web-app-capable" content="yes" />

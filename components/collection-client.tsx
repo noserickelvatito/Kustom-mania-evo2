@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Search, SlidersHorizontal, Grid3x3, List, X } from "lucide-react"
@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge"
 import { PricingDisplay } from "@/components/pricing-display"
 import type { Motorcycle } from "@/lib/types"
+import { useSearchTracking } from "@/hooks/use-analytics"
 
 interface CollectionClientProps {
   motorcycles: (Motorcycle & { image: string | null })[]
@@ -26,6 +27,8 @@ export function CollectionClient({ motorcycles, brands, types }: CollectionClien
   const [sortBy, setSortBy] = useState<string>("display_order")
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
   const [showFilters, setShowFilters] = useState(false)
+
+  const trackSearchDebounced = useSearchTracking()
 
   // Filter and sort motorcycles
   const filteredMotorcycles = useMemo(() => {
@@ -94,7 +97,20 @@ export function CollectionClient({ motorcycles, brands, types }: CollectionClien
     })
 
     return filtered
-  }, [motorcycles, searchQuery, selectedBrand, selectedType, selectedStatus, sortBy])
+  }, [motorcycles, searchQuery, selectedBrand, selectedType, selectedStatus, priceRange, sortBy])
+
+  // Track search and filter changes
+  useEffect(() => {
+    if (searchQuery || selectedBrand !== "all" || selectedType !== "all" || priceRange !== "all") {
+      trackSearchDebounced({
+        search_term: searchQuery,
+        filter_brand: selectedBrand !== "all" ? selectedBrand : undefined,
+        filter_type: selectedType !== "all" ? selectedType : undefined,
+        filter_price_range: priceRange !== "all" ? priceRange : undefined,
+        results_count: filteredMotorcycles.length,
+      })
+    }
+  }, [searchQuery, selectedBrand, selectedType, priceRange, filteredMotorcycles.length, trackSearchDebounced])
 
   const clearFilters = () => {
     setSearchQuery("")
