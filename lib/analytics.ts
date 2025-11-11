@@ -5,7 +5,7 @@
 
 // GA4 Event parameters types
 export interface GAEventParams {
-  [key: string]: string | number | boolean | undefined
+  [key: string]: any
 }
 
 export interface GAProductParams {
