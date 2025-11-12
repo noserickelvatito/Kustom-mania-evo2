@@ -25,8 +25,12 @@ export function SalesPipeline({ motorcycles: initialMotorcycles }: SalesPipeline
   const [isUpdating, setIsUpdating] = useState<string | null>(null)
   const router = useRouter()
 
-  const updateStatus = async (motorcycleId: string, newStatus: string) => {
+  const updateStatus = async (motorcycleId: string, newStatus: string, motorcycleName: string) => {
     setIsUpdating(motorcycleId)
+
+    const { toast } = await import("sonner")
+    const loadingToast = toast.loading("Actualizando estado...")
+
     try {
       const supabase = createClient()
       const { error } = await supabase.from("motorcycles").update({ status: newStatus }).eq("id", motorcycleId)
@@ -36,9 +40,25 @@ export function SalesPipeline({ motorcycles: initialMotorcycles }: SalesPipeline
       setMotorcycles((prev) =>
         prev.map((moto) => (moto.id === motorcycleId ? { ...moto, status: newStatus as any } : moto)),
       )
+
+      const statusLabels: Record<string, string> = {
+        stock: "En Stock",
+        reserved: "Reservada",
+        sold: "Vendida",
+        delivered: "Entregada",
+      }
+
+      toast.success(`Estado actualizado a ${statusLabels[newStatus]}`, {
+        id: loadingToast,
+        description: motorcycleName,
+      })
       router.refresh()
     } catch (error) {
       console.error("[v0] Error updating status:", error)
+      toast.error("Error al actualizar el estado", {
+        id: loadingToast,
+        description: "Por favor, intenta nuevamente",
+      })
     } finally {
       setIsUpdating(null)
     }
@@ -96,17 +116,17 @@ export function SalesPipeline({ motorcycles: initialMotorcycles }: SalesPipeline
                           <Button
                             size="sm"
                             variant="default"
-                            className="flex-1"
+                            className="flex-1 bg-[#b87333] hover:bg-[#b87333]/90"
                             disabled={isUpdating === moto.id}
                             onClick={() => {
                               const currentIndex = stages.findIndex((s) => s.id === stage.id)
                               const nextStage = stages[currentIndex + 1]
                               if (nextStage) {
-                                updateStatus(moto.id, nextStage.id)
+                                updateStatus(moto.id, nextStage.id, moto.name)
                               }
                             }}
                           >
-                            {isUpdating === moto.id ? "..." : "→"}
+                            {isUpdating === moto.id ? "⏳" : "→"}
                           </Button>
                         )}
                       </div>
