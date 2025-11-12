@@ -114,9 +114,9 @@ export default async function AdminDashboard() {
 
       {/* Alerts */}
       {alerts.length > 0 && (
-        <Card className="border-orange-500/50 bg-orange-500/5">
+        <Card className="border-orange-500/50 bg-orange-500/5 dark:bg-orange-950/20">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-orange-600">
+            <CardTitle className="flex items-center gap-2 text-orange-600 dark:text-orange-400">
               <AlertCircle className="h-5 w-5" />
               Alertas ({alerts.length})
             </CardTitle>
@@ -125,17 +125,24 @@ export default async function AdminDashboard() {
           <CardContent>
             <div className="space-y-2">
               {alerts.slice(0, 5).map((moto) => (
-                <div key={moto.id} className="flex items-center justify-between p-2 rounded-lg bg-background">
+                <div
+                  key={moto.id}
+                  className="flex items-center justify-between p-3 rounded-lg bg-background border hover:shadow-md transition-shadow"
+                >
                   <div>
                     <p className="font-medium">{moto.name}</p>
-                    <p className="text-sm text-muted-foreground">
+                    <div className="flex flex-wrap gap-2 mt-1 text-sm">
                       {moto.margin_percentage !== null && moto.margin_percentage < 15 && (
-                        <span className="text-orange-600">Margen bajo: {moto.margin_percentage.toFixed(1)}%</span>
+                        <span className="text-orange-600 dark:text-orange-400 flex items-center gap-1">
+                          ⚠️ Margen bajo: {moto.margin_percentage.toFixed(1)}%
+                        </span>
                       )}
                       {moto.days_in_stock !== null && moto.days_in_stock > 90 && moto.status !== "sold" && (
-                        <span className="text-orange-600">Rotación lenta: {moto.days_in_stock} días</span>
+                        <span className="text-orange-600 dark:text-orange-400 flex items-center gap-1">
+                          🐌 Rotación lenta: {moto.days_in_stock} días
+                        </span>
                       )}
-                    </p>
+                    </div>
                   </div>
                 </div>
               ))}
