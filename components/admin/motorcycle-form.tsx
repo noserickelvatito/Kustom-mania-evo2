@@ -90,6 +90,9 @@ export function MotorcycleForm({ motorcycle }: MotorcycleFormProps) {
     setIsLoading(true)
     setError(null)
 
+    const { toast } = await import("sonner")
+    const loadingToast = toast.loading(motorcycle ? "Actualizando motocicleta..." : "Creando motocicleta...")
+
     try {
       const supabase = createClient()
 
@@ -124,6 +127,9 @@ export function MotorcycleForm({ motorcycle }: MotorcycleFormProps) {
 
         if (error) throw error
 
+        toast.success("Motocicleta actualizada exitosamente", {
+          id: loadingToast,
+        })
         router.refresh()
       } else {
         const { data: newMotorcycle, error } = await supabase
@@ -134,11 +140,19 @@ export function MotorcycleForm({ motorcycle }: MotorcycleFormProps) {
 
         if (error) throw error
 
+        toast.success("Motocicleta creada exitosamente", {
+          id: loadingToast,
+        })
         router.push(`/km-secret-panel-2025/motorcycles/${newMotorcycle.id}/edit`)
       }
     } catch (err) {
       console.error("[v0] Error saving motorcycle:", err)
-      setError(err instanceof Error ? err.message : "Error al guardar la motocicleta")
+      const errorMessage = err instanceof Error ? err.message : "Error al guardar la motocicleta"
+      setError(errorMessage)
+      toast.error("Error al guardar", {
+        id: loadingToast,
+        description: errorMessage,
+      })
     } finally {
       setIsLoading(false)
     }

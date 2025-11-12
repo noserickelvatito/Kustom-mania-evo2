@@ -2,6 +2,7 @@ import type React from "react"
 import { createClient } from "@/lib/supabase/server"
 import { AdminSidebar } from "@/components/admin/admin-sidebar"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/sonner"
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient()
@@ -15,6 +16,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
         <AdminSidebar />
         <main className="flex-1 overflow-y-auto">{children}</main>
       </div>
+      <Toaster />
     </ThemeProvider>
   )
 }
