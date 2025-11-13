@@ -20,7 +20,7 @@ export function RecentActivity({ leads }: { leads: Lead[] }) {
     <div className="space-y-4">
       {leads.map((lead) => (
         <div key={lead.id} className="flex items-start gap-4">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-500/10">
+          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-blue-500/10">
             <MessageSquare className="h-4 w-4 text-blue-600" />
           </div>
           <div className="flex-1 space-y-1">
