@@ -24,14 +24,6 @@ export function MotorcyclesSection({ children }: SectionWrapperProps) {
   )
 }
 
-export function WhyKustomSection({ children }: SectionWrapperProps) {
-  return (
-    <ScrollReveal delay={150}>
-      {children}
-    </ScrollReveal>
-  )
-}
-
 export function HowItWorksSection({ children }: SectionWrapperProps) {
   return (
     <ScrollReveal delay={100}>

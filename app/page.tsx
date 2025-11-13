@@ -2,14 +2,13 @@ import Link from "next/link"
 import Image from "next/image"
 import { createClient } from "@/lib/supabase/server"
 import type { SiteConfig, Motorcycle } from "@/lib/types"
-import { ArrowRight, Wrench, Sparkles, CheckCircle2 } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import type { Metadata } from "next"
 import { FAQSection } from "@/components/faq-section"
 import { DEFAULT_WHATSAPP_NUMBER } from "@/lib/constants"
 import { 
   StatsSection, 
   MotorcyclesSection, 
-  WhyKustomSection, 
   HowItWorksSection, 
   FAQSectionWrapper,
   FinalCTASection 
@@ -467,68 +466,7 @@ export default async function Home() {
         </MotorcyclesSection>
       )}
 
-      <WhyKustomSection>
-        <section className="relative bg-zinc-950 py-20 md:py-32 border-y border-zinc-800 overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: "radial-gradient(circle at 20% 50%, rgba(184, 115, 51, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(212, 165, 116, 0.15) 0%, transparent 50%)"
-          }}></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 animate-fade-in-up">
-              ¿Por Qué <span className="text-gradient animate-gradient" style={{
-                background: "linear-gradient(135deg, #b87333 0%, #d4a574 50%, #b87333 100%)",
-                backgroundSize: "200% 200%",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text"
-              }}>Kustom Mania</span>?
-            </h2>
-            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-              Líderes en compra-venta de motos custom en Córdoba con más de 9 años de experiencia. Harley Davidson, choppers, bobbers y motos clásicas.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <div className="text-center p-8 bg-gradient-to-br from-black/60 via-black/40 to-black/60 rounded-xl border border-zinc-800 hover:border-[#b87333] transition-all duration-500 hover-lift group shadow-glow-hover backdrop-blur-sm">
-              <div className="relative w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#b87333]/30 to-[#b87333]/10 flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-glow-hover">
-                <CheckCircle2 className="w-12 h-12 text-[#b87333] group-hover:text-[#d4a574] transition-colors" />
-                <div className="absolute inset-0 rounded-full bg-[#b87333]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#d4a574] transition-colors">Calidad Garantizada</h3>
-              <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
-                Motocicletas inspeccionadas y verificadas en excelente estado
-              </p>
-            </div>
-
-            <div className="text-center p-8 bg-gradient-to-br from-black/60 via-black/40 to-black/60 rounded-xl border border-zinc-800 hover:border-[#b87333] transition-all duration-500 hover-lift group shadow-glow-hover backdrop-blur-sm">
-              <div className="relative w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#b87333]/30 to-[#b87333]/10 flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-glow-hover">
-                <Sparkles className="w-12 h-12 text-[#b87333] group-hover:text-[#d4a574] transition-colors" />
-                <div className="absolute inset-0 rounded-full bg-[#b87333]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#d4a574] transition-colors">Amplia Variedad</h3>
-              <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
-                Custom, deportivas y clásicas. La moto perfecta para tu estilo
-              </p>
-            </div>
-
-            <div className="text-center p-8 bg-gradient-to-br from-black/60 via-black/40 to-black/60 rounded-xl border border-zinc-800 hover:border-[#b87333] transition-all duration-500 hover-lift group shadow-glow-hover backdrop-blur-sm">
-              <div className="relative w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#b87333]/30 to-[#b87333]/10 flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-glow-hover">
-                <Wrench className="w-12 h-12 text-[#b87333] group-hover:text-[#d4a574] transition-colors" />
-                <div className="absolute inset-0 rounded-full bg-[#b87333]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#d4a574] transition-colors">Precios Justos</h3>
-              <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
-                Mejor precio del mercado con transparencia total
-              </p>
-            </div>
-          </div>
-          </div>
-        </section>
-      </WhyKustomSection>
-
-      <HowItWorksSection>
+<HowItWorksSection>
         <section className="relative bg-black py-20 md:py-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
