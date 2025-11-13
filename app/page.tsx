@@ -6,6 +6,14 @@ import { ArrowRight, Wrench, Sparkles, CheckCircle2 } from "lucide-react"
 import type { Metadata } from "next"
 import { FAQSection } from "@/components/faq-section"
 import { DEFAULT_WHATSAPP_NUMBER } from "@/lib/constants"
+import { 
+  StatsSection, 
+  MotorcyclesSection, 
+  WhyKustomSection, 
+  HowItWorksSection, 
+  FAQSectionWrapper,
+  FinalCTASection 
+} from "@/components/home-sections-client"
 
 export const revalidate = 300
 
@@ -276,13 +284,14 @@ export default async function Home() {
         </main>
       </div>
 
-      <section className="relative bg-zinc-950 py-20 md:py-32 border-t border-zinc-800 overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#b87333] to-transparent"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <h2 className="sr-only">Estadísticas de Kustom Mania</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+      <StatsSection>
+        <section className="relative bg-zinc-950 py-20 md:py-32 border-t border-zinc-800 overflow-hidden">
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#b87333] to-transparent"></div>
+          </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h2 className="sr-only">Estadísticas de Kustom Mania</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             <div className="text-center p-8 rounded-xl bg-gradient-to-br from-black/50 via-black/30 to-black/50 border border-zinc-800 hover:border-[#b87333] transition-all duration-500 hover-lift group shadow-glow-hover backdrop-blur-sm">
               <div className="relative">
                 <div className="text-5xl md:text-7xl font-black mb-3 animate-fade-in-up text-gradient animate-gradient" 
@@ -355,12 +364,14 @@ export default async function Home() {
               <p className="text-xs md:text-sm text-gray-300 uppercase tracking-wider font-bold group-hover:text-[#d4a574] transition-colors">Motos en Stock</p>
             </div>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
+      </StatsSection>
 
       {motorcycles && motorcycles.length > 0 && (
-        <section className="relative bg-black py-20 md:py-32">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <MotorcyclesSection>
+          <section className="relative bg-black py-20 md:py-32">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
                 Últimas <span className="text-[#b87333]">Incorporaciones</span>
@@ -451,11 +462,13 @@ export default async function Home() {
                 Consultar Disponibilidad
               </a>
             </div>
-          </div>
-        </section>
+            </div>
+          </section>
+        </MotorcyclesSection>
       )}
 
-      <section className="relative bg-zinc-950 py-20 md:py-32 border-y border-zinc-800 overflow-hidden">
+      <WhyKustomSection>
+        <section className="relative bg-zinc-950 py-20 md:py-32 border-y border-zinc-800 overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
             backgroundImage: "radial-gradient(circle at 20% 50%, rgba(184, 115, 51, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(212, 165, 116, 0.15) 0%, transparent 50%)"
@@ -511,11 +524,13 @@ export default async function Home() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
+      </WhyKustomSection>
 
-      <section className="relative bg-black py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <HowItWorksSection>
+        <section className="relative bg-black py-20 md:py-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
               Cómo <span className="text-[#b87333]">Funciona</span>
@@ -558,12 +573,16 @@ export default async function Home() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
+      </HowItWorksSection>
 
-      <FAQSection />
+      <FAQSectionWrapper>
+        <FAQSection />
+      </FAQSectionWrapper>
 
-      <section className="relative bg-zinc-950 py-20 md:py-32 border-y border-zinc-800 overflow-hidden">
+      <FinalCTASection>
+        <section className="relative bg-zinc-950 py-20 md:py-32 border-y border-zinc-800 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: "radial-gradient(circle at 50% 50%, rgba(184, 115, 51, 0.3) 0%, transparent 70%)"
@@ -616,8 +635,9 @@ export default async function Home() {
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
+      </FinalCTASection>
 
       <a
         href={whatsappUrl}
