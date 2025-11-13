@@ -194,13 +194,13 @@ export default async function Home() {
 
         {/* Hero Content */}
         <main className="relative z-10 flex flex-col items-center justify-center h-full px-4 sm:px-6 md:px-8 pb-32 md:pb-0">
-          <div className="text-center max-w-5xl w-full">
+          <div className="text-center max-w-5xl w-full animate-fade-in-up">
             <div
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-wider mb-4 sm:mb-6"
+              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-wider mb-4 sm:mb-6 animate-glow-pulse"
               style={{
                 fontFamily: 'Impact, "Arial Black", sans-serif',
                 color: "#b87333",
-                textShadow: "0 0 30px rgba(184, 115, 51, 0.5), 0 0 60px rgba(184, 115, 51, 0.3)",
+                textShadow: "0 0 30px rgba(184, 115, 51, 0.5), 0 0 60px rgba(184, 115, 51, 0.3), 0 0 90px rgba(184, 115, 51, 0.2)",
                 letterSpacing: "0.1em",
               }}
             >
@@ -208,35 +208,45 @@ export default async function Home() {
             </div>
 
             <p
-              className="text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.3em] mb-8 sm:mb-10 md:mb-12 font-light"
+              className="text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.3em] mb-8 sm:mb-10 md:mb-12 font-light animate-fade-in"
               style={{
                 color: "#d4a574",
-                textShadow: "0 0 20px rgba(212, 165, 116, 0.4)",
+                textShadow: "0 0 20px rgba(212, 165, 116, 0.4), 0 0 40px rgba(212, 165, 116, 0.2)",
+                animationDelay: "0.2s",
               }}
             >
               {siteConfig.hero_subtitle}
             </p>
 
-            <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-10 sm:mb-12 md:mb-16 font-light tracking-wide px-4">
+            <p 
+              className="text-base sm:text-lg md:text-xl text-gray-300 mb-10 sm:mb-12 md:mb-16 font-light tracking-wide px-4 animate-fade-in"
+              style={{ animationDelay: "0.4s" }}
+            >
               {siteConfig.hero_description}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div 
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-scale-in"
+              style={{ animationDelay: "0.6s" }}
+            >
               <Link
                 href="/coleccion"
-                className="group relative inline-block w-full sm:w-auto px-8 sm:px-10 md:px-12 py-3 sm:py-4 text-xs sm:text-sm tracking-widest uppercase font-medium transition-all duration-300 hover:scale-105 rounded-lg overflow-hidden"
+                className="group relative inline-block w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-xs sm:text-sm tracking-widest uppercase font-bold transition-all duration-300 hover:scale-110 rounded-lg overflow-hidden shadow-glow-hover"
                 style={{
                   color: "#d4a574",
                   border: "2px solid #b87333",
+                  background: "linear-gradient(135deg, rgba(184, 115, 51, 0.1), rgba(212, 165, 116, 0.1))",
                 }}
               >
-                <span className="relative z-10 group-hover:text-black transition-colors duration-300">
+                <span className="relative z-10 group-hover:text-black transition-colors duration-300 flex items-center gap-2">
                   {siteConfig.hero_button_text}
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </span>
                 <div
-                  className="absolute inset-0 bg-[#b87333] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                  className="absolute inset-0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
                   style={{
-                    boxShadow: "0 0 30px rgba(184, 115, 51, 0.6)",
+                    background: "linear-gradient(135deg, #b87333, #d4a574)",
+                    boxShadow: "0 0 40px rgba(184, 115, 51, 0.8)",
                   }}
                 />
               </Link>
@@ -245,14 +255,18 @@ export default async function Home() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 w-full sm:w-auto px-8 sm:px-10 md:px-12 py-3 sm:py-4 bg-[#25D366] hover:bg-[#20BA5A] text-white text-xs sm:text-sm tracking-widest uppercase font-medium transition-all duration-300 rounded-lg shadow-lg hover:shadow-[#25D366]/50 hover:scale-105"
+                className="inline-flex items-center gap-3 w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-white text-xs sm:text-sm tracking-widest uppercase font-bold transition-all duration-300 rounded-lg shadow-glow hover:scale-110"
+                style={{
+                  background: "linear-gradient(135deg, #25D366, #20BA5A)",
+                  boxShadow: "0 0 30px rgba(37, 211, 102, 0.5)",
+                }}
               >
                 <Image
                   src="/images/design-mode/f02e4899-1184-46a0-b3e6-60ad81b82123.png"
                   alt="WhatsApp"
                   width={24}
                   height={24}
-                  className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-12 transition-transform"
+                  className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-12 transition-transform animate-float"
                   priority
                 />
                 Consultar por WhatsApp
@@ -262,25 +276,83 @@ export default async function Home() {
         </main>
       </div>
 
-      <section className="relative bg-zinc-950 py-20 md:py-32 border-t border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-zinc-950 py-20 md:py-32 border-t border-zinc-800 overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#b87333] to-transparent"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="sr-only">Estadísticas de Kustom Mania</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            <div className="text-center p-6 rounded-xl bg-black/30 border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift">
-              <div className="text-4xl md:text-6xl font-bold text-[#b87333] mb-3 animate-fade-in-up">9+</div>
-              <p className="text-xs md:text-sm text-gray-400 uppercase tracking-wider font-medium">Años de Experiencia</p>
+            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-black/50 via-black/30 to-black/50 border border-zinc-800 hover:border-[#b87333] transition-all duration-500 hover-lift group shadow-glow-hover backdrop-blur-sm">
+              <div className="relative">
+                <div className="text-5xl md:text-7xl font-black mb-3 animate-fade-in-up text-gradient animate-gradient" 
+                     style={{
+                       background: "linear-gradient(135deg, #b87333 0%, #d4a574 50%, #b87333 100%)",
+                       backgroundSize: "200% 200%",
+                       WebkitBackgroundClip: "text",
+                       WebkitTextFillColor: "transparent",
+                       backgroundClip: "text"
+                     }}>
+                  9+
+                </div>
+                <div className="absolute inset-0 blur-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" 
+                     style={{ background: "radial-gradient(circle, rgba(184, 115, 51, 0.4) 0%, transparent 70%)" }}></div>
+              </div>
+              <p className="text-xs md:text-sm text-gray-300 uppercase tracking-wider font-bold group-hover:text-[#d4a574] transition-colors">Años de Experiencia</p>
             </div>
-            <div className="text-center p-6 rounded-xl bg-black/30 border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift" style={{ animationDelay: "0.1s" }}>
-              <div className="text-4xl md:text-6xl font-bold text-[#b87333] mb-3 animate-fade-in-up">130+</div>
-              <p className="text-xs md:text-sm text-gray-400 uppercase tracking-wider font-medium">Motos Vendidas</p>
+            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-black/50 via-black/30 to-black/50 border border-zinc-800 hover:border-[#b87333] transition-all duration-500 hover-lift group shadow-glow-hover backdrop-blur-sm" style={{ animationDelay: "0.1s" }}>
+              <div className="relative">
+                <div className="text-5xl md:text-7xl font-black mb-3 animate-fade-in-up text-gradient animate-gradient" 
+                     style={{
+                       background: "linear-gradient(135deg, #b87333 0%, #d4a574 50%, #b87333 100%)",
+                       backgroundSize: "200% 200%",
+                       WebkitBackgroundClip: "text",
+                       WebkitTextFillColor: "transparent",
+                       backgroundClip: "text",
+                       animationDelay: "0.5s"
+                     }}>
+                  130+
+                </div>
+                <div className="absolute inset-0 blur-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" 
+                     style={{ background: "radial-gradient(circle, rgba(184, 115, 51, 0.4) 0%, transparent 70%)" }}></div>
+              </div>
+              <p className="text-xs md:text-sm text-gray-300 uppercase tracking-wider font-bold group-hover:text-[#d4a574] transition-colors">Motos Vendidas</p>
             </div>
-            <div className="text-center p-6 rounded-xl bg-black/30 border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift" style={{ animationDelay: "0.2s" }}>
-              <div className="text-4xl md:text-6xl font-bold text-[#b87333] mb-3 animate-fade-in-up">100%</div>
-              <p className="text-xs md:text-sm text-gray-400 uppercase tracking-wider font-medium">Clientes Satisfechos</p>
+            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-black/50 via-black/30 to-black/50 border border-zinc-800 hover:border-[#b87333] transition-all duration-500 hover-lift group shadow-glow-hover backdrop-blur-sm" style={{ animationDelay: "0.2s" }}>
+              <div className="relative">
+                <div className="text-5xl md:text-7xl font-black mb-3 animate-fade-in-up text-gradient animate-gradient" 
+                     style={{
+                       background: "linear-gradient(135deg, #b87333 0%, #d4a574 50%, #b87333 100%)",
+                       backgroundSize: "200% 200%",
+                       WebkitBackgroundClip: "text",
+                       WebkitTextFillColor: "transparent",
+                       backgroundClip: "text",
+                       animationDelay: "1s"
+                     }}>
+                  100%
+                </div>
+                <div className="absolute inset-0 blur-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" 
+                     style={{ background: "radial-gradient(circle, rgba(184, 115, 51, 0.4) 0%, transparent 70%)" }}></div>
+              </div>
+              <p className="text-xs md:text-sm text-gray-300 uppercase tracking-wider font-bold group-hover:text-[#d4a574] transition-colors">Clientes Satisfechos</p>
             </div>
-            <div className="text-center p-6 rounded-xl bg-black/30 border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift" style={{ animationDelay: "0.3s" }}>
-              <div className="text-4xl md:text-6xl font-bold text-[#b87333] mb-3 animate-fade-in-up">20+</div>
-              <p className="text-xs md:text-sm text-gray-400 uppercase tracking-wider font-medium">Motos en Stock</p>
+            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-black/50 via-black/30 to-black/50 border border-zinc-800 hover:border-[#b87333] transition-all duration-500 hover-lift group shadow-glow-hover backdrop-blur-sm" style={{ animationDelay: "0.3s" }}>
+              <div className="relative">
+                <div className="text-5xl md:text-7xl font-black mb-3 animate-fade-in-up text-gradient animate-gradient" 
+                     style={{
+                       background: "linear-gradient(135deg, #b87333 0%, #d4a574 50%, #b87333 100%)",
+                       backgroundSize: "200% 200%",
+                       WebkitBackgroundClip: "text",
+                       WebkitTextFillColor: "transparent",
+                       backgroundClip: "text",
+                       animationDelay: "1.5s"
+                     }}>
+                  20+
+                </div>
+                <div className="absolute inset-0 blur-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" 
+                     style={{ background: "radial-gradient(circle, rgba(184, 115, 51, 0.4) 0%, transparent 70%)" }}></div>
+              </div>
+              <p className="text-xs md:text-sm text-gray-300 uppercase tracking-wider font-bold group-hover:text-[#d4a574] transition-colors">Motos en Stock</p>
             </div>
           </div>
         </div>
@@ -348,17 +420,25 @@ export default async function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
               <Link
                 href="/coleccion"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#b87333] text-black font-semibold rounded-lg hover:bg-[#d4a574] transition-colors"
+                className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-bold transition-all duration-300 hover:scale-105 shadow-glow-hover"
+                style={{
+                  background: "linear-gradient(135deg, #b87333, #d4a574)",
+                  boxShadow: "0 0 30px rgba(184, 115, 51, 0.4)"
+                }}
               >
-                Ver Toda la Colección
-                <ArrowRight className="w-5 h-5" />
+                <span className="text-black">Ver Toda la Colección</span>
+                <ArrowRight className="w-5 h-5 text-black group-hover:translate-x-1 transition-transform" />
               </Link>
 
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#25D366] hover:bg-[#20BA5A] text-white font-semibold rounded-lg transition-colors shadow-lg hover:shadow-[#25D366]/50"
+                className="group inline-flex items-center justify-center gap-3 px-8 py-4 text-white font-bold rounded-lg transition-all duration-300 hover:scale-105"
+                style={{
+                  background: "linear-gradient(135deg, #25D366, #20BA5A)",
+                  boxShadow: "0 0 30px rgba(37, 211, 102, 0.4)"
+                }}
               >
                 <Image
                   src="/images/design-mode/f02e4899-1184-46a0-b3e6-60ad81b82123.png"
@@ -375,44 +455,58 @@ export default async function Home() {
         </section>
       )}
 
-      <section className="relative bg-zinc-950 py-20 md:py-32 border-y border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-zinc-950 py-20 md:py-32 border-y border-zinc-800 overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: "radial-gradient(circle at 20% 50%, rgba(184, 115, 51, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(212, 165, 116, 0.15) 0%, transparent 50%)"
+          }}></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              ¿Por Qué <span className="text-[#b87333]">Kustom Mania</span>?
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 animate-fade-in-up">
+              ¿Por Qué <span className="text-gradient animate-gradient" style={{
+                background: "linear-gradient(135deg, #b87333 0%, #d4a574 50%, #b87333 100%)",
+                backgroundSize: "200% 200%",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text"
+              }}>Kustom Mania</span>?
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
               Líderes en compra-venta de motos custom en Córdoba con más de 9 años de experiencia. Harley Davidson, choppers, bobbers y motos clásicas.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <div className="text-center p-8 bg-gradient-to-b from-black/50 to-black/30 rounded-xl border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift group">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#b87333]/20 to-[#b87333]/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <CheckCircle2 className="w-10 h-10 text-[#b87333]" />
+            <div className="text-center p-8 bg-gradient-to-br from-black/60 via-black/40 to-black/60 rounded-xl border border-zinc-800 hover:border-[#b87333] transition-all duration-500 hover-lift group shadow-glow-hover backdrop-blur-sm">
+              <div className="relative w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#b87333]/30 to-[#b87333]/10 flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-glow-hover">
+                <CheckCircle2 className="w-12 h-12 text-[#b87333] group-hover:text-[#d4a574] transition-colors" />
+                <div className="absolute inset-0 rounded-full bg-[#b87333]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#b87333] transition-colors">Calidad Garantizada</h3>
-              <p className="text-gray-400 leading-relaxed">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#d4a574] transition-colors">Calidad Garantizada</h3>
+              <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
                 Motocicletas inspeccionadas y verificadas en excelente estado
               </p>
             </div>
 
-            <div className="text-center p-8 bg-gradient-to-b from-black/50 to-black/30 rounded-xl border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift group">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#b87333]/20 to-[#b87333]/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <Sparkles className="w-10 h-10 text-[#b87333]" />
+            <div className="text-center p-8 bg-gradient-to-br from-black/60 via-black/40 to-black/60 rounded-xl border border-zinc-800 hover:border-[#b87333] transition-all duration-500 hover-lift group shadow-glow-hover backdrop-blur-sm">
+              <div className="relative w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#b87333]/30 to-[#b87333]/10 flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-glow-hover">
+                <Sparkles className="w-12 h-12 text-[#b87333] group-hover:text-[#d4a574] transition-colors" />
+                <div className="absolute inset-0 rounded-full bg-[#b87333]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#b87333] transition-colors">Amplia Variedad</h3>
-              <p className="text-gray-400 leading-relaxed">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#d4a574] transition-colors">Amplia Variedad</h3>
+              <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
                 Custom, deportivas y clásicas. La moto perfecta para tu estilo
               </p>
             </div>
 
-            <div className="text-center p-8 bg-gradient-to-b from-black/50 to-black/30 rounded-xl border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift group">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#b87333]/20 to-[#b87333]/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <Wrench className="w-10 h-10 text-[#b87333]" />
+            <div className="text-center p-8 bg-gradient-to-br from-black/60 via-black/40 to-black/60 rounded-xl border border-zinc-800 hover:border-[#b87333] transition-all duration-500 hover-lift group shadow-glow-hover backdrop-blur-sm">
+              <div className="relative w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#b87333]/30 to-[#b87333]/10 flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-glow-hover">
+                <Wrench className="w-12 h-12 text-[#b87333] group-hover:text-[#d4a574] transition-colors" />
+                <div className="absolute inset-0 rounded-full bg-[#b87333]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#b87333] transition-colors">Precios Justos</h3>
-              <p className="text-gray-400 leading-relaxed">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#d4a574] transition-colors">Precios Justos</h3>
+              <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
                 Mejor precio del mercado con transparencia total
               </p>
             </div>
@@ -469,37 +563,57 @@ export default async function Home() {
 
       <FAQSection />
 
-      <section className="relative bg-zinc-950 py-20 md:py-32 border-y border-zinc-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            ¿Buscas Tu Próxima <span className="text-[#b87333]">Moto</span>?
+      <section className="relative bg-zinc-950 py-20 md:py-32 border-y border-zinc-800 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: "radial-gradient(circle at 50% 50%, rgba(184, 115, 51, 0.3) 0%, transparent 70%)"
+          }}></div>
+        </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in-up">
+            ¿Buscas Tu Próxima <span className="text-gradient animate-gradient" style={{
+              background: "linear-gradient(135deg, #b87333 0%, #d4a574 50%, #b87333 100%)",
+              backgroundSize: "200% 200%",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text"
+            }}>Moto</span>?
           </h2>
-          <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
-            Explora nuestra colección completa. Financiación, permutas y envíos a todo el país. Showroom en Córdoba.
+          <p className="text-gray-300 text-xl mb-10 max-w-2xl mx-auto font-light">
+            Explora nuestra colección completa. <span className="text-[#d4a574] font-semibold">Financiación</span>, <span className="text-[#d4a574] font-semibold">permutas</span> y <span className="text-[#d4a574] font-semibold">envíos a todo el país</span>. Showroom en Córdoba.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#25D366] hover:bg-[#20BA5A] text-white font-semibold rounded-lg transition-colors shadow-lg hover:shadow-[#25D366]/50"
+              className="group inline-flex items-center justify-center gap-3 px-10 py-5 text-white font-bold rounded-lg transition-all duration-300 hover:scale-110 text-lg"
+              style={{
+                background: "linear-gradient(135deg, #25D366, #20BA5A)",
+                boxShadow: "0 0 40px rgba(37, 211, 102, 0.5), 0 10px 30px rgba(0, 0, 0, 0.3)"
+              }}
             >
               <Image
                 src="/images/design-mode/f02e4899-1184-46a0-b3e6-60ad81b82123.png"
                 alt="WhatsApp"
                 width={24}
                 height={24}
-                className="w-6 h-6 md:w-9 md:h-9"
+                className="w-7 h-7 md:w-8 md:h-8 group-hover:scale-110 transition-transform"
                 loading="lazy"
               />
               Contactar por WhatsApp
             </a>
             <Link
               href="/coleccion"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-[#b87333] text-[#b87333] font-semibold rounded-lg hover:bg-[#b87333] hover:text-black transition-colors"
+              className="group inline-flex items-center justify-center gap-2 px-10 py-5 border-2 font-bold rounded-lg transition-all duration-300 hover:scale-110 text-lg shadow-glow-hover backdrop-blur-sm"
+              style={{
+                borderColor: "#b87333",
+                color: "#d4a574",
+                background: "rgba(184, 115, 51, 0.1)"
+              }}
             >
               Ver Colección
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>
@@ -509,24 +623,29 @@ export default async function Home() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-28 md:bottom-8 right-6 z-[60] w-14 h-14 md:w-16 md:h-16 bg-[#25D366] hover:bg-[#20BA5A] rounded-full shadow-2xl hover:shadow-[#25D366]/50 flex items-center justify-center transition-all duration-300 hover:scale-110 group animate-pulse-slow"
+        className="fixed bottom-28 md:bottom-8 right-6 z-[60] w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-125 group"
         aria-label="Contactar por WhatsApp"
         style={{
-          animation: "pulse-glow 2s infinite"
+          background: "linear-gradient(135deg, #25D366, #20BA5A)",
+          boxShadow: "0 0 40px rgba(37, 211, 102, 0.6), 0 10px 30px rgba(0, 0, 0, 0.5)",
+          animation: "pulse-glow 2s infinite, float 3s ease-in-out infinite"
         }}
       >
+        <div className="absolute inset-0 rounded-full bg-[#25D366] opacity-50 blur-xl animate-pulse"></div>
         <Image
           src="/images/design-mode/f02e4899-1184-46a0-b3e6-60ad81b82123.png"
           alt="WhatsApp"
           width={32}
           height={32}
-          className="w-8 h-8 md:w-9 md:h-9 group-hover:rotate-12 transition-transform"
+          className="relative z-10 w-9 h-9 md:w-11 md:h-11 group-hover:rotate-12 transition-transform"
           loading="lazy"
         />
-        <span className="absolute -top-14 right-0 bg-black/90 text-white text-xs md:text-sm px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap shadow-xl border border-[#25D366]/30">
-          ¡Chateá con nosotros!
+        <span className="absolute -top-16 right-0 bg-gradient-to-r from-black via-black/95 to-black text-white text-xs md:text-sm px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap border border-[#25D366]/50 shadow-glow font-bold">
+          ¡Chateá con nosotros! 💬
         </span>
-        <span className="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full animate-bounce"></span>
+        <span className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-red-500 to-red-600 rounded-full animate-bounce shadow-lg">
+          <span className="absolute inset-0 rounded-full bg-red-400 animate-ping"></span>
+        </span>
       </a>
     </div>
   )
