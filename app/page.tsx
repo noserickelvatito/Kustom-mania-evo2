@@ -284,85 +284,140 @@ export default async function Home() {
       </div>
 
       <StatsSection>
-        <section className="relative bg-zinc-950 py-20 md:py-32 border-t border-zinc-800 overflow-hidden">
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#b87333] to-transparent"></div>
+        <section className="relative bg-zinc-950 py-20 md:py-32 overflow-hidden">
+          {/* Animated background effects */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#b87333]/5 rounded-full blur-3xl animate-float"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#d4a574]/5 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }}></div>
           </div>
+          
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <h2 className="sr-only">Estadísticas de Kustom Mania</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-black/50 via-black/30 to-black/50 border border-zinc-800 hover:border-[#b87333] transition-all duration-500 hover-lift group shadow-glow-hover backdrop-blur-sm">
-              <div className="relative">
-                <div className="text-5xl md:text-7xl font-black mb-3 animate-fade-in-up text-gradient animate-gradient" 
-                     style={{
-                       background: "linear-gradient(135deg, #b87333 0%, #d4a574 50%, #b87333 100%)",
-                       backgroundSize: "200% 200%",
-                       WebkitBackgroundClip: "text",
-                       WebkitTextFillColor: "transparent",
-                       backgroundClip: "text"
-                     }}>
-                  9+
+            
+            {/* New modern design - overlapping circles layout */}
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+              {/* Stat 1 */}
+              <div className="group relative animate-fade-in-up" style={{ animationDelay: "0s" }}>
+                <div className="relative w-40 h-40 md:w-52 md:h-52">
+                  {/* Outer glow ring */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#b87333] to-[#d4a574] opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500"></div>
+                  
+                  {/* Main circle */}
+                  <div className="absolute inset-2 rounded-full bg-gradient-to-br from-zinc-900/90 to-black/90 backdrop-blur-sm border-2 border-[#b87333]/30 group-hover:border-[#b87333] transition-all duration-500 group-hover:scale-105 flex flex-col items-center justify-center shadow-2xl">
+                    <div className="text-4xl md:text-6xl font-black text-gradient animate-gradient"
+                         style={{
+                           background: "linear-gradient(135deg, #b87333 0%, #d4a574 50%, #b87333 100%)",
+                           backgroundSize: "200% 200%",
+                           WebkitBackgroundClip: "text",
+                           WebkitTextFillColor: "transparent",
+                           backgroundClip: "text"
+                         }}>
+                      9+
+                    </div>
+                    <div className="text-[10px] md:text-xs text-gray-400 uppercase tracking-widest font-bold mt-2 text-center px-4 group-hover:text-[#d4a574] transition-colors">
+                      Años
+                    </div>
+                  </div>
+                  
+                  {/* Rotating border effect */}
+                  <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                       style={{
+                         background: "conic-gradient(from 0deg, transparent, #b87333, transparent)",
+                         animation: "spin 3s linear infinite"
+                       }}></div>
                 </div>
-                <div className="absolute inset-0 blur-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" 
-                     style={{ background: "radial-gradient(circle, rgba(184, 115, 51, 0.4) 0%, transparent 70%)" }}></div>
               </div>
-              <p className="text-xs md:text-sm text-gray-300 uppercase tracking-wider font-bold group-hover:text-[#d4a574] transition-colors">Años de Experiencia</p>
-            </div>
-            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-black/50 via-black/30 to-black/50 border border-zinc-800 hover:border-[#b87333] transition-all duration-500 hover-lift group shadow-glow-hover backdrop-blur-sm" style={{ animationDelay: "0.1s" }}>
-              <div className="relative">
-                <div className="text-5xl md:text-7xl font-black mb-3 animate-fade-in-up text-gradient animate-gradient" 
-                     style={{
-                       background: "linear-gradient(135deg, #b87333 0%, #d4a574 50%, #b87333 100%)",
-                       backgroundSize: "200% 200%",
-                       WebkitBackgroundClip: "text",
-                       WebkitTextFillColor: "transparent",
-                       backgroundClip: "text",
-                       animationDelay: "0.5s"
-                     }}>
-                  130+
+
+              {/* Stat 2 */}
+              <div className="group relative animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+                <div className="relative w-40 h-40 md:w-52 md:h-52">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#b87333] to-[#d4a574] opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500"></div>
+                  
+                  <div className="absolute inset-2 rounded-full bg-gradient-to-br from-zinc-900/90 to-black/90 backdrop-blur-sm border-2 border-[#b87333]/30 group-hover:border-[#b87333] transition-all duration-500 group-hover:scale-105 flex flex-col items-center justify-center shadow-2xl">
+                    <div className="text-4xl md:text-6xl font-black text-gradient animate-gradient"
+                         style={{
+                           background: "linear-gradient(135deg, #b87333 0%, #d4a574 50%, #b87333 100%)",
+                           backgroundSize: "200% 200%",
+                           WebkitBackgroundClip: "text",
+                           WebkitTextFillColor: "transparent",
+                           backgroundClip: "text",
+                           animationDelay: "0.5s"
+                         }}>
+                      130+
+                    </div>
+                    <div className="text-[10px] md:text-xs text-gray-400 uppercase tracking-widest font-bold mt-2 text-center px-4 group-hover:text-[#d4a574] transition-colors">
+                      Vendidas
+                    </div>
+                  </div>
+                  
+                  <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                       style={{
+                         background: "conic-gradient(from 0deg, transparent, #b87333, transparent)",
+                         animation: "spin 3s linear infinite"
+                       }}></div>
                 </div>
-                <div className="absolute inset-0 blur-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" 
-                     style={{ background: "radial-gradient(circle, rgba(184, 115, 51, 0.4) 0%, transparent 70%)" }}></div>
               </div>
-              <p className="text-xs md:text-sm text-gray-300 uppercase tracking-wider font-bold group-hover:text-[#d4a574] transition-colors">Motos Vendidas</p>
-            </div>
-            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-black/50 via-black/30 to-black/50 border border-zinc-800 hover:border-[#b87333] transition-all duration-500 hover-lift group shadow-glow-hover backdrop-blur-sm" style={{ animationDelay: "0.2s" }}>
-              <div className="relative">
-                <div className="text-5xl md:text-7xl font-black mb-3 animate-fade-in-up text-gradient animate-gradient" 
-                     style={{
-                       background: "linear-gradient(135deg, #b87333 0%, #d4a574 50%, #b87333 100%)",
-                       backgroundSize: "200% 200%",
-                       WebkitBackgroundClip: "text",
-                       WebkitTextFillColor: "transparent",
-                       backgroundClip: "text",
-                       animationDelay: "1s"
-                     }}>
-                  100%
+
+              {/* Stat 3 */}
+              <div className="group relative animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+                <div className="relative w-40 h-40 md:w-52 md:h-52">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#b87333] to-[#d4a574] opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500"></div>
+                  
+                  <div className="absolute inset-2 rounded-full bg-gradient-to-br from-zinc-900/90 to-black/90 backdrop-blur-sm border-2 border-[#b87333]/30 group-hover:border-[#b87333] transition-all duration-500 group-hover:scale-105 flex flex-col items-center justify-center shadow-2xl">
+                    <div className="text-4xl md:text-6xl font-black text-gradient animate-gradient"
+                         style={{
+                           background: "linear-gradient(135deg, #b87333 0%, #d4a574 50%, #b87333 100%)",
+                           backgroundSize: "200% 200%",
+                           WebkitBackgroundClip: "text",
+                           WebkitTextFillColor: "transparent",
+                           backgroundClip: "text",
+                           animationDelay: "1s"
+                         }}>
+                      100%
+                    </div>
+                    <div className="text-[10px] md:text-xs text-gray-400 uppercase tracking-widest font-bold mt-2 text-center px-4 group-hover:text-[#d4a574] transition-colors">
+                      Satisfechos
+                    </div>
+                  </div>
+                  
+                  <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                       style={{
+                         background: "conic-gradient(from 0deg, transparent, #b87333, transparent)",
+                         animation: "spin 3s linear infinite"
+                       }}></div>
                 </div>
-                <div className="absolute inset-0 blur-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" 
-                     style={{ background: "radial-gradient(circle, rgba(184, 115, 51, 0.4) 0%, transparent 70%)" }}></div>
               </div>
-              <p className="text-xs md:text-sm text-gray-300 uppercase tracking-wider font-bold group-hover:text-[#d4a574] transition-colors">Clientes Satisfechos</p>
-            </div>
-            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-black/50 via-black/30 to-black/50 border border-zinc-800 hover:border-[#b87333] transition-all duration-500 hover-lift group shadow-glow-hover backdrop-blur-sm" style={{ animationDelay: "0.3s" }}>
-              <div className="relative">
-                <div className="text-5xl md:text-7xl font-black mb-3 animate-fade-in-up text-gradient animate-gradient" 
-                     style={{
-                       background: "linear-gradient(135deg, #b87333 0%, #d4a574 50%, #b87333 100%)",
-                       backgroundSize: "200% 200%",
-                       WebkitBackgroundClip: "text",
-                       WebkitTextFillColor: "transparent",
-                       backgroundClip: "text",
-                       animationDelay: "1.5s"
-                     }}>
-                  20+
+
+              {/* Stat 4 */}
+              <div className="group relative animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
+                <div className="relative w-40 h-40 md:w-52 md:h-52">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#b87333] to-[#d4a574] opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500"></div>
+                  
+                  <div className="absolute inset-2 rounded-full bg-gradient-to-br from-zinc-900/90 to-black/90 backdrop-blur-sm border-2 border-[#b87333]/30 group-hover:border-[#b87333] transition-all duration-500 group-hover:scale-105 flex flex-col items-center justify-center shadow-2xl">
+                    <div className="text-4xl md:text-6xl font-black text-gradient animate-gradient"
+                         style={{
+                           background: "linear-gradient(135deg, #b87333 0%, #d4a574 50%, #b87333 100%)",
+                           backgroundSize: "200% 200%",
+                           WebkitBackgroundClip: "text",
+                           WebkitTextFillColor: "transparent",
+                           backgroundClip: "text",
+                           animationDelay: "1.5s"
+                         }}>
+                      20+
+                    </div>
+                    <div className="text-[10px] md:text-xs text-gray-400 uppercase tracking-widest font-bold mt-2 text-center px-4 group-hover:text-[#d4a574] transition-colors">
+                      En Stock
+                    </div>
+                  </div>
+                  
+                  <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                       style={{
+                         background: "conic-gradient(from 0deg, transparent, #b87333, transparent)",
+                         animation: "spin 3s linear infinite"
+                       }}></div>
                 </div>
-                <div className="absolute inset-0 blur-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" 
-                     style={{ background: "radial-gradient(circle, rgba(184, 115, 51, 0.4) 0%, transparent 70%)" }}></div>
               </div>
-              <p className="text-xs md:text-sm text-gray-300 uppercase tracking-wider font-bold group-hover:text-[#d4a574] transition-colors">Motos en Stock</p>
             </div>
-          </div>
           </div>
         </section>
       </StatsSection>
