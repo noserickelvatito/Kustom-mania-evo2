@@ -330,7 +330,7 @@ export default function NosotrosPage() {
               className="px-8 py-4 glass-effect text-white font-semibold rounded-full hover:bg-white/20 transition-all duration-300 border border-white/20 text-lg min-w-[200px] flex items-center justify-center gap-2 hover:scale-105 shadow-lg"
             >
               <Image
-                src="/images/design-mode/f02e4899-1184-46a0-b3e6-60ad81b82123.png"
+                src="/images/whatsapp-logo.svg"
                 alt="WhatsApp"
                 width={24}
                 height={24}

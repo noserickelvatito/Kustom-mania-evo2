@@ -268,7 +268,7 @@ export default async function Home() {
                 }}
               >
                 <Image
-                  src="/images/design-mode/f02e4899-1184-46a0-b3e6-60ad81b82123.png"
+                  src="/images/whatsapp-logo.svg"
                   alt="WhatsApp"
                   width={24}
                   height={24}
@@ -366,7 +366,7 @@ export default async function Home() {
                 }}
               >
                 <Image
-                  src="/images/design-mode/f02e4899-1184-46a0-b3e6-60ad81b82123.png"
+                  src="/images/whatsapp-logo.svg"
                   alt="WhatsApp"
                   width={24}
                   height={24}
@@ -430,6 +430,76 @@ export default async function Home() {
         </section>
       </HowItWorksSection>
 
+      {/* Video Section */}
+      <section className="relative bg-zinc-950 py-20 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: "radial-gradient(circle at 50% 50%, rgba(184, 115, 51, 0.2) 0%, transparent 70%)"
+          }}></div>
+        </div>
+        
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              Conocé Nuestro <span className="text-[#b87333]">Showroom</span>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Dale play y descubrí la experiencia Kustom Mania. Motos custom, servicio personalizado y pasión por las dos ruedas en Córdoba.
+            </p>
+          </div>
+
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-[#b87333]/30 hover:border-[#b87333]/60 transition-all duration-500 group">
+            <div className="aspect-video bg-zinc-900">
+              {/* Placeholder for video - can be replaced with YouTube embed or custom video */}
+              <div className="w-full h-full flex items-center justify-center relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 to-black opacity-90"></div>
+                <div className="relative z-10 text-center px-4">
+                  <div className="w-20 h-20 md:w-24 md:h-24 mx-auto mb-6 rounded-full bg-[#b87333]/20 flex items-center justify-center group-hover:bg-[#b87333]/40 transition-all duration-300 group-hover:scale-110">
+                    <svg className="w-10 h-10 md:w-12 md:h-12 text-[#b87333]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                  <p className="text-gray-400 text-sm md:text-base mb-4">Video del Showroom</p>
+                  <p className="text-gray-500 text-xs md:text-sm">Próximamente disponible</p>
+                </div>
+              </div>
+              {/* To add a real video, replace the above div with:
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                  title="Kustom Mania Showroom"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              */}
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-3 px-8 md:px-10 py-4 md:py-5 text-white font-bold rounded-lg transition-all duration-300 hover:scale-110 text-base md:text-lg"
+              style={{
+                background: "linear-gradient(135deg, #25D366, #20BA5A)",
+                boxShadow: "0 0 40px rgba(37, 211, 102, 0.5)"
+              }}
+            >
+              <Image
+                src="/images/whatsapp-logo.svg"
+                alt="WhatsApp"
+                width={24}
+                height={24}
+                className="w-6 h-6 md:w-7 md:h-7 group-hover:scale-110 transition-transform"
+                loading="lazy"
+              />
+              ¿Querés saber más? Consultanos
+            </a>
+          </div>
+        </div>
+      </section>
+
       <FAQSectionWrapper>
         <FAQSection />
       </FAQSectionWrapper>
@@ -466,7 +536,7 @@ export default async function Home() {
               }}
             >
               <Image
-                src="/images/design-mode/f02e4899-1184-46a0-b3e6-60ad81b82123.png"
+                src="/images/whatsapp-logo.svg"
                 alt="WhatsApp"
                 width={24}
                 height={24}
@@ -506,7 +576,7 @@ export default async function Home() {
       >
         <div className="absolute inset-0 rounded-full bg-[#25D366] opacity-50 blur-xl animate-pulse"></div>
         <Image
-          src="/images/design-mode/f02e4899-1184-46a0-b3e6-60ad81b82123.png"
+          src="/images/whatsapp-logo.svg"
           alt="WhatsApp"
           width={32}
           height={32}
