@@ -26,7 +26,7 @@ export function TopMotorcycles({ analytics }: { analytics: AnalyticsData[] }) {
     <div className="space-y-4">
       {topByMargin.map((moto, index) => (
         <div key={moto.id} className="flex items-center gap-4">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#b87333]/10 text-[#b87333] font-bold">
+          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[#b87333]/10 text-[#b87333] font-bold">
             {index + 1}
           </div>
           <div className="flex-1 space-y-1">

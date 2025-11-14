@@ -5,8 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   Bar,
   BarChart,
-  Pie,
-  PieChart,
   Cell,
   XAxis,
   YAxis,
@@ -170,23 +168,18 @@ export function AnalyticsDashboard({ motorcycles }: AnalyticsDashboardProps) {
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
-              <PieChart>
-                <Pie
-                  data={analytics.statusDistribution}
-                  cx="50%"
-                  cy="50%"
-                  labelLine={false}
-                  label={(entry) => `${entry.name}: ${entry.value}`}
-                  outerRadius={80}
-                  fill="#8884d8"
-                  dataKey="value"
-                >
+              <BarChart data={analytics.statusDistribution}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="value" name="Cantidad">
                   {analytics.statusDistribution.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
-                </Pie>
-                <Tooltip />
-              </PieChart>
+                </Bar>
+              </BarChart>
             </ResponsiveContainer>
           </CardContent>
         </Card>
@@ -202,7 +195,7 @@ export function AnalyticsDashboard({ motorcycles }: AnalyticsDashboardProps) {
             {analytics.topPerformers.map((moto, index) => (
               <div key={index} className="flex items-center justify-between p-4 border rounded-lg">
                 <div className="flex items-center gap-4">
-                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#b87333] text-white font-bold">
+                  <div className="flex items-center justify-center w-8 h-8 rounded-md bg-[#b87333] text-white font-bold">
                     {index + 1}
                   </div>
                   <div>
