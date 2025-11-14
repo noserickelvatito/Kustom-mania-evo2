@@ -327,14 +327,14 @@ export default function NosotrosPage() {
               href={`https://wa.me/${DEFAULT_WHATSAPP_NUMBER}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 glass-effect text-white font-semibold rounded-full hover:bg-white/20 transition-all duration-300 border border-white/20 text-lg min-w-[200px] flex items-center justify-center gap-2 hover:scale-105 shadow-lg"
+              className="px-8 py-4 glass-effect text-white font-semibold rounded-full hover:bg-white/20 transition-all duration-300 border border-white/20 text-lg min-w-[200px] flex items-center justify-center gap-2 hover:scale-105 active:scale-95 shadow-lg touch-manipulation"
             >
               <Image
                 src="/images/whatsapp-logo.svg"
                 alt="WhatsApp"
                 width={24}
                 height={24}
-                className="w-6 h-6 group-hover:rotate-12 transition-transform"
+                className="w-6 h-6 hover:rotate-12 transition-transform"
                 loading="lazy"
               />
               Contactar

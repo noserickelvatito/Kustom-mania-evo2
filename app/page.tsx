@@ -237,14 +237,14 @@ export default async function Home() {
             >
               <Link
                 href="/coleccion"
-                className="group relative inline-block w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-xs sm:text-sm tracking-widest uppercase font-bold transition-all duration-300 hover:scale-110 rounded-lg overflow-hidden shadow-glow-hover"
+                className="group relative inline-block w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-xs sm:text-sm tracking-widest uppercase font-bold transition-all duration-300 hover:scale-110 active:scale-95 rounded-lg overflow-hidden shadow-glow-hover touch-manipulation"
                 style={{
                   color: "#d4a574",
                   border: "2px solid #b87333",
                   background: "linear-gradient(135deg, rgba(184, 115, 51, 0.1), rgba(212, 165, 116, 0.1))",
                 }}
               >
-                <span className="relative z-10 group-hover:text-black transition-colors duration-300 flex items-center gap-2">
+                <span className="relative z-10 group-hover:text-black transition-colors duration-300 flex items-center justify-center gap-2">
                   {siteConfig.hero_button_text}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </span>
@@ -261,7 +261,7 @@ export default async function Home() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-white text-xs sm:text-sm tracking-widest uppercase font-bold transition-all duration-300 rounded-lg shadow-glow hover:scale-110"
+                className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-white text-xs sm:text-sm tracking-widest uppercase font-bold transition-all duration-300 rounded-lg shadow-glow hover:scale-110 active:scale-95 touch-manipulation"
                 style={{
                   background: "linear-gradient(135deg, #25D366, #20BA5A)",
                   boxShadow: "0 0 30px rgba(37, 211, 102, 0.5)",
@@ -359,7 +359,7 @@ export default async function Home() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-3 px-8 py-4 text-white font-bold rounded-lg transition-all duration-300 hover:scale-105"
+                className="group inline-flex items-center justify-center gap-3 px-8 py-4 text-white font-bold rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 touch-manipulation"
                 style={{
                   background: "linear-gradient(135deg, #25D366, #20BA5A)",
                   boxShadow: "0 0 30px rgba(37, 211, 102, 0.4)"
@@ -480,7 +480,7 @@ export default async function Home() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-3 px-8 md:px-10 py-4 md:py-5 text-white font-bold rounded-lg transition-all duration-300 hover:scale-110 text-base md:text-lg"
+              className="group inline-flex items-center justify-center gap-3 px-8 md:px-10 py-4 md:py-5 text-white font-bold rounded-lg transition-all duration-300 hover:scale-110 active:scale-95 text-base md:text-lg touch-manipulation"
               style={{
                 background: "linear-gradient(135deg, #25D366, #20BA5A)",
                 boxShadow: "0 0 40px rgba(37, 211, 102, 0.5)"
@@ -529,7 +529,7 @@ export default async function Home() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-3 px-10 py-5 text-white font-bold rounded-lg transition-all duration-300 hover:scale-110 text-lg"
+              className="group inline-flex items-center justify-center gap-3 px-10 py-5 text-white font-bold rounded-lg transition-all duration-300 hover:scale-110 active:scale-95 text-lg touch-manipulation"
               style={{
                 background: "linear-gradient(135deg, #25D366, #20BA5A)",
                 boxShadow: "0 0 40px rgba(37, 211, 102, 0.5), 0 10px 30px rgba(0, 0, 0, 0.3)"
@@ -566,7 +566,7 @@ export default async function Home() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-28 md:bottom-8 right-6 z-[60] w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-125 group"
+        className="fixed bottom-28 md:bottom-8 right-4 md:right-6 z-[60] w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-125 active:scale-90 group touch-manipulation"
         aria-label="Contactar por WhatsApp"
         style={{
           background: "linear-gradient(135deg, #25D366, #20BA5A)",
@@ -583,7 +583,7 @@ export default async function Home() {
           className="relative z-10 w-9 h-9 md:w-11 md:h-11 group-hover:rotate-12 transition-transform"
           loading="lazy"
         />
-        <span className="absolute -top-16 right-0 bg-gradient-to-r from-black via-black/95 to-black text-white text-xs md:text-sm px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap border border-[#25D366]/50 shadow-glow font-bold">
+        <span className="absolute -top-16 right-0 bg-gradient-to-r from-black via-black/95 to-black text-white text-xs md:text-sm px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap border border-[#25D366]/50 shadow-glow font-bold pointer-events-none">
           ¡Chateá con nosotros! 💬
         </span>
         <span className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-red-500 to-red-600 rounded-full animate-bounce shadow-lg">
