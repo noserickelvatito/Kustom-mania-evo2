@@ -353,3 +353,28 @@
               0 0 60px rgba(184, 115, 51, 0.3),
               0 20px 40px rgba(0, 0, 0, 0.6);
 }
+
+/* Mobile touch optimizations */
+@media (max-width: 768px) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve button spacing on mobile */
+  .btn-mobile {
+    padding: 1rem 1.5rem;
+  }
+}
+
+/* Smooth scrolling for all anchor links */
+a[href^="#"] {
+  scroll-behavior: smooth;
+}
+
+/* Better focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid #b87333;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
