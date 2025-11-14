@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { createClient } from "@/lib/supabase/client"
 import { DEFAULT_WHATSAPP_NUMBER } from "@/lib/constants"
 import { trackGenerateLead } from "@/lib/analytics"
@@ -86,16 +87,23 @@ export function WhatsAppButton({
     <button
       onClick={handleWhatsAppClick}
       disabled={isLoading}
-      className="w-full py-4 px-8 text-base sm:text-lg tracking-widest uppercase font-bold transition-all duration-300 hover:scale-105 relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed"
+      className="w-full py-4 px-6 sm:px-8 text-sm sm:text-base md:text-lg tracking-wider uppercase font-bold transition-all duration-300 hover:scale-105 active:scale-95 relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed rounded-lg flex items-center justify-center gap-3"
       style={{
-        background: "#25D366",
+        background: "linear-gradient(135deg, #25D366, #20BA5A)",
         color: "white",
-        boxShadow: "0 4px 20px rgba(37, 211, 102, 0.4)",
+        boxShadow: "0 4px 20px rgba(37, 211, 102, 0.4), 0 0 40px rgba(37, 211, 102, 0.2)",
       }}
     >
+      <Image
+        src="/images/whatsapp-logo.svg"
+        alt="WhatsApp"
+        width={24}
+        height={24}
+        className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 group-hover:rotate-12 transition-transform relative z-10"
+      />
       <span className="relative z-10">{isLoading ? "ENVIANDO..." : "CONSULTAR POR WHATSAPP"}</span>
       <div
-        className="absolute inset-0 bg-[#1ea952] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+        className="absolute inset-0 bg-gradient-to-br from-[#1ea952] to-[#128C7E] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-lg"
         style={{
           boxShadow: "0 0 30px rgba(30, 169, 82, 0.6)",
         }}
