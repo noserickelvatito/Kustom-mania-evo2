@@ -79,13 +79,13 @@ Se integró Google Analytics 4 (GA4) en todo el sitio web de Kustom Mania para r
 #### 🎯 Embudo de Conversión
 Seguir el recorrido de los usuarios desde que ven una moto hasta que consultan:
 
-```
+\`\`\`
 Ver Moto (view_item)
     ↓
 Ver Galería (view_item_list)
     ↓
 Consultar WhatsApp (generate_lead)
-```
+\`\`\`
 
 **Análisis útil:**
 - ¿Qué porcentaje de visitas se convierte en consulta?
@@ -174,21 +174,21 @@ Cada lunes, revisar:
 ## Métricas Clave (KPIs)
 
 ### Tasa de Conversión Global
-```
+\`\`\`
 (Total de consultas WhatsApp / Total de vistas de producto) × 100
-```
+\`\`\`
 **Meta:** 15-20% es excelente para este tipo de producto
 
 ### Engagement Score
-```
+\`\`\`
 Promedio de scroll depth × Visitas a galería
-```
+\`\`\`
 **Meta:** >50% de usuarios llegan al 75% scroll
 
 ### Calidad de Leads
-```
+\`\`\`
 Consultas por moto / Vistas por moto
-```
+\`\`\`
 **Meta:** Identificar motos con ratio >25%
 
 ## Próximos Pasos

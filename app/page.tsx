@@ -6,11 +6,11 @@ import { ArrowRight } from "lucide-react"
 import type { Metadata } from "next"
 import { FAQSection } from "@/components/faq-section"
 import { DEFAULT_WHATSAPP_NUMBER } from "@/lib/constants"
-import { 
-  MotorcyclesSection, 
-  HowItWorksSection, 
+import {
+  MotorcyclesSection,
+  HowItWorksSection,
   FAQSectionWrapper,
-  FinalCTASection 
+  FinalCTASection,
 } from "@/components/home-sections-client"
 
 export const revalidate = 300
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Kustom Mania | Motos Custom y Harley Davidson - Córdoba, Argentina",
     description:
-      "Líderes en compra venta de motos custom. Harley Davidson, choppers y bobbers. +130 motos vendidas. Showroom en Córdoba. Envíos a todo Argentina. Mejor precio garantizado. Consultas inmediatas por WhatsApp.",
+      "Líderes en compra venta de motos custom. Harley Davidson, choppers y bobbers. +130 motos vendidas. Showroom en Córdoba. Envíos a todo el país. Mejor precio garantizado. Consultas inmediatas por WhatsApp.",
     url: "/",
     type: "website",
     images: [
@@ -161,7 +161,8 @@ export default async function Home() {
               fill
               className="hidden md:block object-cover"
               priority
-              quality={90}
+              quality={95}
+              sizes="100vw"
             />
           )}
 
@@ -183,7 +184,8 @@ export default async function Home() {
               fill
               className="block md:hidden object-cover"
               priority
-              quality={90}
+              quality={95}
+              sizes="100vw"
             />
           )}
 
@@ -206,7 +208,8 @@ export default async function Home() {
               style={{
                 fontFamily: 'Impact, "Arial Black", sans-serif',
                 color: "#b87333",
-                textShadow: "0 0 30px rgba(184, 115, 51, 0.5), 0 0 60px rgba(184, 115, 51, 0.3), 0 0 90px rgba(184, 115, 51, 0.2)",
+                textShadow:
+                  "0 0 30px rgba(184, 115, 51, 0.5), 0 0 60px rgba(184, 115, 51, 0.3), 0 0 90px rgba(184, 115, 51, 0.2)",
                 letterSpacing: "0.1em",
               }}
             >
@@ -224,14 +227,14 @@ export default async function Home() {
               {siteConfig.hero_subtitle}
             </p>
 
-            <p 
+            <p
               className="text-base sm:text-lg md:text-xl text-gray-300 mb-10 sm:mb-12 md:mb-16 font-light tracking-wide px-4 animate-fade-in"
               style={{ animationDelay: "0.4s" }}
             >
               {siteConfig.hero_description}
             </p>
 
-            <div 
+            <div
               className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-scale-in"
               style={{ animationDelay: "0.6s" }}
             >
@@ -286,219 +289,157 @@ export default async function Home() {
         <MotorcyclesSection>
           <section className="relative bg-black py-20 md:py-32">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                Últimas <span className="text-[#b87333]">Incorporaciones</span>
-              </h2>
-              <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                Motos custom, choppers y Harley Davidson en excelente estado. Stock permanente en Córdoba con envíos a todo Argentina.
-              </p>
-            </div>
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                  Últimas <span className="text-[#b87333]">Incorporaciones</span>
+                </h2>
+                <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                  Motos custom, choppers y Harley Davidson en excelente estado. Stock permanente en Córdoba con envíos a
+                  todo Argentina.
+                </p>
+              </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {motorcycles.map((moto: Motorcycle) => {
-                const primaryImage = moto.images?.find((img: any) => img.is_primary) || moto.images?.[0]
-                return (
-                  <Link
-                    key={moto.id}
-                    href={`/coleccion/${moto.slug}`}
-                    className="group relative overflow-hidden bg-zinc-900 rounded-xl border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift"
-                  >
-                    <div className="aspect-[4/3] relative overflow-hidden">
-                      {primaryImage ? (
-                        <Image
-                          src={primaryImage.image_url || "/placeholder.svg"}
-                          alt={moto.name}
-                          fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                          loading="lazy"
-                          quality={85}
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-zinc-800 flex items-center justify-center">
-                          <span className="text-zinc-600">Sin imagen</span>
-                        </div>
-                      )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent group-hover:from-black/70 transition-all duration-300" />
-                      <div className="absolute top-4 right-4 bg-[#b87333] text-black px-3 py-1 rounded-full text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        Ver más
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#b87333] transition-colors duration-300">
-                        {moto.name}
-                      </h3>
-                      <p className="text-gray-400 text-sm mb-4 line-clamp-2">{moto.description}</p>
-                      <div className="flex items-center justify-between">
-                        <span className="text-[#b87333] font-bold text-xl">${moto.price?.toLocaleString()}</span>
-                        <div className="w-10 h-10 rounded-full bg-[#b87333]/10 flex items-center justify-center group-hover:bg-[#b87333] transition-colors duration-300">
-                          <ArrowRight className="w-5 h-5 text-[#b87333] group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                {motorcycles.map((moto: Motorcycle) => {
+                  const primaryImage = moto.images?.find((img: any) => img.is_primary) || moto.images?.[0]
+                  return (
+                    <Link
+                      key={moto.id}
+                      href={`/coleccion/${moto.slug}`}
+                      className="group relative overflow-hidden bg-zinc-900 rounded-xl border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift"
+                    >
+                      <div className="aspect-[4/3] relative overflow-hidden">
+                        {primaryImage ? (
+                          <Image
+                            src={primaryImage.image_url || "/placeholder.svg"}
+                            alt={moto.name}
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                            loading="lazy"
+                            quality={90}
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-zinc-800 flex items-center justify-center">
+                            <span className="text-zinc-600">Sin imagen</span>
+                          </div>
+                        )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent group-hover:from-black/70 transition-all duration-300" />
+                        <div className="absolute top-4 right-4 bg-[#b87333] text-black px-3 py-1 rounded-full text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap border border-[#25D366]/50 shadow-glow font-bold pointer-events-none">
+                          Ver más
                         </div>
                       </div>
-                    </div>
-                  </Link>
-                )
-              })}
-            </div>
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#b87333] transition-colors duration-300">
+                          {moto.name}
+                        </h3>
+                        <p className="text-gray-400 text-sm mb-4 line-clamp-2">{moto.description}</p>
+                        <div className="flex items-center justify-between">
+                          <span className="text-[#b87333] font-bold text-xl">${moto.price?.toLocaleString()}</span>
+                          <div className="w-10 h-10 rounded-full bg-[#b87333]/10 flex items-center justify-center group-hover:bg-[#b87333] transition-colors duration-300">
+                            <ArrowRight className="w-5 h-5 text-[#b87333] group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  )
+                })}
+              </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
-              <Link
-                href="/coleccion"
-                className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-bold transition-all duration-300 hover:scale-105 shadow-glow-hover"
-                style={{
-                  background: "linear-gradient(135deg, #b87333, #d4a574)",
-                  boxShadow: "0 0 30px rgba(184, 115, 51, 0.4)"
-                }}
-              >
-                <span className="text-black">Ver Toda la Colección</span>
-                <ArrowRight className="w-5 h-5 text-black group-hover:translate-x-1 transition-transform" />
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
+                <Link
+                  href="/coleccion"
+                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-bold transition-all duration-300 hover:scale-105 shadow-glow-hover"
+                  style={{
+                    background: "linear-gradient(135deg, #b87333, #d4a574)",
+                    boxShadow: "0 0 30px rgba(184, 115, 51, 0.4)",
+                  }}
+                >
+                  <span className="text-black">Ver Toda la Colección</span>
+                  <ArrowRight className="w-5 h-5 text-black group-hover:translate-x-1 transition-transform" />
+                </Link>
 
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-3 px-8 py-4 text-white font-bold rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 touch-manipulation"
-                style={{
-                  background: "linear-gradient(135deg, #25D366, #20BA5A)",
-                  boxShadow: "0 0 30px rgba(37, 211, 102, 0.4)"
-                }}
-              >
-                <Image
-                  src="/images/whatsapp-logo.svg"
-                  alt="WhatsApp"
-                  width={24}
-                  height={24}
-                  className="w-6 h-6 md:w-9 md:h-9 group-hover:scale-110 transition-transform"
-                  loading="lazy"
-                />
-                Consultar Disponibilidad
-              </a>
-            </div>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-3 px-8 py-4 text-white font-bold rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 touch-manipulation"
+                  style={{
+                    background: "linear-gradient(135deg, #25D366, #20BA5A)",
+                    boxShadow: "0 0 30px rgba(37, 211, 102, 0.4)",
+                  }}
+                >
+                  <Image
+                    src="/images/whatsapp-logo.svg"
+                    alt="WhatsApp"
+                    width={24}
+                    height={24}
+                    className="w-6 h-6 md:w-9 md:h-9 group-hover:scale-110 transition-transform"
+                    loading="lazy"
+                  />
+                  Consultar Disponibilidad
+                </a>
+              </div>
             </div>
           </section>
         </MotorcyclesSection>
       )}
 
-<HowItWorksSection>
+      <HowItWorksSection>
         <section className="relative bg-black py-20 md:py-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              Cómo <span className="text-[#b87333]">Funciona</span>
-            </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Proceso simple y transparente desde Córdoba para todo Argentina.
-            </p>
-          </div>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                Cómo <span className="text-[#b87333]">Funciona</span>
+              </h2>
+              <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                Proceso simple y transparente desde Córdoba para todo Argentina.
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {[
-              {
-                number: "01",
-                title: "Explorar",
-                description: "Navega nuestra colección de motos en stock",
-              },
-              {
-                number: "02",
-                title: "Contactar",
-                description: "Comunícate por WhatsApp para consultas",
-              },
-              {
-                number: "03",
-                title: "Inspeccionar",
-                description: "Ven a ver la moto en nuestro showroom",
-              },
-              {
-                number: "04",
-                title: "Adquirir",
-                description: "Completa la compra con documentación en regla",
-              },
-            ].map((step, index) => (
-              <div key={index} className="relative p-6 rounded-xl bg-black/30 border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift group">
-                <div className="text-6xl md:text-7xl font-bold text-[#b87333]/20 group-hover:text-[#b87333]/30 transition-colors mb-4">{step.number}</div>
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-[#b87333] transition-colors">{step.title}</h3>
-                <p className="text-gray-400 leading-relaxed text-sm md:text-base">{step.description}</p>
-                {index < 3 && (
-                  <div className="hidden lg:block absolute top-1/2 left-full w-full h-px bg-gradient-to-r from-[#b87333]/50 to-transparent" />
-                )}
-              </div>
-            ))}
-          </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+              {[
+                {
+                  number: "01",
+                  title: "Explorar",
+                  description: "Navega nuestra colección de motos en stock",
+                },
+                {
+                  number: "02",
+                  title: "Contactar",
+                  description: "Comunícate por WhatsApp para consultas",
+                },
+                {
+                  number: "03",
+                  title: "Inspeccionar",
+                  description: "Ven a ver la moto en nuestro showroom",
+                },
+                {
+                  number: "04",
+                  title: "Adquirir",
+                  description: "Completa la compra con documentación en regla",
+                },
+              ].map((step, index) => (
+                <div
+                  key={index}
+                  className="relative p-6 rounded-xl bg-black/30 border border-zinc-800 hover:border-[#b87333] transition-all duration-300 hover-lift group"
+                >
+                  <div className="text-6xl md:text-7xl font-bold text-[#b87333]/20 group-hover:text-[#b87333]/30 transition-colors mb-4">
+                    {step.number}
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-[#b87333] transition-colors">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed text-sm md:text-base">{step.description}</p>
+                  {index < 3 && (
+                    <div className="hidden lg:block absolute top-1/2 left-full w-full h-px bg-gradient-to-r from-[#b87333]/50 to-transparent" />
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </HowItWorksSection>
-
-      {/* Video Section */}
-      <section className="relative bg-zinc-950 py-20 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: "radial-gradient(circle at 50% 50%, rgba(184, 115, 51, 0.2) 0%, transparent 70%)"
-          }}></div>
-        </div>
-        
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              Conocé Nuestro <span className="text-[#b87333]">Showroom</span>
-            </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Dale play y descubrí la experiencia Kustom Mania. Motos custom, servicio personalizado y pasión por las dos ruedas en Córdoba.
-            </p>
-          </div>
-
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-[#b87333]/30 hover:border-[#b87333]/60 transition-all duration-500 group">
-            <div className="aspect-video bg-zinc-900">
-              {/* Placeholder for video - can be replaced with YouTube embed or custom video */}
-              <div className="w-full h-full flex items-center justify-center relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 to-black opacity-90"></div>
-                <div className="relative z-10 text-center px-4">
-                  <div className="w-20 h-20 md:w-24 md:h-24 mx-auto mb-6 rounded-full bg-[#b87333]/20 flex items-center justify-center group-hover:bg-[#b87333]/40 transition-all duration-300 group-hover:scale-110">
-                    <svg className="w-10 h-10 md:w-12 md:h-12 text-[#b87333]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
-                  </div>
-                  <p className="text-gray-400 text-sm md:text-base mb-4">Video del Showroom</p>
-                  <p className="text-gray-500 text-xs md:text-sm">Próximamente disponible</p>
-                </div>
-              </div>
-              {/* To add a real video, replace the above div with:
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-                  title="Kustom Mania Showroom"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              */}
-            </div>
-          </div>
-
-          <div className="text-center mt-12">
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-3 px-8 md:px-10 py-4 md:py-5 text-white font-bold rounded-lg transition-all duration-300 hover:scale-110 active:scale-95 text-base md:text-lg touch-manipulation"
-              style={{
-                background: "linear-gradient(135deg, #25D366, #20BA5A)",
-                boxShadow: "0 0 40px rgba(37, 211, 102, 0.5)"
-              }}
-            >
-              <Image
-                src="/images/whatsapp-logo.svg"
-                alt="WhatsApp"
-                width={24}
-                height={24}
-                className="w-6 h-6 md:w-7 md:h-7 group-hover:scale-110 transition-transform"
-                loading="lazy"
-              />
-              ¿Querés saber más? Consultanos
-            </a>
-          </div>
-        </div>
-      </section>
 
       <FAQSectionWrapper>
         <FAQSection />
@@ -506,58 +447,70 @@ export default async function Home() {
 
       <FinalCTASection>
         <section className="relative bg-zinc-950 py-20 md:py-32 border-y border-zinc-800 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: "radial-gradient(circle at 50% 50%, rgba(184, 115, 51, 0.3) 0%, transparent 70%)"
-          }}></div>
-        </div>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in-up">
-            ¿Buscas Tu Próxima <span className="text-gradient animate-gradient" style={{
-              background: "linear-gradient(135deg, #b87333 0%, #d4a574 50%, #b87333 100%)",
-              backgroundSize: "200% 200%",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text"
-            }}>Moto</span>?
-          </h2>
-          <p className="text-gray-300 text-xl mb-10 max-w-2xl mx-auto font-light">
-            Explora nuestra colección completa. <span className="text-[#d4a574] font-semibold">Financiación</span>, <span className="text-[#d4a574] font-semibold">permutas</span> y <span className="text-[#d4a574] font-semibold">envíos a todo el país</span>. Showroom en Córdoba.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-3 px-10 py-5 text-white font-bold rounded-lg transition-all duration-300 hover:scale-110 active:scale-95 text-lg touch-manipulation"
+          <div className="absolute inset-0 opacity-10">
+            <div
+              className="absolute inset-0"
               style={{
-                background: "linear-gradient(135deg, #25D366, #20BA5A)",
-                boxShadow: "0 0 40px rgba(37, 211, 102, 0.5), 0 10px 30px rgba(0, 0, 0, 0.3)"
+                backgroundImage: "radial-gradient(circle at 50% 50%, rgba(184, 115, 51, 0.3) 0%, transparent 70%)",
               }}
-            >
-              <Image
-                src="/images/whatsapp-logo.svg"
-                alt="WhatsApp"
-                width={24}
-                height={24}
-                className="w-7 h-7 md:w-8 md:h-8 group-hover:scale-110 transition-transform"
-                loading="lazy"
-              />
-              Contactar por WhatsApp
-            </a>
-            <Link
-              href="/coleccion"
-              className="group inline-flex items-center justify-center gap-2 px-10 py-5 border-2 font-bold rounded-lg transition-all duration-300 hover:scale-110 text-lg shadow-glow-hover backdrop-blur-sm"
-              style={{
-                borderColor: "#b87333",
-                color: "#d4a574",
-                background: "rgba(184, 115, 51, 0.1)"
-              }}
-            >
-              Ver Colección
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            ></div>
           </div>
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in-up">
+              ¿Buscas Tu Próxima{" "}
+              <span
+                className="text-gradient animate-gradient"
+                style={{
+                  background: "linear-gradient(135deg, #b87333 0%, #d4a574 50%, #b87333 100%)",
+                  backgroundSize: "200% 200%",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Moto
+              </span>
+              ?
+            </h2>
+            <p className="text-gray-300 text-xl mb-10 max-w-2xl mx-auto font-light">
+              Explora nuestra colección completa. <span className="text-[#d4a574] font-semibold">Financiación</span>,{" "}
+              <span className="text-[#d4a574] font-semibold">permutas</span> y{" "}
+              <span className="text-[#d4a574] font-semibold">envíos a todo el país</span>. Showroom en Córdoba.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center gap-3 px-10 py-5 text-white font-bold rounded-lg transition-all duration-300 hover:scale-110 active:scale-95 text-lg touch-manipulation"
+                style={{
+                  background: "linear-gradient(135deg, #25D366, #20BA5A)",
+                  boxShadow: "0 0 40px rgba(37, 211, 102, 0.5), 0 10px 30px rgba(0, 0, 0, 0.3)",
+                }}
+              >
+                <Image
+                  src="/images/whatsapp-logo.svg"
+                  alt="WhatsApp"
+                  width={24}
+                  height={24}
+                  className="w-7 h-7 md:w-8 md:h-8 group-hover:scale-110 transition-transform"
+                  loading="lazy"
+                />
+                Contactar por WhatsApp
+              </a>
+              <Link
+                href="/coleccion"
+                className="group inline-flex items-center justify-center gap-2 px-10 py-5 border-2 font-bold rounded-lg transition-all duration-300 hover:scale-110 text-lg shadow-glow-hover backdrop-blur-sm"
+                style={{
+                  borderColor: "#b87333",
+                  color: "#d4a574",
+                  background: "rgba(184, 115, 51, 0.1)",
+                }}
+              >
+                Ver Colección
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
           </div>
         </section>
       </FinalCTASection>
@@ -571,7 +524,7 @@ export default async function Home() {
         style={{
           background: "linear-gradient(135deg, #25D366, #20BA5A)",
           boxShadow: "0 0 40px rgba(37, 211, 102, 0.6), 0 10px 30px rgba(0, 0, 0, 0.5)",
-          animation: "pulse-glow 2s infinite, float 3s ease-in-out infinite"
+          animation: "pulse-glow 2s infinite, float 3s ease-in-out infinite",
         }}
       >
         <div className="absolute inset-0 rounded-full bg-[#25D366] opacity-50 blur-xl animate-pulse"></div>

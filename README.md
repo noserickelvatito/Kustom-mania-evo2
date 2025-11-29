@@ -231,14 +231,14 @@ Antes de comenzar, asegúrate de tener instalado:
 
 ### 1. Clonar el Repositorio
 
-```bash
+\`\`\`bash
 git clone https://github.com/noserickelvatito/Kustom-mania-evo2.git
 cd Kustom-mania-evo2
-```
+\`\`\`
 
 ### 2. Instalar Dependencias
 
-```bash
+\`\`\`bash
 # Usando pnpm (recomendado)
 pnpm install
 
@@ -247,16 +247,16 @@ npm install
 
 # O usando yarn
 yarn install
-```
+\`\`\`
 
 ### 3. Configurar Variables de Entorno
 
 Crea un archivo `.env.local` en la raíz del proyecto:
 
-```bash
+\`\`\`bash
 cp .env.example .env.local  # Si existe .env.example
 # O crea manualmente .env.local
-```
+\`\`\`
 
 Ver la sección [Variables de Entorno](#-variables-de-entorno) para más detalles.
 
@@ -276,13 +276,13 @@ Ver la sección [Variables de Entorno](#-variables-de-entorno) para más detalle
 
 ### 6. Iniciar el Servidor de Desarrollo
 
-```bash
+\`\`\`bash
 pnpm dev
 # O
 npm run dev
 # O
 yarn dev
-```
+\`\`\`
 
 Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
@@ -292,7 +292,7 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
 Crea un archivo `.env.local` con las siguientes variables:
 
-```env
+\`\`\`env
 # Site Configuration
 NEXT_PUBLIC_SITE_URL=https://www.kustom-mania.com.ar
 
@@ -315,7 +315,7 @@ AWS_S3_BUCKET_URL=https://kusyom-mania.s3.sa-east-1.amazonaws.com
 
 # Optional: Development
 NODE_ENV=development
-```
+\`\`\`
 
 ### Variables Importantes
 
@@ -331,7 +331,7 @@ NODE_ENV=development
 
 ## 📁 Estructura del Proyecto
 
-```
+\`\`\`
 Kustom-mania-evo2/
 ├── app/                          # Next.js App Router
 │   ├── layout.tsx               # Layout raíz con metadata y schemas
@@ -443,7 +443,7 @@ Kustom-mania-evo2/
 ├── postcss.config.mjs          # Configuración de PostCSS
 ├── tsconfig.json               # Configuración de TypeScript
 └── README.md                    # Este archivo
-```
+\`\`\`
 
 ---
 
@@ -451,7 +451,7 @@ Kustom-mania-evo2/
 
 ### Comandos de Desarrollo
 
-```bash
+\`\`\`bash
 # Iniciar servidor de desarrollo
 pnpm dev
 
@@ -463,7 +463,7 @@ pnpm start
 
 # Ejecutar linting (configurado pero no estricto)
 pnpm lint
-```
+\`\`\`
 
 ### Hot Module Replacement (HMR)
 
@@ -473,7 +473,7 @@ Next.js incluye HMR automático. Los cambios en el código se reflejarán instan
 
 Para debugging con VS Code, crea `.vscode/launch.json`:
 
-```json
+\`\`\`json
 {
   "version": "0.2.0",
   "configurations": [
@@ -491,7 +491,7 @@ Para debugging con VS Code, crea `.vscode/launch.json`:
     }
   ]
 }
-```
+\`\`\`
 
 ---
 
@@ -565,7 +565,7 @@ URL: `https://www.kustom-mania.com.ar/km-secret-panel-2025`
 ### Tablas Principales
 
 #### `motorcycles`
-```sql
+\`\`\`sql
 CREATE TABLE motorcycles (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name TEXT NOT NULL,
@@ -596,10 +596,10 @@ CREATE TABLE motorcycles (
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()
 );
-```
+\`\`\`
 
 #### `motorcycle_images`
-```sql
+\`\`\`sql
 CREATE TABLE motorcycle_images (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   motorcycle_id UUID REFERENCES motorcycles(id) ON DELETE CASCADE,
@@ -608,10 +608,10 @@ CREATE TABLE motorcycle_images (
   is_primary BOOLEAN DEFAULT false,
   created_at TIMESTAMP DEFAULT NOW()
 );
-```
+\`\`\`
 
 #### `leads`
-```sql
+\`\`\`sql
 CREATE TABLE leads (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name TEXT NOT NULL,
@@ -632,10 +632,10 @@ CREATE TABLE leads (
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()
 );
-```
+\`\`\`
 
 #### `site_config`
-```sql
+\`\`\`sql
 CREATE TABLE site_config (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   whatsapp_number TEXT,
@@ -648,10 +648,10 @@ CREATE TABLE site_config (
   facebook_url TEXT,
   updated_at TIMESTAMP DEFAULT NOW()
 );
-```
+\`\`\`
 
 #### `operations`
-```sql
+\`\`\`sql
 CREATE TABLE operations (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   motorcycle_id UUID REFERENCES motorcycles(id),
@@ -661,11 +661,11 @@ CREATE TABLE operations (
   operation_date TIMESTAMP,
   created_at TIMESTAMP DEFAULT NOW()
 );
-```
+\`\`\`
 
 ### Índices Recomendados
 
-```sql
+\`\`\`sql
 -- Mejorar búsquedas por slug
 CREATE INDEX idx_motorcycles_slug ON motorcycles(slug);
 
@@ -683,13 +683,13 @@ CREATE INDEX idx_images_display_order ON motorcycle_images(display_order);
 
 -- Leads por estado
 CREATE INDEX idx_leads_status ON leads(status);
-```
+\`\`\`
 
 ### Row Level Security (RLS)
 
 Para configurar políticas de seguridad en Supabase:
 
-```sql
+\`\`\`sql
 -- Habilitar RLS
 ALTER TABLE motorcycles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE motorcycle_images ENABLE ROW LEVEL SECURITY;
@@ -704,7 +704,7 @@ CREATE POLICY "Public read access" ON motorcycle_images
 -- Políticas de escritura (autenticación requerida - futuro)
 CREATE POLICY "Authenticated write access" ON motorcycles
   FOR ALL USING (auth.role() = 'authenticated');
-```
+\`\`\`
 
 ---
 
@@ -716,7 +716,7 @@ CREATE POLICY "Authenticated write access" ON motorcycles
 
 Cada página incluye metadata optimizada:
 
-```typescript
+\`\`\`typescript
 export const metadata: Metadata = {
   title: "Kustom Mania | Motos Custom Córdoba",
   description: "Líderes en compra venta de motos custom...",
@@ -727,7 +727,7 @@ export const metadata: Metadata = {
     images: [{ url: "/og-image.jpg" }]
   }
 }
-```
+\`\`\`
 
 #### Structured Data (JSON-LD)
 
@@ -750,10 +750,10 @@ El sitio implementa varios tipos de schema markup:
 
 El sitio usa Google Analytics 4 con el ID: `G-FY3VWE3KYB`
 
-```typescript
+\`\`\`typescript
 // Implementado en app/layout.tsx
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FY3VWE3KYB"></script>
-```
+\`\`\`
 
 #### Eventos Trackeados
 
@@ -803,13 +803,13 @@ Integrado con `@vercel/analytics` para métricas adicionales de rendimiento y We
 
 ### Variables de Producción
 
-```env
+\`\`\`env
 # Production - Vercel Environment Variables
 NEXT_PUBLIC_SITE_URL=https://www.kustom-mania.com.ar
 NEXT_PUBLIC_SUPABASE_URL=your_production_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_production_anon_key
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-FY3VWE3KYB
-```
+\`\`\`
 
 ### Continuous Deployment
 
@@ -823,18 +823,18 @@ El proyecto usa GitHub Actions para CI/CD:
 
 ## 📜 Scripts Disponibles
 
-```json
+\`\`\`json
 {
   "dev": "next dev",           // Inicia el servidor de desarrollo
   "build": "next build",       // Compila la aplicación para producción
   "start": "next start",       // Inicia el servidor de producción
   "lint": "next lint"          // Ejecuta el linter de Next.js
 }
-```
+\`\`\`
 
 ### Comandos Útiles
 
-```bash
+\`\`\`bash
 # Desarrollo
 pnpm dev          # Puerto 3000 por defecto
 
@@ -855,7 +855,7 @@ pnpm add <package-name>
 
 # Instalar dev dependency
 pnpm add -D <package-name>
-```
+\`\`\`
 
 ---
 
@@ -894,13 +894,13 @@ Se utiliza el **App Router** moderno de Next.js con:
 
 ### Estrategia de Caché
 
-```typescript
+\`\`\`typescript
 // Ejemplo en page.tsx
 export const revalidate = 300 // 5 minutos
 
 // O dinámico
 fetch(url, { next: { revalidate: 3600 } })
-```
+\`\`\`
 
 ### Accesibilidad (A11y)
 
@@ -942,7 +942,7 @@ fetch(url, { next: { revalidate: 3600 } })
 
 Usa [Conventional Commits](https://www.conventionalcommits.org/):
 
-```
+\`\`\`
 feat: add motorcycle comparison feature
 fix: resolve image loading issue
 docs: update README with deployment info
@@ -950,7 +950,7 @@ style: format code with prettier
 refactor: simplify database queries
 test: add unit tests for utils
 chore: update dependencies
-```
+\`\`\`
 
 ---
 

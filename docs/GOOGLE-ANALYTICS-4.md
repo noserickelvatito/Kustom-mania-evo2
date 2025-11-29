@@ -85,7 +85,7 @@ Track form submissions.
 
 ## File Structure
 
-```
+\`\`\`
 /lib/analytics.ts              # Core GA4 tracking functions
 /hooks/use-analytics.ts        # React hooks for tracking
 /app/layout.tsx                # GA4 script injection
@@ -95,12 +95,12 @@ Track form submissions.
   whatsapp-button.tsx          # Lead generation tracking
   collection-client.tsx        # Search tracking
   image-gallery.tsx            # Item list tracking
-```
+\`\`\`
 
 ## Usage Examples
 
 ### Track a custom event
-```typescript
+\`\`\`typescript
 import { useAnalytics } from "@/hooks/use-analytics"
 
 function MyComponent() {
@@ -115,10 +115,10 @@ function MyComponent() {
   
   return <button onClick={handleClick}>Track Event</button>
 }
-```
+\`\`\`
 
 ### Track product view
-```typescript
+\`\`\`typescript
 import { useProductView } from "@/hooks/use-analytics"
 
 function ProductPage({ product }) {
@@ -133,10 +133,10 @@ function ProductPage({ product }) {
   
   return <div>Product Details</div>
 }
-```
+\`\`\`
 
 ### Track scroll depth
-```typescript
+\`\`\`typescript
 import { useScrollTracking } from "@/hooks/use-analytics"
 
 function ArticlePage() {
@@ -144,10 +144,10 @@ function ArticlePage() {
   
   return <article>Long content...</article>
 }
-```
+\`\`\`
 
 ### Track search
-```typescript
+\`\`\`typescript
 import { useSearchTracking } from "@/hooks/use-analytics"
 
 function SearchComponent() {
@@ -162,7 +162,7 @@ function SearchComponent() {
   
   return <input onChange={(e) => handleSearch(e.target.value, 10)} />
 }
-```
+\`\`\`
 
 ## GA4 Dashboard Setup
 

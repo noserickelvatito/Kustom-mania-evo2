@@ -69,9 +69,10 @@ export function ImageGallery({ images, motorcycleName, motorcycleId, brand, type
           src={images[currentIndex].image_url || "/placeholder.svg"}
           alt={`${motorcycleName} - Imagen ${currentIndex + 1}`}
           fill
-          sizes="(max-width: 1024px) 100vw, 50vw"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
           className="object-cover"
           priority={currentIndex === 0}
+          quality={95}
         />
 
         {/* Navigation Arrows */}
@@ -126,9 +127,10 @@ export function ImageGallery({ images, motorcycleName, motorcycleId, brand, type
                 src={image.image_url || "/placeholder.svg"}
                 alt={`Thumbnail ${index + 1}`}
                 fill
-                sizes="(max-width: 640px) 25vw, 15vw"
+                sizes="(max-width: 640px) 25vw, 150px"
                 className="object-cover"
                 loading="lazy"
+                quality={80}
               />
             </button>
           ))}

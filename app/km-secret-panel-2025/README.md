@@ -4,7 +4,7 @@ Este directorio contiene el panel de administración completo para gestionar el 
 
 ## 🏗️ Estructura
 
-```
+\`\`\`
 km-secret-panel-2025/
 ├── layout.tsx              # Layout principal con sidebar y Toaster
 ├── page.tsx                # Dashboard con métricas clave
@@ -15,7 +15,7 @@ km-secret-panel-2025/
 ├── motorcycles/            # CRUD de motocicletas
 ├── operations/             # Tabla financiera
 └── pipeline/               # Pipeline de ventas
-```
+\`\`\`
 
 ## 🎨 Características
 
@@ -81,7 +81,7 @@ km-secret-panel-2025/
 
 ## 🚀 Desarrollo
 
-```bash
+\`\`\`bash
 # Instalar dependencias
 npm install --legacy-peer-deps
 
@@ -90,7 +90,7 @@ npm run dev
 
 # Build de producción
 npm run build
-```
+\`\`\`
 
 ## 🔐 Acceso
 

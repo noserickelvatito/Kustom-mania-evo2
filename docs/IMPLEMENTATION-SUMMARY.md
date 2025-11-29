@@ -283,7 +283,7 @@ See `/docs/ANALÍTICAS-GA4-ES.md` for:
 
 ## Files Modified
 
-```
+\`\`\`
 /app/layout.tsx                              # GA4 script injection
 /lib/analytics.ts                            # Core tracking functions (NEW)
 /hooks/use-analytics.ts                      # React hooks (NEW)
@@ -294,7 +294,7 @@ See `/docs/ANALÍTICAS-GA4-ES.md` for:
 /components/image-gallery.tsx               # Gallery tracking
 /docs/GOOGLE-ANALYTICS-4.md                 # Technical docs (NEW)
 /docs/ANALÍTICAS-GA4-ES.md                  # Business docs (NEW)
-```
+\`\`\`
 
 ## Dependencies
 
