@@ -101,7 +101,7 @@ export default async function Home() {
     siteConfig.hero_background_url || "https://kusyom-mania.s3.sa-east-1.amazonaws.com/background.mp4"
   const isVideo = /\.(mp4|webm|ogg)$/i.test(backgroundUrl)
 
-  const mobileBackgroundUrl = "https://kusyom-mania.s3.sa-east-1.amazonaws.com/background-mobile.mp4"
+  const mobileBackgroundUrl = "https://kusyom-mania.s3.sa-east-1.amazonaws.com/background+kustom+pagina+%E2%80%90+Hecho+con+Clipchamp.mp4"
   const isMobileVideo = /\.(mp4|webm|ogg)$/i.test(mobileBackgroundUrl)
 
   const whatsappUrl = `https://wa.me/${(siteConfig.whatsapp_number || DEFAULT_WHATSAPP_NUMBER).replace(/\D/g, "")}`
