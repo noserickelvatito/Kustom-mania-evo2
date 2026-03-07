@@ -1,8 +1,10 @@
-import Image from "next/image"
 import Link from "next/link"
 import { Instagram, Facebook, MapPin, Phone, Clock, Shield, Truck, CreditCard } from "lucide-react"
+import { DEFAULT_WHATSAPP_NUMBER } from "@/lib/constants"
 
 export function Footer() {
+  const whatsappUrl = `https://wa.me/${DEFAULT_WHATSAPP_NUMBER}`
+  
   return (
     <footer className="relative bg-zinc-950 border-t border-zinc-800/50 mt-0 overflow-hidden">
       {/* Background decoration */}
@@ -95,7 +97,7 @@ export function Footer() {
                 <Facebook className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
               </a>
               <a
-                href="https://wa.me/5493517034847"
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-11 h-11 rounded-xl bg-zinc-800/50 hover:bg-gradient-to-br hover:from-[#25D366] hover:to-[#128C7E] flex items-center justify-center transition-all duration-300 hover:scale-110 border border-zinc-700/50 hover:border-transparent group"
@@ -194,7 +196,7 @@ export function Footer() {
               Contactanos ahora y encontrá la moto de tus sueños. Respuesta inmediata.
             </p>
             <a
-              href="https://wa.me/5493517034847"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary-enhanced w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-4 text-white font-bold rounded-xl text-sm"

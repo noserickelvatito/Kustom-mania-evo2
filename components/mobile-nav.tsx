@@ -33,7 +33,7 @@ export function MobileNav() {
               }`}>
                 <Home className="w-6 h-6" strokeWidth={isActive("/") ? 2.5 : 1.5} />
               </div>
-              <span className="text-[10px] font-semibold tracking-wider uppercase">{isActive("/") ? "• Inicio •" : "Inicio"}</span>
+              <span className="text-[10px] font-semibold tracking-wider uppercase">Inicio</span>
             </Link>
 
             <Link
@@ -51,7 +51,7 @@ export function MobileNav() {
               }`}>
                 <Grid3x3 className="w-6 h-6" strokeWidth={isActive("/coleccion") ? 2.5 : 1.5} />
               </div>
-              <span className="text-[10px] font-semibold tracking-wider uppercase">{isActive("/coleccion") ? "• Motos •" : "Motos"}</span>
+              <span className="text-[10px] font-semibold tracking-wider uppercase">Motos</span>
             </Link>
 
             <Link
@@ -69,7 +69,7 @@ export function MobileNav() {
               }`}>
                 <Users className="w-6 h-6" strokeWidth={isActive("/nosotros") ? 2.5 : 1.5} />
               </div>
-              <span className="text-[10px] font-semibold tracking-wider uppercase">{isActive("/nosotros") ? "• Nosotros •" : "Nosotros"}</span>
+              <span className="text-[10px] font-semibold tracking-wider uppercase">Nosotros</span>
             </Link>
 
             <Link
@@ -87,7 +87,7 @@ export function MobileNav() {
               }`}>
                 <Scale className="w-6 h-6" strokeWidth={isActive("/comparar") ? 2.5 : 1.5} />
               </div>
-              <span className="text-[10px] font-semibold tracking-wider uppercase">{isActive("/comparar") ? "• Comparar •" : "Comparar"}</span>
+              <span className="text-[10px] font-semibold tracking-wider uppercase">Comparar</span>
             </Link>
           </div>
         </div>

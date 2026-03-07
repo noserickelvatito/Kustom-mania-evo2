@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { ChevronDown, HelpCircle } from "lucide-react"
+import { DEFAULT_WHATSAPP_NUMBER } from "@/lib/constants"
 
 const faqs = [
   {
@@ -122,7 +123,7 @@ export function FAQSection() {
         <div className="mt-12 text-center">
           <p className="text-gray-400 mb-4">¿Tenés otra pregunta?</p>
           <a
-            href="https://wa.me/5493517034847"
+            href={`https://wa.me/${DEFAULT_WHATSAPP_NUMBER}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-[#25D366] hover:text-[#20BA5A] transition-colors font-semibold"
