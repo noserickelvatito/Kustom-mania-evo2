@@ -57,7 +57,7 @@ export function FAQSection() {
             <span className="text-sm text-[#d4a574] tracking-wider uppercase font-medium">Preguntas Frecuentes</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Preguntas <span className="text-shimmer">Frecuentes</span>
+            Preguntas <span className="text-[#b87333]">Frecuentes</span>
           </h2>
           <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
             Respuestas a las dudas más comunes sobre nuestros servicios

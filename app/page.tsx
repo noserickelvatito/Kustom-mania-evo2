@@ -221,11 +221,13 @@ export default async function Home() {
               <div className="h-px w-16 sm:w-24 bg-gradient-to-l from-transparent to-[#b87333]" />
             </div>
 
-            {/* Main title with shimmer effect */}
+            {/* Main title */}
             <div
-              className="hero-title font-black mb-6 sm:mb-8 text-shimmer"
+              className="hero-title font-black mb-6 sm:mb-8 animate-glow-pulse"
               style={{
                 fontFamily: 'Impact, "Arial Black", sans-serif',
+                color: "#b87333",
+                textShadow: "0 0 30px rgba(184, 115, 51, 0.4), 0 0 60px rgba(184, 115, 51, 0.2)",
               }}
             >
               {siteConfig.hero_title}
@@ -289,24 +291,6 @@ export default async function Home() {
                 <span className="text-white">Consultar Ahora</span>
               </a>
             </div>
-
-            {/* Stats badges */}
-            <div className="flex flex-wrap justify-center gap-6 sm:gap-10 mt-12 sm:mt-16 animate-fade-in" style={{ animationDelay: "0.8s" }}>
-              <div className="flex flex-col items-center">
-                <span className="text-3xl sm:text-4xl font-bold text-[#b87333]">+130</span>
-                <span className="text-xs sm:text-sm text-gray-400 tracking-wider">MOTOS VENDIDAS</span>
-              </div>
-              <div className="w-px h-12 bg-gradient-to-b from-transparent via-[#b87333]/50 to-transparent hidden sm:block" />
-              <div className="flex flex-col items-center">
-                <span className="text-3xl sm:text-4xl font-bold text-[#b87333]">+9</span>
-                <span className="text-xs sm:text-sm text-gray-400 tracking-wider">AÑOS EXPERIENCIA</span>
-              </div>
-              <div className="w-px h-12 bg-gradient-to-b from-transparent via-[#b87333]/50 to-transparent hidden sm:block" />
-              <div className="flex flex-col items-center">
-                <span className="text-3xl sm:text-4xl font-bold text-[#b87333]">100%</span>
-                <span className="text-xs sm:text-sm text-gray-400 tracking-wider">SATISFACCIÓN</span>
-              </div>
-            </div>
           </div>
 
           {/* Scroll indicator */}
@@ -332,7 +316,7 @@ export default async function Home() {
                   <span className="text-sm text-[#d4a574] tracking-wider uppercase font-medium">Stock Disponible</span>
                 </div>
                 <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                  Últimas <span className="text-shimmer">Incorporaciones</span>
+                  Últimas <span className="text-[#b87333]">Incorporaciones</span>
                 </h2>
                 <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
                   Motos custom, choppers y Harley Davidson en excelente estado. Stock permanente en Córdoba con envíos a
@@ -459,7 +443,7 @@ export default async function Home() {
                 <span className="text-sm text-[#d4a574] tracking-wider uppercase font-medium">Proceso Simple</span>
               </div>
               <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                Cómo <span className="text-shimmer">Funciona</span>
+                Cómo <span className="text-[#b87333]">Funciona</span>
               </h2>
               <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
                 Proceso simple y transparente desde Córdoba para todo Argentina.
@@ -564,7 +548,7 @@ export default async function Home() {
             
             <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
               ¿Buscas Tu Próxima{" "}
-              <span className="text-shimmer">Moto</span>?
+              <span className="text-[#b87333]">Moto</span>?
             </h2>
             
             <p className="text-gray-300 text-xl md:text-2xl mb-12 max-w-3xl mx-auto font-light leading-relaxed">

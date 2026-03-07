@@ -66,12 +66,9 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16">
           {/* Logo Section */}
           <div className="flex flex-col items-center sm:items-start space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#b87333] to-[#d4a574] flex items-center justify-center shadow-lg shadow-[#b87333]/30">
-                <span className="text-black font-black text-xl">K</span>
-              </div>
-              <span className="text-2xl font-serif font-bold text-shimmer">KUSTOM MANIA</span>
-            </div>
+            <Link href="/" className="text-2xl font-serif font-bold text-[#b87333] hover:scale-105 transition-transform">
+              KUSTOM MANIA
+            </Link>
             <p className="text-gray-400 text-sm text-center sm:text-left leading-relaxed max-w-xs">
               Pasión por las dos ruedas. Donde la personalidad se encuentra con el asfalto. 
               <span className="text-[#b87333]"> +130 motos vendidas</span> y contando.
