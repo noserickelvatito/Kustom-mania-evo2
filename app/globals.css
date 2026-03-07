@@ -716,14 +716,36 @@ a[href^="#"] {
 
 /* Responsive typography improvements */
 .hero-title {
-  font-size: clamp(2.5rem, 8vw, 6rem);
-  letter-spacing: 0.3em;
+  font-size: clamp(2.2rem, 10vw, 6rem);
+  letter-spacing: 0.15em;
   line-height: 1.1;
 }
 
 .hero-subtitle {
-  font-size: clamp(0.875rem, 2vw, 1.25rem);
-  letter-spacing: 0.5em;
+  font-size: clamp(0.65rem, 2.5vw, 1.25rem);
+  letter-spacing: 0.2em;
+}
+
+/* Mobile specific improvements */
+@media (max-width: 640px) {
+  .hero-title {
+    letter-spacing: 0.1em;
+  }
+  
+  .hero-subtitle {
+    letter-spacing: 0.15em;
+  }
+  
+  /* Reduce orb sizes on mobile for performance */
+  .orb {
+    filter: blur(40px);
+  }
+  
+  /* Smaller padding for sections on mobile */
+  .section-mobile-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
 }
 
 /* Enhanced scrollbar */

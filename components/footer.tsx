@@ -19,42 +19,42 @@ export function Footer() {
       
       {/* Features bar */}
       <div className="relative border-b border-zinc-800/50 bg-black/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="flex items-center gap-3 justify-center md:justify-start">
-              <div className="w-12 h-12 rounded-xl bg-[#b87333]/10 flex items-center justify-center">
-                <Truck className="w-6 h-6 text-[#b87333]" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            <div className="flex items-center gap-2 sm:gap-3 justify-center md:justify-start">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#b87333]/10 flex items-center justify-center flex-shrink-0">
+                <Truck className="w-5 h-5 sm:w-6 sm:h-6 text-[#b87333]" />
               </div>
               <div>
-                <p className="text-white font-semibold text-sm">Envíos</p>
-                <p className="text-gray-400 text-xs">A todo el país</p>
+                <p className="text-white font-semibold text-xs sm:text-sm">Envíos</p>
+                <p className="text-gray-400 text-[10px] sm:text-xs">A todo el país</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 justify-center md:justify-start">
-              <div className="w-12 h-12 rounded-xl bg-[#b87333]/10 flex items-center justify-center">
-                <Shield className="w-6 h-6 text-[#b87333]" />
+            <div className="flex items-center gap-2 sm:gap-3 justify-center md:justify-start">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#b87333]/10 flex items-center justify-center flex-shrink-0">
+                <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-[#b87333]" />
               </div>
               <div>
-                <p className="text-white font-semibold text-sm">Garantía</p>
-                <p className="text-gray-400 text-xs">Documentación al día</p>
+                <p className="text-white font-semibold text-xs sm:text-sm">Garantía</p>
+                <p className="text-gray-400 text-[10px] sm:text-xs">Documentación al día</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 justify-center md:justify-start">
-              <div className="w-12 h-12 rounded-xl bg-[#b87333]/10 flex items-center justify-center">
-                <CreditCard className="w-6 h-6 text-[#b87333]" />
+            <div className="flex items-center gap-2 sm:gap-3 justify-center md:justify-start">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#b87333]/10 flex items-center justify-center flex-shrink-0">
+                <CreditCard className="w-5 h-5 sm:w-6 sm:h-6 text-[#b87333]" />
               </div>
               <div>
-                <p className="text-white font-semibold text-sm">Financiación</p>
-                <p className="text-gray-400 text-xs">Planes flexibles</p>
+                <p className="text-white font-semibold text-xs sm:text-sm">Financiación</p>
+                <p className="text-gray-400 text-[10px] sm:text-xs">Planes flexibles</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 justify-center md:justify-start">
-              <div className="w-12 h-12 rounded-xl bg-[#b87333]/10 flex items-center justify-center">
-                <Clock className="w-6 h-6 text-[#b87333]" />
+            <div className="flex items-center gap-2 sm:gap-3 justify-center md:justify-start">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#b87333]/10 flex items-center justify-center flex-shrink-0">
+                <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-[#b87333]" />
               </div>
               <div>
-                <p className="text-white font-semibold text-sm">+9 Años</p>
-                <p className="text-gray-400 text-xs">De experiencia</p>
+                <p className="text-white font-semibold text-xs sm:text-sm">+9 Años</p>
+                <p className="text-gray-400 text-[10px] sm:text-xs">De experiencia</p>
               </div>
             </div>
           </div>
@@ -62,11 +62,11 @@ export function Footer() {
       </div>
       
       {/* Main footer content */}
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16">
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 md:gap-16">
           {/* Logo Section */}
-          <div className="flex flex-col items-center sm:items-start space-y-6">
-            <Link href="/" className="text-2xl font-serif font-bold text-[#b87333] hover:scale-105 transition-transform">
+          <div className="flex flex-col items-center sm:items-start space-y-4 sm:space-y-6">
+            <Link href="/" className="text-xl sm:text-2xl font-serif font-bold text-[#b87333] hover:scale-105 transition-transform">
               KUSTOM MANIA
             </Link>
             <p className="text-gray-400 text-sm text-center sm:text-left leading-relaxed max-w-xs">
@@ -74,12 +74,12 @@ export function Footer() {
               <span className="text-[#b87333]"> +130 motos vendidas</span> y contando.
             </p>
             {/* Social links */}
-            <div className="flex gap-3 mt-4">
+            <div className="flex gap-3 mt-2 sm:mt-4">
               <a
                 href="https://www.instagram.com/kustomania_cba/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-11 h-11 rounded-xl bg-zinc-800/50 hover:bg-gradient-to-br hover:from-[#833AB4] hover:via-[#FD1D1D] hover:to-[#F77737] flex items-center justify-center transition-all duration-300 hover:scale-110 border border-zinc-700/50 hover:border-transparent group"
+                className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-zinc-800/50 hover:bg-gradient-to-br hover:from-[#833AB4] hover:via-[#FD1D1D] hover:to-[#F77737] flex items-center justify-center transition-all duration-300 hover:scale-110 border border-zinc-700/50 hover:border-transparent group"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
@@ -88,7 +88,7 @@ export function Footer() {
                 href="https://www.facebook.com/kustommania"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-11 h-11 rounded-xl bg-zinc-800/50 hover:bg-[#1877F2] flex items-center justify-center transition-all duration-300 hover:scale-110 border border-zinc-700/50 hover:border-transparent group"
+                className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-zinc-800/50 hover:bg-[#1877F2] flex items-center justify-center transition-all duration-300 hover:scale-110 border border-zinc-700/50 hover:border-transparent group"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
@@ -97,7 +97,7 @@ export function Footer() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-11 h-11 rounded-xl bg-zinc-800/50 hover:bg-gradient-to-br hover:from-[#25D366] hover:to-[#128C7E] flex items-center justify-center transition-all duration-300 hover:scale-110 border border-zinc-700/50 hover:border-transparent group"
+                className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-zinc-800/50 hover:bg-gradient-to-br hover:from-[#25D366] hover:to-[#128C7E] flex items-center justify-center transition-all duration-300 hover:scale-110 border border-zinc-700/50 hover:border-transparent group"
                 aria-label="WhatsApp"
               >
                 <svg className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
@@ -109,11 +109,11 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="flex flex-col items-center sm:items-start">
-            <h3 className="text-[#b87333] font-bold text-lg mb-6 flex items-center gap-2">
-              <span className="w-8 h-0.5 bg-gradient-to-r from-[#b87333] to-transparent rounded-full" />
+            <h3 className="text-[#b87333] font-bold text-base sm:text-lg mb-4 sm:mb-6 flex items-center gap-2">
+              <span className="w-6 sm:w-8 h-0.5 bg-gradient-to-r from-[#b87333] to-transparent rounded-full" />
               Enlaces Rápidos
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <Link href="/" className="block text-gray-400 hover:text-[#b87333] transition-colors text-sm group">
                 <span className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-[#b87333] transition-colors" />
@@ -143,41 +143,41 @@ export function Footer() {
 
           {/* Contact Info */}
           <div className="flex flex-col items-center sm:items-start">
-            <h3 className="text-[#b87333] font-bold text-lg mb-6 flex items-center gap-2">
-              <span className="w-8 h-0.5 bg-gradient-to-r from-[#b87333] to-transparent rounded-full" />
+            <h3 className="text-[#b87333] font-bold text-base sm:text-lg mb-4 sm:mb-6 flex items-center gap-2">
+              <span className="w-6 sm:w-8 h-0.5 bg-gradient-to-r from-[#b87333] to-transparent rounded-full" />
               Contacto
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <div className="flex items-start gap-3 text-gray-400 text-sm group">
-                <div className="w-9 h-9 rounded-lg bg-zinc-800/50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#b87333]/10 transition-colors">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-zinc-800/50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#b87333]/10 transition-colors">
                   <MapPin className="w-4 h-4 text-[#b87333]" />
                 </div>
                 <div>
-                  <p className="text-white font-medium">Córdoba, Argentina</p>
+                  <p className="text-white font-medium text-sm">Córdoba, Argentina</p>
                   <p className="text-xs text-gray-500">Showroom con cita previa</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 text-gray-400 text-sm group">
-                <div className="w-9 h-9 rounded-lg bg-zinc-800/50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#b87333]/10 transition-colors">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-zinc-800/50 flex items-center justify-center flex-shrink-0 group-hover:bg-[#b87333]/10 transition-colors">
                   <Phone className="w-4 h-4 text-[#b87333]" />
                 </div>
                 <div>
-                  <p className="text-white font-medium">Consultas por WhatsApp</p>
+                  <p className="text-white font-medium text-sm">Consultas por WhatsApp</p>
                   <p className="text-xs text-gray-500">Respondemos en minutos</p>
                 </div>
               </div>
             </div>
             
             {/* Stats */}
-            <div className="mt-8 pt-6 border-t border-zinc-800/50 w-full">
+            <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-zinc-800/50 w-full">
               <div className="grid grid-cols-2 gap-4">
                 <div className="text-center sm:text-left">
-                  <p className="text-2xl font-bold text-[#b87333]">+130</p>
-                  <p className="text-xs text-gray-500">Motos vendidas</p>
+                  <p className="text-xl sm:text-2xl font-bold text-[#b87333]">+130</p>
+                  <p className="text-[10px] sm:text-xs text-gray-500">Motos vendidas</p>
                 </div>
                 <div className="text-center sm:text-left">
-                  <p className="text-2xl font-bold text-[#b87333]">+9</p>
-                  <p className="text-xs text-gray-500">Años experiencia</p>
+                  <p className="text-xl sm:text-2xl font-bold text-[#b87333]">+9</p>
+                  <p className="text-[10px] sm:text-xs text-gray-500">Años experiencia</p>
                 </div>
               </div>
             </div>
@@ -185,18 +185,18 @@ export function Footer() {
 
           {/* Newsletter / CTA */}
           <div className="flex flex-col items-center sm:items-start">
-            <h3 className="text-[#b87333] font-bold text-lg mb-6 flex items-center gap-2">
-              <span className="w-8 h-0.5 bg-gradient-to-r from-[#b87333] to-transparent rounded-full" />
+            <h3 className="text-[#b87333] font-bold text-base sm:text-lg mb-4 sm:mb-6 flex items-center gap-2">
+              <span className="w-6 sm:w-8 h-0.5 bg-gradient-to-r from-[#b87333] to-transparent rounded-full" />
               ¿Buscás tu moto?
             </h3>
-            <p className="text-gray-400 text-sm mb-6 text-center sm:text-left">
+            <p className="text-gray-400 text-sm mb-4 sm:mb-6 text-center sm:text-left">
               Contactanos ahora y encontrá la moto de tus sueños. Respuesta inmediata.
             </p>
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary-enhanced w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-4 text-white font-bold rounded-xl text-sm"
+              className="btn-primary-enhanced w-full sm:w-auto inline-flex items-center justify-center gap-3 px-5 sm:px-6 py-3 sm:py-4 text-white font-bold rounded-xl text-sm"
               style={{
                 background: "linear-gradient(135deg, #25D366, #128C7E)",
               }}
@@ -212,7 +212,7 @@ export function Footer() {
 
       {/* Bottom Bar */}
       <div className="relative border-t border-zinc-800/50 bg-black/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-gray-500 text-sm text-center md:text-left">
               © {new Date().getFullYear()} Kustom Mania. Todos los derechos reservados.
